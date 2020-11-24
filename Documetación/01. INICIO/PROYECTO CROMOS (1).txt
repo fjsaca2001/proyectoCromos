@@ -1,0 +1,105 @@
+12 PROFESORES
+1 AÑO
+1 album (fisicamente)
+sobres/fundas ( 1..4 cromos)
+
+https://www.youtube.com/watch?v=gTjQs68L69w
+
+sobre 1 ( cromo 23, cromo 45, cromo 55, cromo 28)
+sobre 2 ( cromo 32, cromo 45, cromo 12, cromo 1)
+
+cromo (grafico, texto, númeración)
+
+reglas: 
+1. en el día se puedan generar como máximo 20 cromos 
+2. los cromos se pueden repetir por sobre
+2.1 20 cromos al día (4 repetidos) -> 16 cromos
+2.2 cromos repetidos (intercambio, venta, ..)
+2.3 progreso del llenado del album 
+3. compra o la adquision de cromos (reponder a 3, 4 preguntas)
+3.1 correcto las 4 preguntas -> 20 cromos (paquete)
+3.2 correcto a 3 de 4 preguntas -> 16 cromos
+3.3 correcto 2 de 4 preguntas -> (8 cromos)
+3.4 correcto 1 de 4 pregunta -> (3 cromos)
+3.5 correcto 0 preguntas (0 cromos)
+
+controles:
+(obtención de cromos x día, controlados por fecha)
+que las preguntas se hayan configurado y cotestadno de lmanera correcta
+límite de cromos acorde a las respuesta
+controlar que los cromos s obtengan de manera aletoria
+generar de forma aleatoria las preguntas para ganarse los cromos y los cromos
+límite de preguntas por dia 
+
+
+1. primera pregunta:
+A. OK
+B. ERR
+C. ERR
+D. ERR
+
+cargar archivo de preguntas
+
+2. segundo regunta
+A. ERR
+B. ERR
+C. OK
+D. ERR
+
+proceso de comprar cromos
+pregunta 1->
+pregunta 2 >
+pregunta 3->
+pregunta 4->
+
+
+DEFINIR LOS TEMAS EN LO QUE SE VA A TRABAJAR
+DIGITALIZACIÓN / GAMIFICACIÓN
+ESTUDIANTES (NÚMERO DE ESTUDIANTES)
+En línea (Juego/Gamificada)
+Juego por niveles
+Descripción por cada cromo
+Basado en conocimiento
+Descripcion pequeña Por temáticas
+6 temáticas (Econoometríca, macroeconomia, microeconomia)
+10 temas de elo sacar inimo 30 imagenes
+180 imagenes
+
+el proyecto lo genera la carrera
+12 profesores y 20 estudiantes de economia ()
+
+Album de fubol es similar pero para economia
+no hay ni en físico ni en digital, si hay trivias, pero no hay album de cromos
+
+Aprendizaje basada en juegos
+
+Sea utilizado por docentes, estudiantes y exalumnos
+
+internacionalizar
+
+temáticas globales 7 Asignaturas son las temáticas donde van a salir los cromos
+Los estudiantes obtienen las imágenes
+
+debajo y detrás del cromo descripción
+
+drag & drop
+
+el album se lo va anetrgar e físico (gamificar)
+
+
+Estudiantes y docentes
+Nivel básico, intermedio, avanzado)
+
+Parte física, digital del album y gamificacin
+
+cómo se gana los cromos, tiempos, preguntas
+
+Econohut
+
+Gamificación y album (los que participen 
+
+daysi karina garcia
+dkgarcia@utpl.edu.ec
+0992925448
+
+
