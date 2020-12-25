@@ -13,10 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::view('/', 'home')->name('home');//para paginas con poca logica
-
-
-/*
-Route::get('/', function () {
-    $nombre = "Juna";
-    return view('home', compact('nombre'));
-})->name('home');*/
+Route::resource('usuarios', 'App\Http\Controllers\UsuariosController');
+Route::view('/actividades','internas.actividades')->name('actividades');
+Route::view('/album','internas.album')->name('album');
+Route::view('/contactos','internas.contactos')->name('contactos');
