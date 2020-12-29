@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class usuarios extends Model
 {
-    use HasFactory;
-    protected $primaryKey = "idUsuario";
+    //use HasFactory;
+    //protected $primaryKey = "idUsuario";
 }

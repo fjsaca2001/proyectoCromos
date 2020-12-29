@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\usuarios;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UsuariosController extends Controller
@@ -15,8 +15,8 @@ class UsuariosController extends Controller
     public function index()
     {
         //
-        $datos['usuarios']=Usuarios::paginate(10);
-        return view('usuarios.index',$datos);
+        $datos['usuariosC']=User::paginate(10);
+        return view('admin.adminindex',$datos);
     }
 
     /**
@@ -27,7 +27,7 @@ class UsuariosController extends Controller
     public function create()
     {
         //     
-        return view('usuarios.create');
+        //return view('usuarios.create');
     }
 
     /**
@@ -40,9 +40,9 @@ class UsuariosController extends Controller
     {
         //
         //$datosUsuario=request()->all();
-        $datosUsuario=request()->except('_token');
-        usuarios::insert($datosUsuario);
-        return redirect('/');
+        //$datosUsuario=request()->except('_token');
+        //usuarios::insert($datosUsuario);
+        //return redirect('/')->with('Mensaje', 'Usted se ha registrado, ya puede iniciar sesion');
 
     }
 
@@ -52,7 +52,7 @@ class UsuariosController extends Controller
      * @param  \App\Models\usuarios  $usuarios
      * @return \Illuminate\Http\Response
      */
-    public function show(usuarios $usuarios)
+    public function show(/*usuarios $usuarios*/)
     {
         //
     }
@@ -66,8 +66,8 @@ class UsuariosController extends Controller
     public function edit($idUsuario)
     {
         //
-        $usuarios=Usuarios::findOrFail($idUsuario);
-        return view('usuarios.edit',compact('usuarios'));
+        $usuarios=User::findOrFail($idUsuario);
+        return view('admin.edit',compact('usuarios'));
     }
 
     /**
@@ -80,12 +80,18 @@ class UsuariosController extends Controller
     public function update(Request $request,$idUsuario)
     {
         //
+        
         $datosUsuario=request()->except(['_token','_method']);
-        Usuarios::where('idUsuario','=',$idUsuario)->update($datosUsuario);
+        User::where('idUsuario','=',$idUsuario)->update($datosUsuario);
 
-        $usuarios=Usuarios::findOrFail($idUsuario);
+        $usuarios=User::findOrFail($idUsuario);
         //return view('usuarios.edit',compact('usuarios'));
-        return redirect('usuarios');
+        if(auth()->user()->rol != 3){
+            return redirect('usuarios')->with('Mensaje','Usuario modificado con exito');
+            
+        }else{
+            return redirect('perfil')->with('Mensaje','Usuario modificado con exito');
+        }
     }
 
     /**
@@ -97,7 +103,7 @@ class UsuariosController extends Controller
     public function destroy($idUsuario)
     {
         //
-        Usuarios::destroy($idUsuario);
-        return redirect('usuarios');
+        User::destroy($idUsuario);
+        return redirect('usuarios')->with('Mensaje','Usuario eliminado con exito');
     }
 }

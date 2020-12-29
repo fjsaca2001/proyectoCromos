@@ -13,7 +13,7 @@ class CreateUsuariosTable extends Migration
      */
     public function up()
     {
-        Schema::create('usuarios', function (Blueprint $table) {
+       /* Schema::create('usuarios', function (Blueprint $table) {
             $table->increments('idUsuario');
             $table->string('nombre',100);
             $table->string('nickname',15);
@@ -24,7 +24,7 @@ class CreateUsuariosTable extends Migration
             $table->integer('rol')->default(3);
             
             $table->timestamps();
-        });
+        });*/
     }
 
     /**
@@ -34,6 +34,6 @@ class CreateUsuariosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('usuarios');
+        //Schema::dropIfExists('usuarios');
     }
 }

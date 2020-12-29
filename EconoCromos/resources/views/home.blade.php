@@ -1,6 +1,10 @@
-@extends('layout')
+@extends('layouts.layout')
 @section('titulo', 'Economía a tu alcance')
 @section('content')
+@if(Session::has('Mensaje')){{
+    Session::get('Mensaje')
+  }}
+  @endif
     <section id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
         <ol class="carousel-indicators">
             <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></li>
@@ -9,10 +13,10 @@
         </ol>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="{{ asset('img/slider1.png') }}" class="d-block w-100" alt="...">
+                <img src="{{ asset('img/slider1.png') }}" class="d-block w-100" alt="">
             </div>
             <div class="carousel-item">
-                <img src="{{ asset('img/slider2.png') }}" class="d-block w-100" alt="...">
+                <img src="{{ asset('img/slider2.png') }}" class="d-block w-100" alt="">
             </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
@@ -22,7 +26,7 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
         </a>
     </section>
-    <section class="tematicas" id="temat1ica">
+    <section class="tematicas" id="tematica">
         <!--<h2>Tematicas</h2>-->
         <article class="tema">
             <div class="card" style="width: 25rem;">

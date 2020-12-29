@@ -230,7 +230,7 @@ footer article {
     text-align: right;
 }
 
-.nav, .justify-content-center {
+.nav {
     border-bottom: black solid 1px;
 }
 
@@ -268,4 +268,19 @@ footer article {
 }
 .login img, .registrar img{
     width: 200px;
+}
+.container{
+    padding: 5em;
+}
+.container h1{
+    padding: 0.5em;
+}
+.table-responsive{
+    width: 45% !important;
+    display: inline-block !important;
+
+}
+.row2{
+    width: 45% !important;
+    display: inline-block !important;
 }

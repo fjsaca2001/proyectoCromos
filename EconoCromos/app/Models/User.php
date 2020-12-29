@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
+
     use HasFactory, Notifiable;
 
     /**
@@ -16,10 +17,16 @@ class User extends Authenticatable
      *
      * @var array
      */
+    protected $table = 'usuariosC';
+    protected $primaryKey = "idUsuario";
     protected $fillable = [
-        'name',
+        'nombre',
+        'nickname',
         'email',
+        'pais',
+        'edad',
         'password',
+        'rol',
     ];
 
     /**

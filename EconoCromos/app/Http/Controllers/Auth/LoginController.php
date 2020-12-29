@@ -20,13 +20,13 @@ class LoginController extends Controller
     */
 
     use AuthenticatesUsers;
-
     /**
      * Where to redirect users after login.
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    
+    protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -37,4 +37,21 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+    
+    public function redirectPath()
+    {
+        switch (auth()->user()->rol) {
+            case 1: 
+                return '/super';
+                break;
+            case 2:
+                return '/usuarios';
+                break;
+            case 3:
+                return '/';
+                break;
+            default : return '/';
+        }
+    }
+
 }

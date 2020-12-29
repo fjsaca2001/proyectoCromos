@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.layout')
 @section('titulo', 'Economía a tu alcance')
 @section('contentactividades')
     <div class="container-fluid">
