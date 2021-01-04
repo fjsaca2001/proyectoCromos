@@ -1,8 +1,8 @@
 @extends('layouts.layout')
 
 @section('contentlogin')
-    <div class="container">
-        <div class="row justify-content-center">
+     <div class="container">
+        <div class="row">
             <div class="col-md-8">
                 <div class="card">
                     <h1>Ingresar</h1>
@@ -64,5 +64,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> 
 @endsection

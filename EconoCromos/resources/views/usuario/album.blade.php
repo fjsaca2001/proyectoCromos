@@ -2,7 +2,8 @@
 @section('titulo', 'Economía a tu alcance')
 @section('contentalbum')
     <section class="estructuraAlbum">
-        <h1>Album</h1>
+        
+        <h1>Album de {{auth()->user()->nickname}}</h1>
         <section class="cromos">
 
             <article id="activarCromo">
@@ -56,7 +57,8 @@
                 <img src="img/cromo3N.jpg">
             </article>
             <p class="pCantidad">43/180</p>
+            <a href=""> Siguiente</a>
         </section>
-        <a href=""> Siguiente</a>
+        
     </section>
 @endsection

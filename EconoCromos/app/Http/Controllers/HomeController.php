@@ -25,12 +25,12 @@ class HomeController extends Controller
     {
         return view('/home');
     }
-    public function register()
-    {
-        return view('/auth.register');
-    }
-    public function login()
-    {
-        return view('/auth.login');
-    }
+    // public function register()
+    // {
+    //     return view('/auth.register');
+    // }
+    // public function login()
+    // {
+    //     return view('/auth.login');
+    // }
 }
