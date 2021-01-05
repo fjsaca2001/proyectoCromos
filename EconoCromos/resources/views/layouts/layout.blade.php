@@ -42,7 +42,7 @@
                         stroke-width="4" />
                 </svg>
                 <div class="cabeceratitulo">
-                    <h1>Economía a tu alcance</h1>
+                    <h1>EconoCromos</h1>
                 </div>
             </li>
             <li class="nav-items">
@@ -96,6 +96,7 @@
 
     <div class="login" id="login">
         <img src="img/user.png" alt="">
+        <p><b>Hola, que gusto verte de nuevo...</b> <br> Por favor ingresa tus datos a continuación</p>
         <form method="POST" action="{{ route('login') }}">
             @csrf
             {{ csrf_field() }}
@@ -118,28 +119,19 @@
                 <strong>{{ $message }}</strong>
             </span>
             @enderror
-
-            <div class="form-group row mb-0">
-                <div class="col-md-8 offset-md-4">
-                    <button type="submit" class="btn btn-primary">
-                        {{ __('Ingresar') }}
-                    </button>
-
-                    <!--@if (Route::has('password.request'))
-                        <a class="btn btn-link" href="{{ route('password.request') }}">
-                            {{ __('Forgot Your Password?') }}
-                        </a>
-                    @endif-->
-                    <a class="btn btn-link" id="activarRegistro" href="">
-                        {{ __('¿Eres Nuevo? Registrate') }}
-                    </a>
-                </div>
-            </div>
+            <br>
+            <button type="submit" class="btn btn-primary">
+                {{ __('Ingresar') }}
+            </button><br>
+            <a class="btn btn-link" id="activarRegistro" href="">
+                {{ __('¿Eres Nuevo? Registrate') }}
+            </a>
         </form>
     </div>
 
     <div class="registrar" id="registrar">
-        <img src="img/user.png" alt="">
+        <img src="img/user2.png" alt="">
+        <p><b>¿¡Cómo que no estabas registrado!?</b> <br> Únete, no sabes de lo que te estabas perdiendo</p>
         <form method="POST" action="{{ route('register') }}">
             @csrf
             {{ csrf_field() }}
@@ -195,15 +187,10 @@
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
             </span>
-            @enderror
-
-            <div class="form-group row mb-0">
-                <div class="col-md-6 offset-md-4">
-                    <button type="submit" class="btn btn-primary">
-                        {{ __('Registrar') }}
-                    </button>
-                </div>
-            </div>
+            @enderror <br>
+            <button type="submit" class="btn btn-primary">
+                {{ __('Registrar') }}
+            </button>
         </form>
     </div>
 
@@ -218,9 +205,8 @@
             </article>
             <article>
                 <p class="fp">
-                    Contactos<br>
-                    <a href="">utpl.edu.ec</a><br>
-                    Teléfono: (+593) 07 3701444 ext. 2510
+                    Visitanos en <a href="">utpl.edu.ec</a><br>
+                    Teléfono: (+593) 1054276
                 </p>
             </article>
         </section>
