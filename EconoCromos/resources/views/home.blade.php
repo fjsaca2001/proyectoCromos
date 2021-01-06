@@ -68,7 +68,7 @@ Session::get('Mensaje')
             <a href="">
                 <img src="{{ asset('img/tema4.jpg') }}" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <p class="card-text">Tema 4</p>
+                    <p class="card-text">Finanzas</p>
                 </div>
             </a>
         </div>
@@ -78,7 +78,7 @@ Session::get('Mensaje')
             <a href="">
                 <img src="{{ asset('img/tema5.jpg') }}" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <p class="card-text">Tema 5</p>
+                    <p class="card-text">Ortodoxa</p>
                 </div>
             </a>
         </div>
@@ -88,7 +88,7 @@ Session::get('Mensaje')
             <a href="">
                 <img src="{{ asset('img/tema6.jpg') }}" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <p class="card-text">Tema 6</p>
+                    <p class="card-text">Heterodoxa</p>
                 </div>
             </a>
         </div>
