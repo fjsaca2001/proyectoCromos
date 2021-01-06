@@ -7,7 +7,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <h1>Registrar</h1>
+                    <h1>Editar</h1>
                     <div class="card-body">
                         <form method="POST" action="{{ url('/usuarios/' . $usuarios->idUsuario) }}"
                             enctype="multipart/form-data">
