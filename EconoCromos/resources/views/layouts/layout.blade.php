@@ -61,15 +61,17 @@
             <li class="nav-items">
                 <a class="nav-link" href="{{ route('actividades') }}">Actividades</a>
             </li>
-            <li class="nav-items">
-                <a class="nav-link" href="{{ route('album') }}">Álbum</a>
-            </li>
+            
             @guest
             <li class="nav-items">
                 <a class="nav-link" id="activarLogin" href="#">Login</a>
             </li>
 
             @else
+
+            <li class="nav-items">
+                <a class="nav-link" href="{{ route('album') }}">Álbum</a>
+            </li>
             <li class="nav-items">
                 <a class="nav-link" href="{{ route('perfil') }}">Perfil | {{ auth()->user()->nickname }}</a>
             </li>

@@ -14,7 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::view('/', 'home')->name('home');//para paginas con poca logica
+Route::view('/usuarios', 'admin.adminindex')->name('usuarios');
 Route::resource('/usuarios', 'App\Http\Controllers\UsuariosController')->middleware('auth');
+// Route::group(['middleware' => 'admin'], function () {
+//     Route::view('/usuarios', 'admin.adminindex')->name('usuarios');
+// Route::resource('/usuarios', 'App\Http\Controllers\UsuariosController');
+
+// });
 Route::view('actividades','internas.actividades')->name('actividades');
 Route::view('album','usuario.album')->name('album')->middleware('auth');
 Route::view('perfil','usuario.perfil')->name('perfil')->middleware('auth');

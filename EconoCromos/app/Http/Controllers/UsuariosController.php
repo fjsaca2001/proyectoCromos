@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Album;
 use Illuminate\Http\Request;
 
 class UsuariosController extends Controller
@@ -15,7 +16,7 @@ class UsuariosController extends Controller
     public function index()
     {
         //
-        $datos['usuariosC']=User::paginate(10);
+        $datos['usuariosC']=User::paginate(5);
         return view('admin.adminindex',$datos);
     }
 
@@ -105,5 +106,10 @@ class UsuariosController extends Controller
         //
         User::destroy($idUsuario);
         return redirect('usuarios')->with('Mensaje','Usuario eliminado con exito');
+    }
+
+    public function album()
+    {
+        return $this->belongsTo(Album::class, 'idAlbum');
     }
 }

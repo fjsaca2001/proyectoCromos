@@ -14,7 +14,7 @@ class AddAlbumToUser extends Migration
     public function up()
     {
         Schema::table('usuariosC', function (Blueprint $table) {
-            $table->unsignedInteger('idAlbum');
+            $table->unsignedInteger('idAlbum')->nullable();
             $table->foreign('idAlbum')->references('idAlbum')->on('album');
         });
     }
