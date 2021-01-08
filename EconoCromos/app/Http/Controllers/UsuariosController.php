@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Album;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UsuariosController extends Controller
 {
@@ -17,6 +18,9 @@ class UsuariosController extends Controller
     {
         //
         $datos['usuariosC']=User::paginate(5);
+        
+        //$temas = DB::select('select nombreTematica from tematica');
+        
         return view('admin.adminindex',$datos);
     }
 

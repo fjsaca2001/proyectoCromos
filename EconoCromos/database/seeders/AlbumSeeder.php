@@ -14,8 +14,8 @@ class AlbumSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('album')->insert([
-            'descripcion' => 'Este es tu album',   
-        ]);
+        // DB::table('album')->insert([
+        //     'descripcion' => 'Este es tu album',   
+        // ]);
     }
 }

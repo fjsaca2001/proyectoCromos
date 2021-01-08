@@ -187,7 +187,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => 'home',
+    'dashboard_url' => 'usuarios',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -225,24 +225,19 @@ return [
 
     'menu' => [
         [
-            'text' => 'search',
-            'search' => true,
-            'topnav' => true,
-        ],
-        [
             'text' => 'blog',
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
         ['header' => 'Menú de opciones'],
         [
-            'text' => 'Agregar Usuarios',
-            'url'  => '#',
+            'text' => 'Agregar Preguntas',
+            'url'  => 'agregarPregunta',
             'icon' => 'fas fa-fw fa-user',
         ],
         [
             'text' => 'Listar Usuarios',
-            'url'  => '#',
+            'url'  => 'usuarios',
             'icon' => 'fas fa-fw fa-lock',
         ]
     ],
