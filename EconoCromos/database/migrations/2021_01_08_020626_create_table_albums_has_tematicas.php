@@ -13,7 +13,9 @@ class CreateTableAlbumsHasTematicas extends Migration
      */
     public function up()
     {
-        Schema::create('table_albums_has_tematicas', function (Blueprint $table) {
+        Schema::create('albums_has_tematicas', function (Blueprint $table) {
+            $table->unsignedInteger('idTematica');
+            $table->unsignedInteger('idAlbum')->nullable();
             $table->foreign('idTematica')->references('idTematica')->on('tematica');
             $table->foreign('idAlbum')->references('idAlbum')->on('album');
         });
