@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddAlbumToUser extends Migration
+class CreateTableAlbumsHasTematicas extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddAlbumToUser extends Migration
      */
     public function up()
     {
-        Schema::table('usuariosC', function (Blueprint $table) {
-            $table->unsignedInteger('idAlbum')->default(1);
+        Schema::create('table_albums_has_tematicas', function (Blueprint $table) {
+            $table->foreign('idTematica')->references('idTematica')->on('tematica');
             $table->foreign('idAlbum')->references('idAlbum')->on('album');
         });
     }
@@ -26,9 +26,6 @@ class AddAlbumToUser extends Migration
      */
     public function down()
     {
-        Schema::table('usuariosC', function (Blueprint $table) {
-            $table->dropForeign(['idAlbum']);
-            $table->dropColumn('idAlbum');
-        });
+        Schema::dropIfExists('table_albums_has_tematicas');
     }
 }
