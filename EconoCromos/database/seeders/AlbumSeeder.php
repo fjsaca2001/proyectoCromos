@@ -17,5 +17,10 @@ class AlbumSeeder extends Seeder
         // DB::table('album')->insert([
         //     'descripcion' => 'Este es tu album',   
         // ]);
+        DB::table('album')->insert([  
+            'descripcion' => 'Álbum de economía',   
+            'nombre' => 'EconoCromos',   
+            'cromosTotales' => '180'
+        ]);
     }
 }
