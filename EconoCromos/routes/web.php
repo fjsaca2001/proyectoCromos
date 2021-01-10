@@ -17,7 +17,7 @@ Route::view('/', 'home')->name('home');//para paginas con poca logica
 Route::view('/usuarios', 'admin.adminindex')->name('usuarios');
 Route::resource('/usuarios', 'App\Http\Controllers\UsuariosController')->middleware('auth');
 Route::resource('/agregarPregunta', 'App\Http\Controllers\TematicaController')->middleware('auth');
-//Route::resource('/agregarPregunta', 'App\Http\Controllers\ActividadController')->middleware('auth');
+Route::resource('/agregarCromo', 'App\Http\Controllers\CromoController')->middleware('auth');
 // Route::group(['middleware' => 'admin'], function () {
 //     Route::view('/usuarios', 'admin.adminindex')->name('usuarios');
 // Route::resource('/usuarios', 'App\Http\Controllers\UsuariosController');

@@ -14,48 +14,7 @@
                     5
                 </div>
             </article>
-            <article>
-                <img src="img/cromo2N.jpg">
-            </article>
-            <article>
-                <img src="img/cromo3.jpg">
-            </article>
-            <article>
-                <img src="img/cromo4.jpg">
-            </article>
-            <article>
-                <img src="img/cromo2N.jpg">
-            </article>
-            <article>
-                <img src="img/cromo2N.jpg">
-            </article>
-            <article>
-                <img src="img/cromo3N.jpg">
-            </article>
-            <article>
-                <img src="img/cromo2N.jpg">
-            </article>
-            <article>
-                <img src="img/cromo3N.jpg">
-            </article>
-            <article>
-                <img src="img/cromo2N.jpg">
-            </article>
-            <article>
-                <img src="img/cromo3N.jpg">
-            </article>
-            <article>
-                <img src="img/cromo2N.jpg">
-            </article>
-            <article>
-                <img src="img/cromo3N.jpg">
-            </article>
-            <article>
-                <img src="img/cromo2N.jpg">
-            </article>
-            <article>
-                <img src="img/cromo3N.jpg">
-            </article>
+            
             <p class="pCantidad">43/180</p>
             <a href=""> Siguiente</a>
         </section>
