@@ -12,7 +12,7 @@ Bienvenido {{auth()->user()->nombre}}
 <br>
 <h2>Agregar una pregunta</h2>
 <section>
-    <form action="POST">
+    <form action="">
         <label for="pregunta" class="">{{ __('Pregunta') }}</label>
         <input id="pregunta" type="text" class=" @error('pregunta') is-invalid @enderror" name="pregunta"
             value="{{ old('pregunta') }}" required autocomplete="pregunta" autofocus>
@@ -22,7 +22,7 @@ Bienvenido {{auth()->user()->nombre}}
         </span>
         @enderror
 
-        <label for="twmatica" class="">{{ __('Tematica') }}</label>
+        <label for="tematica" class="">{{ __('Tematicas') }}</label>
         <select id="tematica" name="tematica">
             <option value="" selected="selected">Elige una tematica</option>
             @foreach ($tematica as $tematica)
@@ -30,15 +30,34 @@ Bienvenido {{auth()->user()->nombre}}
             @endforeach
         </select>
 
-        <label for="actividad" class="">{{ __('') }}</label>
-        <input id="actividad" type="text" class=" @error('actividad') is-invalid @enderror" name="actividad"
-            value="{{ old('actividad') }}" required autocomplete="actividad" autofocus>
-        @error('actividad')
-        <span class="invalid-feedback" role="alert">
-            <strong>{{ $message }}</strong>
-        </span>
-        @enderror
+        <label for="actividad" class="">{{ __('Actividades') }}</label>
+        <select id="actividad" name="actividad">
+            <option value="" selected="selected">Elige una Actividad</option>
+            @foreach ($actividad as $actividad)
+            <option value="{{ $actividad->idActividad }}">{{ $actividad->nombreActividad }}</option>
+            @endforeach
+        </select>
 
     </form>
+    <form action="">
+        <h3>Ingrese las alternativas posibles<em> max y min 4</em></h3>
+        <label for="alternativa1" class="">{{ __('Respuesta posible 1') }}</label>
+        <input id="alternativa1" type="text" name="alternativa1"><br>
+
+        <label for="alternativa2" class="">{{ __('Respuesta posible 2') }}</label>
+        <input id="alternativa2" type="text" name="alternativa2"><br>
+
+        <label for="alternativa3" class="">{{ __('Respuesta posible 3') }}</label>
+        <input id="alternativa3" type="text" name="alternativa3"><br>
+
+        <label for="alternativa4" class="">{{ __('Respuesta posible 4') }}</label>
+        <input id="alternativa4" type="text" name="alternativa4"><br>
+
+        <input type="radio" name="respuesta" value="1" checked>Respuesta posible 1<br>
+        <input type="radio" name="respuesta" value="2" checked>Respuesta posible 2<br>
+        <input type="radio" name="respuesta" value="3" checked>Respuesta posible 3<br>
+        <input type="radio" name="respuesta" value="4" checked>Respuesta posible 4<br>
+    </form>
+
 </section>
 @endsection
