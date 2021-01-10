@@ -98,7 +98,7 @@ Session::get('Mensaje')
 <script>
     var myCarousel = document.querySelector('#carouselExampleIndicators')
     var carousel = new bootstrap.Carousel(myCarousel, {
-        interval: 4500,
+        interval: 6500,
         wrap: true,
         pause: false
     })

@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use App\Models\Album;
 
 class AlbumSeeder extends Seeder
 {
@@ -17,10 +18,11 @@ class AlbumSeeder extends Seeder
         // DB::table('album')->insert([
         //     'descripcion' => 'Este es tu album',   
         // ]);
-        DB::table('album')->insert([  
+        Album::create([  
             'descripcion' => 'Álbum de economía',   
             'nombre' => 'EconoCromos',   
             'cromosTotales' => '180'
         ]);
+        
     }
 }

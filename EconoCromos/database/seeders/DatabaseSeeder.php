@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
         DB::table('actividad')->truncate();
 
         // \App\Models\User::factory(10)->create();
-        // $this->call(AlbumSeeder::class);
+        $this->call(AlbumSeeder::class);
         $this->call(TematicasSeeder::class);
         $this->call(ActividadSeeder::class);
 
