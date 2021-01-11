@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pregunta extends Model
 {
-    use HasFactory;
+    protected $table = 'pregunta';
+    protected $primaryKey = "idPregunta";
 }

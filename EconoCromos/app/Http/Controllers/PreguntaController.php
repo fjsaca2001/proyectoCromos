@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pregunta;
+use App\Models\Tematica;
+use App\Models\Actividad;
 use Illuminate\Http\Request;
 
 class PreguntaController extends Controller
@@ -15,6 +17,9 @@ class PreguntaController extends Controller
     public function index()
     {
         //
+        $datos['tematica']=Tematica::paginate(5);
+        $datos2['actividad']=Actividad::paginate(5);
+        return view('admin.agregarpreguntas',$datos,$datos2)->with('Mensaje', 'Usted agrego una nueva pregunta');
     }
 
     /**
@@ -25,6 +30,7 @@ class PreguntaController extends Controller
     public function create()
     {
         //
+        //return view('admin.agregarpreguntas');
     }
 
     /**
@@ -36,6 +42,14 @@ class PreguntaController extends Controller
     public function store(Request $request)
     {
         //
+        $datos=request()->except('_token');
+        
+        Pregunta::insert($datos);
+        
+        $datos['tematica']=Tematica::paginate(5);
+        $datos2['actividad']=Actividad::paginate(5);
+        return view('admin.agregarpreguntas',$datos,$datos2)->with('Mensaje', 'Usted agrego una nueva pregunta');
+
     }
 
     /**

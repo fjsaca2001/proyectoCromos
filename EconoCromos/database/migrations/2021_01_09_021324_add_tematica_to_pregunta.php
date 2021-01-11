@@ -14,7 +14,11 @@ class AddTematicaToPregunta extends Migration
     public function up()
     {
         Schema::table('pregunta', function (Blueprint $table) {
-            //
+            $table->unsignedInteger('idTematica')->nullable();
+            $table->foreign('idTematica')->references('idTematica')->on('tematica');
+            $table->unsignedInteger('idActividad')->nullable();
+            $table->foreign('idActividad')->references('idActividad')->on('actividad');
+            
         });
     }
 
@@ -26,7 +30,10 @@ class AddTematicaToPregunta extends Migration
     public function down()
     {
         Schema::table('pregunta', function (Blueprint $table) {
-            //
+            $table->dropForeign(['idTematica']);
+            $table->dropColumn('idTematica');
+            $table->dropForeign(['idActividad']);
+            $table->dropColumn('idActividad');
         });
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Respuesta;
+use App\Models\Pregunta;
 use Illuminate\Http\Request;
 
 class RespuestaController extends Controller
@@ -15,6 +16,9 @@ class RespuestaController extends Controller
     public function index()
     {
         //
+        $datos['pregunta']=Pregunta::paginate(5);
+        $datos2['respuesta']=Respuesta::paginate(100);
+        return view('admin.agregarrespuesta',$datos,$datos2)->with('Mensaje', 'Usted agrego una nueva pregunta');
     }
 
     /**
@@ -36,6 +40,11 @@ class RespuestaController extends Controller
     public function store(Request $request)
     {
         //
+        $datos=request()->except('_token');
+        Respuesta::insert($datos);
+        $datos['respuesta']=Respuesta::paginate(100);
+        $datos2['pregunta']=Pregunta::paginate(10);
+        return view('admin.agregarrespuesta',$datos,$datos2)->with('Mensaje', 'Usted agrego una nueva pregunta');
     }
 
     /**
@@ -78,8 +87,12 @@ class RespuestaController extends Controller
      * @param  \App\Models\Respuesta  $respuesta
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Respuesta $respuesta)
+    public function destroy($idRespuesta)
     {
         //
+        Respuesta::destroy($idRespuesta);
+        $datos['respuesta']=Respuesta::paginate(100);
+        $datos2['pregunta']=Pregunta::paginate(10);
+        return view('admin.agregarrespuesta',$datos,$datos2)->with('Mensaje', 'Respuesta Eliminada');
     }
 }

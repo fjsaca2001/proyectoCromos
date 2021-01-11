@@ -4,13 +4,13 @@
 <h1>Tablero</h1>
 @endsection
 @section('content')
+@if (Session::has('Mensaje')){{ Session::get('Mensaje') }}
+@endif
 Bienvenido {{auth()->user()->nombre}}
 <br>Administrador
 <br>
 <br>
-@if (Session::has('Mensaje')){{ Session::get('Mensaje') }}
-@endif
-<h2>Agregar una pregunta</h2>
+<h2>Lista de preguntas</h2>
 <section>
     <form action="{{ url('/agregarPregunta')}}" method="POST">
         {{ csrf_field() }}
@@ -41,26 +41,4 @@ Bienvenido {{auth()->user()->nombre}}
     
         <input type="submit" value="agregar">
     </form>
-</section>
-    {{-- <form action="">
-        <h3>Ingrese las alternativas posibles<em> max y min 4</em></h3>
-        <label for="alternativa1" class="">{{ __('Respuesta posible 1') }}</label>
-        <input id="alternativa1" type="text" name="alternativa1"><br>
-
-        <label for="alternativa2" class="">{{ __('Respuesta posible 2') }}</label>
-        <input id="alternativa2" type="text" name="alternativa2"><br>
-
-        <label for="alternativa3" class="">{{ __('Respuesta posible 3') }}</label>
-        <input id="alternativa3" type="text" name="alternativa3"><br>
-
-        <label for="alternativa4" class="">{{ __('Respuesta posible 4') }}</label>
-        <input id="alternativa4" type="text" name="alternativa4"><br>
-
-        <input type="radio" name="respuesta" value="1" checked>Respuesta posible 1<br>
-        <input type="radio" name="respuesta" value="2" checked>Respuesta posible 2<br>
-        <input type="radio" name="respuesta" value="3" checked>Respuesta posible 3<br>
-        <input type="radio" name="respuesta" value="4" checked>Respuesta posible 4<br>
-    </form> --}}
-
-</section>
 @endsection

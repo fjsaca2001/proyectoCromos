@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         //DB::table('tematica')->truncate();
-        DB::table('actividad')->truncate();
+        // DB::table('actividad')->truncate();
 
         // \App\Models\User::factory(10)->create();
         $this->call(AlbumSeeder::class);

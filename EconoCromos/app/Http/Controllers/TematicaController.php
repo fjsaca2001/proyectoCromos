@@ -12,9 +12,7 @@ class TematicaController extends Controller
     {
         //
         
-        $datos['tematica']=Tematica::paginate(10);
-        $datos2['actividad']=Actividad::paginate(10);
-        return view('admin.agregarpreguntas',$datos,$datos2);
+        
         
     }
 }

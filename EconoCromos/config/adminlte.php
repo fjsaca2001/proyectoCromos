@@ -231,14 +231,33 @@ return [
         ],
         ['header' => 'Menú de opciones'],
         [
-            'text' => 'Agregar Preguntas',
-            'url'  => 'agregarPregunta',
+            'text' => 'Preguntas',
             'icon' => 'fas fa-fw fa-user',
+            'submenu' => [
+                [
+                'text' => 'Agregar Preguntas',
+                'url'  => 'agregarPregunta'
+                ],
+                [
+                    'text' => 'Respuestas',
+                    'submenu' => [
+                        [
+                            'text' => 'Agregar Respuestas',
+                            'url'  => 'agregarRespuesta'
+                        ]
+                    ]
+                ]
+            ]   
         ],
         [
-            'text' => 'Listar Usuarios',
-            'url'  => 'usuarios',
-            'icon' => 'fas fa-fw fa-lock',
+            'text' => 'Usuarios',
+            'icon' => 'fas fa-fw fa-user',
+            'submenu' => [
+                [
+                    'text' => 'Listar Usuarios',
+                    'url'  => 'usuarios'
+                ]
+            ]
         ],
         [
             'text' => 'Cromos',
