@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::view('/', 'home')->name('home');//para paginas con poca logica
 Route::view('/usuarios', 'admin.adminindex')->name('usuarios');
 Route::resource('/usuarios', 'App\Http\Controllers\UsuariosController')->middleware('auth');
+Route::resource('/album', 'App\Http\Controllers\AlbumController')->middleware('auth');
 Route::resource('/agregarPregunta', 'App\Http\Controllers\PreguntaController')->middleware('auth');
 Route::resource('/agregarCromo', 'App\Http\Controllers\CromoController')->middleware('auth');
 Route::resource('/agregarRespuesta', 'App\Http\Controllers\RespuestaController')->middleware('auth');
@@ -32,5 +33,5 @@ Route::view('contactos','internas.contactos')->name('contactos');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
- Route::get('/register', [App\Http\Controllers\HomeController::class, 'register'])->name('register');
+Route::get('/register', [App\Http\Controllers\HomeController::class, 'register'])->name('register');
 // Route::get('/login', [App\Http\Controllers\HomeController::class, 'login'])->name('login');

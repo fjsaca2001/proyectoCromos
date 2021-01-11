@@ -220,6 +220,7 @@ footer article {
 }
 
 .estructuraAlbum {
+    margin-top: 5em;
     width: 100%;
     text-align: center;
 }
@@ -333,4 +334,14 @@ footer article {
 }
 .registrar p, .login p {
     font-size: 19px;
+}
+.modificarCromo{
+    margin-top: 6em;
+    text-align: center;
+}
+.modificarCromo article{
+    text-align: left;
+    width: 45%;
+    vertical-align: top;
+    display: inline-block;
 }

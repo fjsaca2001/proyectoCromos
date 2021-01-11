@@ -230,6 +230,7 @@ return [
             'can'  => 'manage-blog',
         ],
         ['header' => 'Menú de opciones'],
+        
         [
             'text' => 'Preguntas',
             'icon' => 'fas fa-fw fa-user',
@@ -260,9 +261,9 @@ return [
             ]
         ],
         [
-            'text' => 'Cromos',
+            'text' => ' Cromos',
             'url'  => 'agregarCromo',
-            'icon' => 'fas fa-fw fa-lock',
+            'icon' => 'far fa-file',
         ]
     ],
 
