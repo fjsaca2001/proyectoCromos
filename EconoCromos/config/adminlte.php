@@ -230,20 +230,21 @@ return [
             'can'  => 'manage-blog',
         ],
         ['header' => 'Menú de opciones'],
+        
         [
-            'text' => 'Agregar Preguntas',
-            'url'  => 'agregarPregunta',
-            'icon' => 'fas fa-fw fa-user',
-        ],
-        [
-            'text' => 'Listar Usuarios',
+            'text' => 'Usuarios',
             'url'  => 'usuarios',
-            'icon' => 'fas fa-fw fa-lock',
+            'icon' => 'fas fa-fw fa-user', 
         ],
         [
-            'text' => 'Cromos',
+            'text' => ' Preguntas',
+            'url'  => 'agregarPregunta',
+            'icon' => 'far fa-question-circle',
+        ],
+        [
+            'text' => ' Cromos',
             'url'  => 'agregarCromo',
-            'icon' => 'fas fa-fw fa-lock',
+            'icon' => 'far fa-file',
         ]
     ],
 

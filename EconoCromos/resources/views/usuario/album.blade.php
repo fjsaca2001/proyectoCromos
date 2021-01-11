@@ -10,13 +10,13 @@
                 <img src="img/cromo1.jpeg">
                 <div class="cromo" id="cromo">
                 <img src="img/cromo1.jpeg">
-                    Descricion del cromo <br>
+                    Descripción del cromo <br>
                     5
                 </div>
             </article>
-            
+
+
             <p class="pCantidad">43/180</p>
-            <a href=""> Siguiente</a>
         </section>
         
     </section>
