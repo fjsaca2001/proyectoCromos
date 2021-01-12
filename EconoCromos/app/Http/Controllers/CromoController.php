@@ -11,10 +11,15 @@ use Illuminate\Support\Facades\Storage;
 class CromoController extends Controller
 {
     public function index()
-    {
-        $datos['cromo']=Cromo::paginate(10);
+    {   
+        $datos['cromo']=Cromo::paginate(100);
         $nombretematica['tematica'] = Tematica::paginate(10);
         return view('admin.agregarCromo',$datos, $nombretematica);
+        
+        /*
+        $tematicas = Tematica::first();
+        return view('admin.agregarCromo',compact ('tematicas'));
+        */
     }
     // Editar un cromo
     public function edit($idCromo)

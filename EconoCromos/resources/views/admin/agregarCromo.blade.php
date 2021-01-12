@@ -28,7 +28,7 @@ Bienvenido {{auth()->user()->nombre}}
             @php
             @endphp
             <tr>
-                <td>{{ $cromo->numero }}</td>
+                <td>{{ $cromo->idCromo }}</td>
                 <td>{{ $cromo->nombre }}</td>
                 <td><img style="width: 100px" src="{{ asset('storage').'/'.$cromo->imgURL }}"></td>
                 <td>{{ $cromo->descripcion }}</td>
@@ -78,15 +78,6 @@ Bienvenido {{auth()->user()->nombre}}
                 <br>
                 <label for="imgURL" >{{ __('Imagen del cromo') }}</label>
                 <input id="imgURL" type="file" name="imgURL" value="">
-                
-                <br>
-                <label for="numero" >{{ __('Numeración') }}</label>
-                <input id="numero" type="text" name="numero" value="">
-                @error('numero')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
                 <br>
                 <label for="idTematica" class="">{{ __('Tematica a la que pertenece') }}</label>
                 <select id="idTematica" name="idTematica">

@@ -18,7 +18,6 @@ class CreateTableCromo extends Migration
             $table->string('nombre');
             $table->string('descripcion');
             $table->string('imgURL');
-            $table->integer('numero');
             $table->unsignedInteger('idTematica');
             $table->foreign('idTematica')->references('idTematica')->on('tematica');
             $table->timestamps();

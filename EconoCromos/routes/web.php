@@ -34,4 +34,6 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/register', [App\Http\Controllers\HomeController::class, 'register'])->name('register');
+Route::get('/album', [App\Http\Controllers\AlbumController::class, 'index'])->name('album');
+
 // Route::get('/login', [App\Http\Controllers\HomeController::class, 'login'])->name('login');

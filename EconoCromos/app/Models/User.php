@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\Album;
 
 class User extends Authenticatable
 {
@@ -48,4 +49,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
     
+    // Un usuario tiene (podria) varios albums
+    public function albums()
+    {
+        return $this->hasMany(Album::class, 'idAlbum');
+    }
 }

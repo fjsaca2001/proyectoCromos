@@ -220,26 +220,38 @@ footer article {
 }
 
 .estructuraAlbum {
-    margin-top: 5em;
+    margin-top: 6em;
     width: 100%;
-    text-align: center;
+    height: 632px;
 }
 .cromos {
     width: 80%;
     vertical-align: top;
     display: inline-block;
+    text-align: center;
 }
 .navAlbum {
     width: 15%;
     vertical-align: top;
     display: inline-block;
     margin-right: 2em;
+    margin: 0;
+    margin-top: 4.5em;
+    text-align: center;
+    height: 500px;
+    background: rgb(24, 117, 238);
+    background: -webkit-linear-gradient(to left, #3791f7, #2b4ee9, #0259e4);
+    background: linear-gradient(to left, #3290fc, #4364F7, #045ae4); 
+}
+.navAlbum a {
+    font-size: 22px;
+    color: white;
 }
 .cromos article {
     position: relative;
     margin: 2em;
-    width: 13.5%;
-    height: 180px;
+    width: 10%;
+    height: 130px;
     vertical-align: top;
     display: inline-block;
 }
@@ -253,7 +265,8 @@ footer article {
 
 .cromos article img {
     width: 100%;
-    height: 180px;
+    height: 130px;
+    opacity: 0.4;
 }
 
 .pCantidad {
