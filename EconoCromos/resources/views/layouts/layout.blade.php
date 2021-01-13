@@ -4,9 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+    <!--Archivos de javascript -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <!-- JavaScript Bundle with Popper -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
@@ -73,7 +80,14 @@
                 <a class="nav-link" href="{{ route('album') }}">Álbum</a>
             </li>
             <li class="nav-items">
-                <a class="nav-link" href="{{ route('perfil') }}">Perfil | {{ auth()->user()->nickname }}</a>
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" data-target="desplegable" href="#">
+                {{ auth()->user()->nickname }} </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{{ route('perfil') }}">Editar perfil</a>
+                    <a class="nav-link" href="#" onclick="event.preventDefault();
+                                                    document.getElementById('logout-form').submit();">Cerrar sesión
+                    </a>
+                </div>       
             </li>
             @endguest
             <li class="nav-items">
