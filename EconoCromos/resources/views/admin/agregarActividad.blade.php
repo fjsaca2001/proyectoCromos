@@ -22,7 +22,7 @@ Bienvenido {{auth()->user()->nombre}}
         </span>
         @enderror
 
-        <label for="twmatica" class="">{{ __('Tematica') }}</label>
+        <label for="tematica" class="">{{ __('Tematica') }}</label>
         <select id="tematica" name="tematica">
             <option value="" selected="selected">Elige una tematica</option>
             @foreach ($tematica as $tematica)

@@ -81,7 +81,6 @@ Bienvenido {{auth()->user()->nombre}}
                 <br>
                 <label for="idTematica" class="">{{ __('Tematica a la que pertenece') }}</label>
                 <select id="idTematica" name="idTematica">
-                    <option value="" selected="selected">Elige una tematica</option>
                     @foreach ($tematica as $tematica)
                     <option value="{{ $tematica->idTematica }}">{{ $tematica->nombreTematica }}</option>
                     @endforeach

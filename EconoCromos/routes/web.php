@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::view('/', 'home')->name('home');//para paginas con poca logica
+//Route::view('/', 'home')->name('home');//para paginas con poca logica
 Route::view('/usuarios', 'admin.adminindex')->name('usuarios');
 Route::resource('/usuarios', 'App\Http\Controllers\UsuariosController')->middleware('auth');
 Route::resource('/album', 'App\Http\Controllers\AlbumController')->middleware('auth');
@@ -32,6 +32,7 @@ Route::view('perfil','usuario.perfil')->name('perfil')->middleware('auth');
 Route::view('contactos','internas.contactos')->name('contactos');
 Auth::routes();
 
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/register', [App\Http\Controllers\HomeController::class, 'register'])->name('register');
 Route::get('/album', [App\Http\Controllers\AlbumController::class, 'index'])->name('album');

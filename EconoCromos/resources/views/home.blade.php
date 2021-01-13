@@ -32,67 +32,18 @@ Session::get('Mensaje')
 
 
 <section class="tematicas" id="tematica">
-    <!--<h2>Tematicas</h2>-->
-    <article class="tema">
-        <div class="card" style="width: 25rem;">
-            <a href="">
-                <img src="{{ asset('img/econometria.jpg') }}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <p class="card-text">Econometría</p>
-                </div>
-            </a>
-        </div>
-    </article>
-    <article class="tema">
-        <div class="card" style="width: 25rem;">
-            <a href="">
-                <img src="{{ asset('img/microeconomia.jpg') }}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <p class="card-text">Microeconomía</p>
-                </div>
-            </a>
-        </div>
-    </article>
-    <article class="tema">
-        <div class="card" style="width: 25rem;">
-            <a href="">
-                <img src="{{ asset('img/macroeconomia.jpg') }}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <p class="card-text">Macroeconomía</p>
-                </div>
-            </a>
-        </div>
-    </article>
-    <article class="tema">
-        <div class="card" style="width: 25rem;">
-            <a href="">
-                <img src="{{ asset('img/tema4.jpg') }}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <p class="card-text">Finanzas</p>
-                </div>
-            </a>
-        </div>
-    </article>
-    <article class="tema">
-        <div class="card" style="width: 25rem;">
-            <a href="">
-                <img src="{{ asset('img/tema5.jpg') }}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <p class="card-text">Ortodoxa</p>
-                </div>
-            </a>
-        </div>
-    </article>
-    <article class="tema">
-        <div class="card" style="width: 25rem;">
-            <a href="">
-                <img src="{{ asset('img/tema6.jpg') }}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <p class="card-text">Heterodoxa</p>
-                </div>
-            </a>
-        </div>
-    </article>
+    @foreach( $albumContenido->tematicas as $tematicas)
+        <article class="tema">
+            <div class="card" style="width: 25rem;">
+                <a href="">
+                    <img src="{{ asset('img/econometria.jpg') }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-text">{{$tematicas['nombreTematica']}}</p>
+                    </div>
+                </a>
+            </div>
+        </article>
+    @endforeach
 </section>
 
 <script>
