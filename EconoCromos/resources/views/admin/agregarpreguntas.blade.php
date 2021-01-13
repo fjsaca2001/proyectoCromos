@@ -35,7 +35,6 @@ Bienvenido {{auth()->user()->nombre}}
         <label for="actividad" class="">{{ __('Actividades') }}</label>
         <select id="actividad" name="idActividad">
             <option value="" selected="selected">Elige una Actividad</option>
-
         </select>
 
         <input type="submit" value="agregar">
@@ -79,10 +78,10 @@ Bienvenido {{auth()->user()->nombre}}
             <tr>
                 <td>{{ $pregunta->pregunta }}</td>
                 <td>
-                    <a href="{{  url('agregarPregunta/'. $pregunta->idPregunta.'/edit)  }}">
+                    <a href="{{  url('agregarPregunta/'. $pregunta->idPregunta.'/edit')  }}">
                         Editar
                     </a>
-                    |
+                    
                     <form method="POST" action="{{  url('agregarPregunta/'. $pregunta->idPregunta) }}">
                         {{ csrf_field() }}
                         {{ method_field('DELETE') }}
