@@ -4,6 +4,7 @@
 <h1>Tablero</h1>
 @endsection
 @section('content')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 Bienvenido {{auth()->user()->nombre}}
 <br>Administrador
 <br>
@@ -34,14 +35,14 @@ Bienvenido {{auth()->user()->nombre}}
         <label for="actividad" class="">{{ __('Actividades') }}</label>
         <select id="actividad" name="idActividad">
             <option value="" selected="selected">Elige una Actividad</option>
-            @foreach ($actividad as $actividad)
-            <option value="{{ $actividad->idActividad }}">{{ $actividad->nombreActividad }}</option>
-            @endforeach
+
         </select>
-    
+
         <input type="submit" value="agregar">
     </form>
+
 </section>
+
     {{-- <form action="">
         <h3>Ingrese las alternativas posibles<em> max y min 4</em></h3>
         <label for="alternativa1" class="">{{ __('Respuesta posible 1') }}</label>
@@ -63,4 +64,35 @@ Bienvenido {{auth()->user()->nombre}}
     </form> --}}
 
 </section>
+<h2>Lista de Pregutnas</h2>
+<section class="table-responsive">
+    <table class="table table-light">
+        <thead class="thead-light">
+            <tr>
+                <th>Pregunta</th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach ($pregunta as $pregunta)
+            <tr>
+                <td>{{ $pregunta->pregunta }}</td>
+                <td>
+                    <a href="{{  url('agregarPregunta/'. $pregunta->idPregunta.'/edit)  }}">
+                        Editar
+                    </a>
+                    |
+                    <form method="POST" action="{{  url('agregarPregunta/'. $pregunta->idPregunta) }}">
+                        {{ csrf_field() }}
+                        {{ method_field('DELETE') }}
+                        <button type="submit" onclick="return confirm('¿Desea Borrar?');">Borrar</button>
+                    </form>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+</section>
+    <script src="js/preguntas.js"></script>
 @endsection

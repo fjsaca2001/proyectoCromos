@@ -67,5 +67,4 @@ Bienvenido {{auth()->user()->nombre}}
         </tbody>
     </table>
 </section>
-</section>
 @endsection

@@ -41,4 +41,6 @@ Bienvenido {{auth()->user()->nombre}}
     
         <input type="submit" value="agregar">
     </form>
+</section>
+
 @endsection

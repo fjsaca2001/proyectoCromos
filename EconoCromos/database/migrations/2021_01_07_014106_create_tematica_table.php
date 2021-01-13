@@ -17,6 +17,7 @@ class CreateTematicaTable extends Migration
             $table->increments('idTematica');
             $table->string('nombreTematica', 100)->require()->unique();
             $table->longText('descripcion')->require();
+            $table->string('imgTematica')->require();
             $table->timestamps();
         });
     }

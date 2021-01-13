@@ -9,4 +9,7 @@ class Respuesta extends Model
 {
     protected $table = 'respuesta';
     protected $primaryKey = "idRespuesta";
+    public function pregunta(){
+        return $this->belongsTo(Pregunta::class, 'idPregunta');
+    }
 }

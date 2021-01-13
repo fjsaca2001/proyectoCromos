@@ -14,12 +14,17 @@ class PreguntaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function byTematicas($id)
+    {
+        return Actividad::where('idTematica', $id)->get();
+    }
     public function index()
     {
         //
-        $datos['tematica']=Tematica::paginate(5);
-        $datos2['actividad']=Actividad::paginate(5);
-        return view('admin.agregarpreguntas',$datos,$datos2)->with('Mensaje', 'Usted agrego una nueva pregunta');
+        $datos['tematica']=Tematica::all();
+        $datos2['pregunta']=Pregunta::all();
+        
+        return view('admin.agregarpreguntas',$datos,$datos2);
     }
 
     /**
@@ -46,9 +51,10 @@ class PreguntaController extends Controller
         
         Pregunta::insert($datos);
         
-        $datos['tematica']=Tematica::paginate(5);
-        $datos2['actividad']=Actividad::paginate(5);
-        return view('admin.agregarpreguntas',$datos,$datos2)->with('Mensaje', 'Usted agrego una nueva pregunta');
+        $datos['tematica']=Tematica::all();
+        $datos2['pregunta']=Pregunta::all();
+        
+        return view('admin.agregarpreguntas',$datos2,$datos);
 
     }
 
@@ -92,8 +98,12 @@ class PreguntaController extends Controller
      * @param  \App\Models\Pregunta  $pregunta
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pregunta $pregunta)
+    public function destroy($idPregunta)
     {
-        //
+        Pregunta::destroy($idPregunta);
+        $datos['tematica']=Tematica::all();
+        $datos2['pregunta']=Pregunta::all();
+        
+        return view('admin.agregarpreguntas',$datos2,$datos);
     }
 }
