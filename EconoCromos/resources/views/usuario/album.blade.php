@@ -9,28 +9,85 @@
                     $n = 1;  
                 @endphp
                 @foreach( $albumContenido->tematicas as $tematicas)
+                    <a class="nboton" target="{{$n}}" > {{$tematicas['nombreTematica']}}</a> <br>
                     @php
-                        $nTematica = "nboton".$n; 
                         $n = $n+1;
                     @endphp
-                    <button id="{{$nTematica}}"  value="{{$tematicas['idTematica']-1}}" type="submit" onclick="
-                        var x = document.getElementById('{{$nTematica}}').value;
-                        document.getElementById('demo2').innerHTML = x;mostarDatos()"> 
-                        {{$tematicas['nombreTematica']}}</button>
                 @endforeach
+                <script>
+                    jQuery(function(){
+                        jQuery('.nboton').click(function(){
+                            jQuery('.classTem1').hide();
+                            jQuery('#tematica'+$(this).attr('target')).toggle('slide');
+                        });
+                    });
+                </script>
             </nav>
         </section>
         <section class="cromos">
             <h1>Álbum de {{auth()->user()->nickname}}</h1> 
-            <p id="demo2">2</p>
-            <div>
-            <script> var Var_JavaScript =  document.getElementById('demo2').textContent;  </script> 
-                @php
-                    $nphp = "<script> document.write(Var_JavaScript); </script>";
-                    $nphp = intval($nphp);
-                    echo $nphp;
-                @endphp
-                @foreach( $albumContenido->tematicas[$nphp]->cromos as $cromo)
+            <div id="tematica1" class="classTem1" >
+                @foreach( $albumContenido->tematicas[0]->cromos as $cromo)
+                    <article id="activarCromo">
+                        <img src="{{ asset('storage').'/'.$cromo->imgURL }}"> 
+                        <div class="cromo" id="cromo">
+                            <img src="{{ asset('storage').'/'.$cromo->imgURL }}"> 
+                            Descripción del cromo <br>
+                            5
+                        </div>
+                    </article>
+                @endforeach
+            </div>
+            <div id="tematica2" class="classTem1" style="display: none;">
+                @foreach( $albumContenido->tematicas[1]->cromos as $cromo)
+                    <article id="activarCromo">
+                        <img src="{{ asset('storage').'/'.$cromo->imgURL }}"> 
+                        <div class="cromo" id="cromo">
+                            <img src="{{ asset('storage').'/'.$cromo->imgURL }}"> 
+                            Descripción del cromo <br>
+                            5
+                        </div>
+                    </article>
+                @endforeach
+            </div>
+            <div id="tematica3" class="classTem1" style="display: none;">
+                @foreach( $albumContenido->tematicas[2]->cromos as $cromo)
+                    <article id="activarCromo">
+                        <img src="{{ asset('storage').'/'.$cromo->imgURL }}"> 
+                        <div class="cromo" id="cromo">
+                            <img src="{{ asset('storage').'/'.$cromo->imgURL }}"> 
+                            Descripción del cromo <br>
+                            5
+                        </div>
+                    </article>
+                @endforeach
+            </div>
+            <div id="tematica4" class="classTem1" style="display: none;">
+                @foreach( $albumContenido->tematicas[3]->cromos as $cromo)
+                    <article id="activarCromo">
+                        <img src="{{ asset('storage').'/'.$cromo->imgURL }}"> 
+                        <div class="cromo" id="cromo">
+                            <img src="{{ asset('storage').'/'.$cromo->imgURL }}"> 
+                            Descripción del cromo <br>
+                            5
+                        </div>
+                    </article>
+                @endforeach
+            </div>
+            <div id="tematica5" class="classTem1" style="display: none;">
+                @foreach( $albumContenido->tematicas[4]->cromos as $cromo)
+                    <article id="activarCromo">
+                        <img src="{{ asset('storage').'/'.$cromo->imgURL }}"> 
+                        <div class="cromo" id="cromo">
+                            <img src="{{ asset('storage').'/'.$cromo->imgURL }}"> 
+                            Descripción del cromo <br>
+                            5
+                        </div>
+                    </article>
+                @endforeach
+            </div>
+            <div id="tematica6" class="classTem1" style="display: none;">
+                @foreach( $albumContenido->tematicas[5]->cromos as $cromo)
                     <article id="activarCromo">
                         <img src="{{ asset('storage').'/'.$cromo->imgURL }}"> 
                         <div class="cromo" id="cromo">

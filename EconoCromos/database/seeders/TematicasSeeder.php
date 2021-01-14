@@ -18,33 +18,33 @@ class TematicasSeeder extends Seeder
         Tematica::create([
             'nombreTematica' => 'Econometría',
             'descripcion' => 'es la rama de la economía que hace un uso extensivo de modelos matemáticos y estadísticos así como de la programación lineal y la teoría de juegos para analizar, interpretar y hacer predicciones sobre sistemas económicos, prediciendo variables como el precio de bienes y servicios, tasas de interés, tipos de cambio, las reacciones del mercado, el coste de producción, la tendencia de los negocios y las consecuencias de la política económica.'   ,
-            'imgTematica' => ''
+            'imgTematica' => 'img/econometria.jpg'
         ]);
 
         Tematica::create([
             'nombreTematica' => 'Macroeconomía',
             'descripcion' => 'Cuando hablamos de conjunto integrado, nos referimos al estudio de las variables económicas agregadas. De ahí, que al final de la definición, señalemos como objetivo explicar los ‘agregados económicos’. La producción de una empresa sería un valor individual. Sin embargo, el PIB sería un valor agregado (incluye la producción total del país expresado en su moneda).',
-            'imgTematica' => '{{ asset(img/cromo1) }}'
+            'imgTematica' => 'img/macroeconomia.jpg'
             ]);
         Tematica::create([
             'nombreTematica' => 'Microeconomía',
             'descripcion' => 'es la rama de la economía que hace un uso extensivo de modelos matemáticos y estadísticos así como de la programación lineal y la teoría de juegos para analizar, interpretar y hacer predicciones sobre sistemas económicos, prediciendo variables como el precio de bienes y servicios, tasas de interés, tipos de cambio, las reacciones del mercado, el coste de producción, la tendencia de los negocios y las consecuencias de la política económica.',
-            'imgTematica' => '{{ asset(img/cromo1) }}'
+            'imgTematica' => 'img/microeconomia.jpg'
         ]);
         Tematica::create([
             'nombreTematica' => 'Finanzas',
             'descripcion' => 'es la rama de la economía que hace un uso extensivo de modelos matemáticos y estadísticos así como de la programación lineal y la teoría de juegos para analizar, interpretar y hacer predicciones sobre sistemas económicos, prediciendo variables como el precio de bienes y servicios, tasas de interés, tipos de cambio, las reacciones del mercado, el coste de producción, la tendencia de los negocios y las consecuencias de la política económica.',   
-            'imgTematica' => '{{ asset(img/cromo1) }}'
+            'imgTematica' => 'img/tema4.jpg'
             ]);
         Tematica::create([
             'nombreTematica' => 'Ortodoxa',
             'descripcion' => 'es la rama de la economía que hace un uso extensivo de modelos matemáticos y estadísticos así como de la programación lineal y la teoría de juegos para analizar, interpretar y hacer predicciones sobre sistemas económicos, prediciendo variables como el precio de bienes y servicios, tasas de interés, tipos de cambio, las reacciones del mercado, el coste de producción, la tendencia de los negocios y las consecuencias de la política económica.',   
-            'imgTematica' => '{{ asset(img/cromo1) }}'
+            'imgTematica' => 'img/tema5.jpg'
             ]);
         Tematica::create([
             'nombreTematica' => 'Heterodoxa',
             'descripcion' => 'es la rama de la economía que hace un uso extensivo de modelos matemáticos y estadísticos así como de la programación lineal y la teoría de juegos para analizar, interpretar y hacer predicciones sobre sistemas económicos, prediciendo variables como el precio de bienes y servicios, tasas de interés, tipos de cambio, las reacciones del mercado, el coste de producción, la tendencia de los negocios y las consecuencias de la política económica.',   
-            'imgTematica' => '{{ asset(img/cromo1) }}'
+            'imgTematica' => 'img/tema6.jpg'
         ]);
     }
 }

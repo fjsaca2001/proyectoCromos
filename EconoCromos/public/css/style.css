@@ -350,11 +350,5 @@ footer article {
 }
 .modificarCromo{
     margin-top: 6em;
-    text-align: center;
-}
-.modificarCromo article{
     text-align: left;
-    width: 45%;
-    vertical-align: top;
-    display: inline-block;
 }
