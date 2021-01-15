@@ -18,4 +18,6 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-Route::get('/agregarPregunta/{id}/actividades','App\Http\Controllers\PreguntaController@byTematicas');
+
+Route::get('/agregarPregunta/{id}/actividades',[App\Http\Controllers\PreguntaController::class, 'byTematicas']);
+Route::get('/actividades/{id}/actividades',[App\Http\Controllers\TematicaController::class, 'byActividades']);

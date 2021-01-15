@@ -238,15 +238,6 @@ return [
                 [
                 'text' => 'Agregar Preguntas',
                 'url'  => 'agregarPregunta'
-                ],
-                [
-                    'text' => 'Respuestas',
-                    'submenu' => [
-                        [
-                            'text' => 'Agregar Respuestas',
-                            'url'  => 'agregarRespuesta'
-                        ]
-                    ]
                 ]
             ]   
         ],

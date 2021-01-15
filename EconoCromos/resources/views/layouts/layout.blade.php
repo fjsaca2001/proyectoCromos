@@ -66,7 +66,7 @@
                 <a class="nav-link active" href="#tematica">Temáticas</a>
             </li>
             <li class="nav-items">
-                <a class="nav-link" href="{{ route('actividades') }}">Actividades</a>
+                <a class="nav-link" href="{{ url('actividades') }}">Actividades</a>
             </li>
             
             @guest

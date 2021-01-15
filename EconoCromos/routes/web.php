@@ -19,14 +19,14 @@ Route::resource('/usuarios', 'App\Http\Controllers\UsuariosController')->middlew
 Route::resource('/album', 'App\Http\Controllers\AlbumController')->middleware('auth');
 Route::resource('/agregarPregunta', 'App\Http\Controllers\PreguntaController')->middleware('auth');
 Route::resource('/agregarCromo', 'App\Http\Controllers\CromoController')->middleware('auth');
-Route::resource('/agregarRespuesta', 'App\Http\Controllers\RespuestaController')->middleware('auth');
+Route::resource('/test', 'App\Http\Controllers\TestController')->middleware('auth');
 
 // Route::group(['middleware' => 'admin'], function () {
 //     Route::view('/usuarios', 'admin.adminindex')->name('usuarios');
 // Route::resource('/usuarios', 'App\Http\Controllers\UsuariosController');
 
 // });
-Route::view('actividades','internas.actividades')->name('actividades');
+Route::resource('/actividades','App\Http\Controllers\TematicaController');
 Route::view('album','usuario.album')->name('album')->middleware('auth');
 Route::view('perfil','usuario.perfil')->name('perfil')->middleware('auth');
 Route::view('contactos','internas.contactos')->name('contactos');

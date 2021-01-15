@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Actividad;
 use Illuminate\Http\Request;
 use App\Models\Tematica;
 
@@ -12,10 +13,17 @@ class TematicaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function byActividades($id)
+    {
+        return Actividad::where('idTematica', $id)->get();
+    }
+
     public function index()
     {
         //
-        
+        $datos['tematica']=Tematica::all();
+        return view('internas.actividades',$datos);
     }
 
     /**

@@ -24,7 +24,6 @@ class PreguntaController extends Controller
         //
         $datos['tematica']=Tematica::all();
         $datos2['pregunta']=Pregunta::all();
-        
         return view('admin.agregarpreguntas',$datos,$datos2);
     }
 
@@ -81,9 +80,7 @@ class PreguntaController extends Controller
         //
 
         $pregunta=Pregunta::findOrFail($idPregunta);
-        $datos['tematica']=Tematica::all();
-
-        return view('admin.editPregunta',compact('pregunta'),$datos);
+        return view('admin.editPregunta',compact('pregunta'));
 
     }
 
@@ -94,18 +91,15 @@ class PreguntaController extends Controller
      * @param  \App\Models\Pregunta  $pregunta
      * @return \Illuminate\Http\Response
      */
-    public function update($idPregunta)
+    public function update(Request $request, $idPregunta)
     {
         //
-        $idPregunta=request()->except(['_token','_method']);
-        Pregunta::where('idPregunta','=',$idPregunta)->update($idPregunta);
-
-        $pregunta=Pregunta::findOrFail($idPregunta);
-        //return view('usuarios.edit',compact('usuarios'));
+        $datosPregunta=request()->except(['_token','_method']);
+        Pregunta::where('idPregunta','=',$idPregunta)->update($datosPregunta);
+        
         $datos['tematica']=Tematica::all();
         $datos2['pregunta']=Pregunta::all();
-        
-        return view('admin.agregarpreguntas',$datos2,$datos);
+        return redirect('agregarPregunta');
             
     }
 
@@ -123,4 +117,5 @@ class PreguntaController extends Controller
         
         return view('admin.agregarpreguntas',$datos2,$datos);
     }
+
 }

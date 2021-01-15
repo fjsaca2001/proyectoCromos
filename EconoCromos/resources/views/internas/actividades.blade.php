@@ -6,42 +6,15 @@
             <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
                 <div class="position-sticky pt-3">
                     <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather=""></span>
-                                Econometría
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather=""></span>
-                                Microeconomía
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather=""></span>
-                                Macroeconomía
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather=""></span>
-                                Tematicas
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather=""></span>
-                                Tematicas
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather=""></span>
-                                Tematicas
-                            </a>
-                        </li>
+                        @foreach ($tematica as $tematica)
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" id="tematicas">
+                                    <span data-feather=""></span>
+                                    {{ $tematica->nombreTematica }}
+                                    {{ $tematica->idTematica }}
+                                </a>
+                            </li>
+                        @endforeach
                     </ul>
                 </div>
             </nav>
@@ -51,12 +24,12 @@
                 <h2>Econometría</h2>
                 <div class="table-responsive">
                     <ul class="nav flex-column">
-                        <li class="nav-itemA">
-                            <a class="nav-link" href="#">
-                                <span data-feather=""></span>
-                                Actividad 1
-                            </a>
-                        </li>
+                            <li class="nav-itemA">
+                                <a class="nav-link" href="{{ url('test') }}">
+                                    <h1 id="actividades"></h1>
+                                </a>
+                            </li>
+
                         <li class="nav-itemA">
                             <a class="nav-link" href="#">
                                 <span data-feather=""></span>

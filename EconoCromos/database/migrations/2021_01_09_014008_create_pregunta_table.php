@@ -15,7 +15,11 @@ class CreatePreguntaTable extends Migration
     {
         Schema::create('pregunta', function (Blueprint $table) {
             $table->increments('idPregunta');
-            $table->string('pregunta');
+            $table->string('pregunta')->unique();
+            $table->string('opcion1')->unique();
+            $table->string('opcion2')->unique();
+            $table->string('opcion3')->unique();
+            $table->string('respuestaCorrecta')->unique();
             $table->timestamps();
         });
     }
