@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Album;
+use App\Models\Desbloqueado;
 
 class User extends Authenticatable
 {
@@ -53,5 +54,10 @@ class User extends Authenticatable
     public function albums()
     {
         return $this->hasMany(Album::class, 'idAlbum');
+    }
+    // Un usuario tiene (podria) varios cromos desbloqueados
+    public function desbloqueados()
+    {
+        return $this->hasMany(Desbloqueado::class, 'idUsuario');
     }
 }

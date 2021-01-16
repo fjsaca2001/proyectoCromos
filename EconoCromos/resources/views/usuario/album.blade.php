@@ -28,74 +28,218 @@
             <h1>Álbum de {{auth()->user()->nickname}}</h1> 
             <div id="tematica1" class="classTem1" >
                 @foreach( $albumContenido->tematicas[0]->cromos as $cromo)
-                    <article id="activarCromo">
-                        <img src="{{ asset('storage').'/'.$cromo->imgURL }}"> 
-                        <div class="cromo" id="cromo">
+                    @php
+                        $encontrado = False;
+                    @endphp
+                    @if(count($albumContenido->desbloqueados) == 0)
+                        <article class="desactivarCromo">
                             <img src="{{ asset('storage').'/'.$cromo->imgURL }}"> 
-                            Descripción del cromo <br>
-                            5
-                        </div>
-                    </article>
+                        </article>
+                    @else
+                        @foreach( $albumContenido->desbloqueados as $desbloqueado)
+                            @if($desbloqueado->idCromo === $cromo->idCromo && auth()->user()->idUsuario == $desbloqueado->idUsuario && auth()->user()->idAlbum == $desbloqueado->idAlbum)
+                                @php 
+                                    $encontrado = True;
+                                @endphp
+                            @endif
+                        @endforeach
+                        @if($encontrado)
+                            <article id="activarCromo">
+                                <img src="{{ asset('storage').'/'.$cromo->imgURL }}"> 
+                                <div class="cromo" id="cromo">
+                                    <img src="{{ asset('storage').'/'.$cromo->imgURL }}"> 
+                                    Descripción del cromo <br>
+                                    {{$cromo->descripcion}} <br>
+                                    Numero de cromo
+                                    {{$cromo->idCromo}}
+                                </div>
+                            </article>
+                        @else
+                            <article class="desactivarCromo">
+                                <img src="{{ asset('storage').'/'.$cromo->imgURL }}"> 
+                            </article>
+                        @endif
+                    @endif
                 @endforeach
             </div>
             <div id="tematica2" class="classTem1" style="display: none;">
                 @foreach( $albumContenido->tematicas[1]->cromos as $cromo)
-                    <article id="activarCromo">
-                        <img src="{{ asset('storage').'/'.$cromo->imgURL }}"> 
-                        <div class="cromo" id="cromo">
+                    @php
+                        $encontrado = False;
+                    @endphp
+                    @if(count($albumContenido->desbloqueados) == 0)
+                        <article class="desactivarCromo">
                             <img src="{{ asset('storage').'/'.$cromo->imgURL }}"> 
-                            Descripción del cromo <br>
-                            5
-                        </div>
-                    </article>
+                        </article>
+                    @else
+                        @foreach( $albumContenido->desbloqueados as $desbloqueado)
+                            @if($desbloqueado->idCromo === $cromo->idCromo && auth()->user()->idUsuario == $desbloqueado->idUsuario && auth()->user()->idAlbum == $desbloqueado->idAlbum)
+                                @php 
+                                    $encontrado = True;
+                                @endphp
+                            @endif
+                        @endforeach
+                        @if($encontrado)
+                            <article id="activarCromo">
+                                <img src="{{ asset('storage').'/'.$cromo->imgURL }}"> 
+                                <div class="cromo" id="cromo">
+                                    <img src="{{ asset('storage').'/'.$cromo->imgURL }}"> 
+                                    Descripción del cromo <br>
+                                    {{$cromo->descripcion}} <br>
+                                    Numero de cromo
+                                    {{$cromo->idCromo}}
+                                </div>
+                            </article>
+                        @else
+                            <article class="desactivarCromo">
+                                <img src="{{ asset('storage').'/'.$cromo->imgURL }}"> 
+                            </article>
+                        @endif
+                    @endif
                 @endforeach
             </div>
             <div id="tematica3" class="classTem1" style="display: none;">
                 @foreach( $albumContenido->tematicas[2]->cromos as $cromo)
-                    <article id="activarCromo">
-                        <img src="{{ asset('storage').'/'.$cromo->imgURL }}"> 
-                        <div class="cromo" id="cromo">
+                    @php
+                        $encontrado = False;
+                    @endphp
+                    @if(count($albumContenido->desbloqueados) == 0)
+                        <article class="desactivarCromo">
                             <img src="{{ asset('storage').'/'.$cromo->imgURL }}"> 
-                            Descripción del cromo <br>
-                            5
-                        </div>
-                    </article>
+                        </article>
+                    @else
+                        @foreach( $albumContenido->desbloqueados as $desbloqueado)
+                            @if($desbloqueado->idCromo === $cromo->idCromo && auth()->user()->idUsuario == $desbloqueado->idUsuario && auth()->user()->idAlbum == $desbloqueado->idAlbum)
+                                @php 
+                                    $encontrado = True;
+                                @endphp
+                            @endif
+                        @endforeach
+                        @if($encontrado)
+                            <article id="activarCromo">
+                                <img src="{{ asset('storage').'/'.$cromo->imgURL }}"> 
+                                <div class="cromo" id="cromo">
+                                    <img src="{{ asset('storage').'/'.$cromo->imgURL }}"> 
+                                    Descripción del cromo <br>
+                                    {{$cromo->descripcion}} <br>
+                                    Numero de cromo
+                                    {{$cromo->idCromo}}
+                                </div>
+                            </article>
+                        @else
+                            <article class="desactivarCromo">
+                                <img src="{{ asset('storage').'/'.$cromo->imgURL }}"> 
+                            </article>
+                        @endif
+                    @endif
                 @endforeach
             </div>
             <div id="tematica4" class="classTem1" style="display: none;">
                 @foreach( $albumContenido->tematicas[3]->cromos as $cromo)
-                    <article id="activarCromo">
-                        <img src="{{ asset('storage').'/'.$cromo->imgURL }}"> 
-                        <div class="cromo" id="cromo">
+                    @php
+                        $encontrado = False;
+                    @endphp
+                    @if(count($albumContenido->desbloqueados) == 0)
+                        <article class="desactivarCromo">
                             <img src="{{ asset('storage').'/'.$cromo->imgURL }}"> 
-                            Descripción del cromo <br>
-                            5
-                        </div>
-                    </article>
+                        </article>
+                    @else
+                        @foreach( $albumContenido->desbloqueados as $desbloqueado)
+                            @if($desbloqueado->idCromo === $cromo->idCromo && auth()->user()->idUsuario == $desbloqueado->idUsuario && auth()->user()->idAlbum == $desbloqueado->idAlbum)
+                                @php 
+                                    $encontrado = True;
+                                @endphp
+                            @endif
+                        @endforeach
+                        @if($encontrado)
+                            <article id="activarCromo">
+                                <img src="{{ asset('storage').'/'.$cromo->imgURL }}"> 
+                                <div class="cromo" id="cromo">
+                                    <img src="{{ asset('storage').'/'.$cromo->imgURL }}"> 
+                                    Descripción del cromo <br>
+                                    {{$cromo->descripcion}} <br>
+                                    Numero de cromo
+                                    {{$cromo->idCromo}}
+                                </div>
+                            </article>
+                        @else
+                            <article class="desactivarCromo">
+                                <img src="{{ asset('storage').'/'.$cromo->imgURL }}"> 
+                            </article>
+                        @endif
+                    @endif
                 @endforeach
             </div>
             <div id="tematica5" class="classTem1" style="display: none;">
                 @foreach( $albumContenido->tematicas[4]->cromos as $cromo)
-                    <article id="activarCromo">
-                        <img src="{{ asset('storage').'/'.$cromo->imgURL }}"> 
-                        <div class="cromo" id="cromo">
+                    @php
+                        $encontrado = False;
+                    @endphp
+                    @if(count($albumContenido->desbloqueados) == 0)
+                        <article class="desactivarCromo">
                             <img src="{{ asset('storage').'/'.$cromo->imgURL }}"> 
-                            Descripción del cromo <br>
-                            5
-                        </div>
-                    </article>
+                        </article>
+                    @else
+                        @foreach( $albumContenido->desbloqueados as $desbloqueado)
+                            @if($desbloqueado->idCromo === $cromo->idCromo && auth()->user()->idUsuario == $desbloqueado->idUsuario && auth()->user()->idAlbum == $desbloqueado->idAlbum)
+                                @php 
+                                    $encontrado = True;
+                                @endphp
+                            @endif
+                        @endforeach
+                        @if($encontrado)
+                            <article id="activarCromo">
+                                <img src="{{ asset('storage').'/'.$cromo->imgURL }}"> 
+                                <div class="cromo" id="cromo">
+                                    <img src="{{ asset('storage').'/'.$cromo->imgURL }}"> 
+                                    Descripción del cromo <br>
+                                    {{$cromo->descripcion}} <br>
+                                    Numero de cromo
+                                    {{$cromo->idCromo}}
+                                </div>
+                            </article>
+                        @else
+                            <article class="desactivarCromo">
+                                <img src="{{ asset('storage').'/'.$cromo->imgURL }}"> 
+                            </article>
+                        @endif
+                    @endif
                 @endforeach
             </div>
             <div id="tematica6" class="classTem1" style="display: none;">
                 @foreach( $albumContenido->tematicas[5]->cromos as $cromo)
-                    <article id="activarCromo">
-                        <img src="{{ asset('storage').'/'.$cromo->imgURL }}"> 
-                        <div class="cromo" id="cromo">
+                    @php
+                        $encontrado = False;
+                    @endphp
+                    @if(count($albumContenido->desbloqueados) == 0)
+                        <article class="desactivarCromo">
                             <img src="{{ asset('storage').'/'.$cromo->imgURL }}"> 
-                            Descripción del cromo <br>
-                            5
-                        </div>
-                    </article>
+                        </article>
+                    @else
+                        @foreach( $albumContenido->desbloqueados as $desbloqueado)
+                            @if($desbloqueado->idCromo === $cromo->idCromo && auth()->user()->idUsuario == $desbloqueado->idUsuario && auth()->user()->idAlbum == $desbloqueado->idAlbum)
+                                @php 
+                                    $encontrado = True;
+                                @endphp
+                            @endif
+                        @endforeach
+                        @if($encontrado)
+                            <article id="activarCromo">
+                                <img src="{{ asset('storage').'/'.$cromo->imgURL }}"> 
+                                <div class="cromo" id="cromo">
+                                    <img src="{{ asset('storage').'/'.$cromo->imgURL }}"> 
+                                    Descripción del cromo <br>
+                                    {{$cromo->descripcion}} <br>
+                                    Numero de cromo
+                                    {{$cromo->idCromo}}
+                                </div>
+                            </article>
+                        @else
+                            <article class="desactivarCromo">
+                                <img src="{{ asset('storage').'/'.$cromo->imgURL }}"> 
+                            </article>
+                        @endif
+                    @endif
                 @endforeach
             </div>
             <p class="pCantidad">43/180</p>

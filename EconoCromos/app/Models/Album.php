@@ -23,5 +23,10 @@ class Album extends Model
     {
         return $this->hasMany(User::class, 'idAlbum');
     }
+    // Un album tiene muchos cromos desbloqueados
+    public function desbloqueados()
+    {
+        return $this->hasMany(Desbloqueado::class, 'idAlbum');
+    }
     
 }

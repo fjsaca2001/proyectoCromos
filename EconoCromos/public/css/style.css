@@ -266,9 +266,10 @@ footer article {
 .cromos article img {
     width: 100%;
     height: 130px;
+}
+.desactivarCromo img{
     opacity: 0.4;
 }
-
 .pCantidad {
     text-align: right;
 }
