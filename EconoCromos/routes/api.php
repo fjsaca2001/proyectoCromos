@@ -20,4 +20,4 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/agregarPregunta/{id}/actividades',[App\Http\Controllers\PreguntaController::class, 'byTematicas']);
-Route::get('/actividades/{id}/actividades',[App\Http\Controllers\TematicaController::class, 'byActividades']);
+// Route::get('/actividades/{id}/actividades',[App\Http\Controllers\TematicaController::class, 'byActividades']);

@@ -2,62 +2,24 @@
 @section('titulo', 'Economía a tu alcance')
 @section('contentperfil')
 <h1>Bienvenido {{ auth()->user()->nickname }}</h1>
-<div class="row2">
-    <ul class="nav flex-column">
-        <li class="nav-item">
-            <a class="nav-link" href="#datos">
-                <span data-feather=""></span>
-                Datos del Usuario
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#modificar">
-                <span data-feather=""></span>
-                Modificar Datos
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#" onclick="event.preventDefault();
-                                                    document.getElementById('logout-form').submit();">Cerrar Sesión
-            </a>
-        </li>
-        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-            @csrf
-        </form>
-    </ul>
-</div>
-<br>
-<br>
-<br>
-<div class="table-responsive" id="datos">
-    <table class="table table-light">
-        <thead class="thead-light">
-            <tr>
-                <th>Nombre</th>
-                <th>Nick</th>
-                <th>Correo</th>
-                <th>Pais</th>
-                <th>Edad</th>
-            </tr>
-        </thead>
 
-        <tbody>
-            <tr>
-                <td>{{ auth()->user()->nombre }}</td>
-                <td>{{ auth()->user()->nickname }}</td>
-                <td>{{ auth()->user()->email }}</td>
-                <td>{{ auth()->user()->pais }}</td>
-                <td>{{ auth()->user()->edad }}</td>
-            </tr>
-        </tbody>
-    </table>
+<br>
+<br>
+<br>
+<div>
+    <h1>Información Personal </h1>
+    <h2>Nombre: {{ auth()->user()->nombre }} </h2> 
+    <h2>Nick Name: {{ auth()->user()->nickname }} </h2>
+    <h2>Correo: {{ auth()->user()->email }} </h2>
+    <h2>Pais: {{ auth()->user()->pais }} </h2>
+    <h2>Edad: {{ auth()->user()->edad }} </h2>
 </div>
 
 <br>
 <br>
 <br>
 <div class="card-body" id="modificar">
-    <h1>Modificar</h1>
+    <h1>Modificar Datos</h1>
     <form method="POST" action="{{ url('/usuarios/' . auth()->user()->idUsuario) }}" enctype="multipart/form-data">
         @csrf
         {{ csrf_field() }}

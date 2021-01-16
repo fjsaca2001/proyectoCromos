@@ -48,13 +48,9 @@ class PreguntaController extends Controller
     {
         //
         $datos=request()->except('_token');
-        
         Pregunta::insert($datos);
         
-        $datos['tematica']=Tematica::all();
-        $datos2['pregunta']=Pregunta::all();
-        
-        return view('admin.agregarpreguntas',$datos2,$datos);
+        return redirect('agregarPregunta');
 
     }
 
@@ -96,9 +92,6 @@ class PreguntaController extends Controller
         //
         $datosPregunta=request()->except(['_token','_method']);
         Pregunta::where('idPregunta','=',$idPregunta)->update($datosPregunta);
-        
-        $datos['tematica']=Tematica::all();
-        $datos2['pregunta']=Pregunta::all();
         return redirect('agregarPregunta');
             
     }
@@ -112,10 +105,7 @@ class PreguntaController extends Controller
     public function destroy($idPregunta)
     {
         Pregunta::destroy($idPregunta);
-        $datos['tematica']=Tematica::all();
-        $datos2['pregunta']=Pregunta::all();
-        
-        return view('admin.agregarpreguntas',$datos2,$datos);
+        return redirect('agregarPregunta');
     }
 
 }

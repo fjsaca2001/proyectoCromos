@@ -26,7 +26,7 @@ Route::resource('/test', 'App\Http\Controllers\TestController')->middleware('aut
 // Route::resource('/usuarios', 'App\Http\Controllers\UsuariosController');
 
 // });
-Route::resource('/actividades','App\Http\Controllers\TematicaController');
+Route::resource('/actividades','App\Http\Controllers\ActividadController');
 Route::view('album','usuario.album')->name('album')->middleware('auth');
 Route::view('perfil','usuario.perfil')->name('perfil')->middleware('auth');
 Route::view('contactos','internas.contactos')->name('contactos');

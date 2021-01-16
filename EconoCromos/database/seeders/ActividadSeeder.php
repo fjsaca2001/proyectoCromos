@@ -48,5 +48,21 @@ class ActividadSeeder extends Seeder
             'nombreActividad' => 'actividad 2 Finanzas',
             'idTematica' => '4'
         ]);
+        Actividad::create([
+            'nombreActividad' => 'actividad 1 Ortodoxa',
+            'idTematica' => '5'
+        ]);
+        Actividad::create([
+            'nombreActividad' => 'actividad 2 Ortodoxa',
+            'idTematica' => '5'
+        ]);
+        Actividad::create([
+            'nombreActividad' => 'actividad 1 Heterodoxa',
+            'idTematica' => '6'
+        ]);
+        Actividad::create([
+            'nombreActividad' => 'actividad 2 Heterodoxa',
+            'idTematica' => '6'
+        ]);
     }
 }

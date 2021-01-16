@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Actividad;
+use App\Models\Album;
 
 
 class ActividadController extends Controller
 {
-    // public function index(){
-    //     $datos['actividad']=Actividad::paginate(10);
-    //     return view('admin.agregarpreguntas',$datos);
-    // }
+    public function index(){
+        $albumContenido = Album::first();
+        return view('internas.actividades',compact ('albumContenido'));
+    }
 
 }

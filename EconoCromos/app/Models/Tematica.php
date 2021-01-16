@@ -12,6 +12,7 @@ class Tematica extends Model
     protected $table = 'tematica';
     protected $primaryKey = "idTematica";
 
+
     // Una tematica pertenece solo a un album
     public function album()
     {
@@ -22,5 +23,12 @@ class Tematica extends Model
     {
         return $this->hasMany(Cromo::class, 'idTematica');
     }
+
+    // Una tematica tienen varias actividades
+    public function actividad()
+    {
+        return $this->hasMany(Actividad::class, 'idTematica');
+    }
+
 
 }
