@@ -9,12 +9,8 @@ use App\Models\Pregunta;
 
 class TestController extends Controller
 {
-    public function byPregunta($id)
-    {
-        return Pregunta::where('idActividad', $id)->get();
-    }
     public function index(){
-        $datos['pregunta']=Pregunta::all();
-        return view('internas.test',$datos);
+        $actividad =Actividad::all();
+        return view('internas.test',compact ('actividad'));
     }
 }
