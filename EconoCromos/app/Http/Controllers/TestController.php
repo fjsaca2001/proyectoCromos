@@ -10,7 +10,11 @@ use App\Models\Pregunta;
 class TestController extends Controller
 {
     public function index(){
-        $actividad =Actividad::all();
+        
+    }
+    public function show($id)
+    {
+        $actividad = Actividad::where('idActividad', $id)->get();
         return view('internas.test',compact ('actividad'));
     }
 }

@@ -40,7 +40,7 @@
                         <ul class="nav flex-column">
                             @foreach ($albumContenido->tematicas[0]->actividad as $actividad)
                                 <li class="nav-itemA">
-                                    <a class="nav-link" href="{{url('test/')}}">{{ $actividad->nombreActividad }}</a>
+                                    <a class="nav-link" href="{{url('test',$actividad->idActividad )}}">{{ $actividad->nombreActividad }}</a>
                                 </li>
                             @endforeach
                         </ul>
@@ -51,7 +51,10 @@
                         <ul class="nav flex-column">
                             @foreach ($albumContenido->tematicas[1]->actividad as $actividad)
                                 <li class="nav-itemA">
-                                    <a class="nav-link" href="{{url('test/')}}">{{ $actividad->nombreActividad }}</a>
+                                    @php
+                                        $id = $actividad->idActividad;
+                                    @endphp
+                                    <a class="nav-link" href="{{url('test', $id)}}">{{ $actividad->nombreActividad }}</a>
                                 </li>
                             @endforeach
                         </ul>

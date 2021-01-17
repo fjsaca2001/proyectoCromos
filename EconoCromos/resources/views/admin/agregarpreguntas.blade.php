@@ -105,7 +105,7 @@ Bienvenido {{auth()->user()->nombre}}
 </section>
 
 </section>
-<h2>Lista de Pregutnas</h2>
+<h2>Lista de Preguntas</h2>
 <section class="table-responsive">
     <table class="table table-light">
         <thead class="thead-light">

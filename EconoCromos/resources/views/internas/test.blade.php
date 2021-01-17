@@ -9,10 +9,14 @@
         @foreach( $actividad[0]->preguntas as $pregunta)
             <article>
                 <h3>{{$pregunta->pregunta}}</h3>
-                <button class="opcion{{$n}}"> {{$pregunta->opcion1}}</button>
+                {{--  <button class="opcion{{$n}}"> {{$pregunta->opcion1}}</button>
                 <button class="opcion{{$n}}"> {{$pregunta->opcion2}}</button>
                 <button class="opcion{{$n}}"> {{$pregunta->opcion3}}</button>
-                <button class="opcion{{$n}}"> {{$pregunta->respuestaCorrecta}}</button>
+                <button class="opcion{{$n}}"> {{$pregunta->respuestaCorrecta}}</button>  --}}
+                <input type="radio" name="respuesta" value="0"> {{$pregunta->opcion1}} <br>
+                <input type="radio" name="respuesta" value="0"> {{$pregunta->opcion2}} <br>
+                <input type="radio" name="respuesta" value="0"> {{$pregunta->opcion3}} <br>
+                <input type="radio" name="respuesta" value="0"> {{$pregunta->respuestaCorrecta}} <br>
             </article>
             @php 
                 $n = $n+1;  
