@@ -42,15 +42,15 @@ class LoginController extends Controller
     {
         switch (auth()->user()->rol) {
             case 1: 
-                return '/super';
-                break;
-            case 2:
                 return '/usuarios';
                 break;
-            case 3:
-                return '/home';
+            case 2:
+                return '/agregarCromo';
                 break;
-            default : return '/home';
+            case 3:
+                return '/';
+                break;
+            default : return '/';
         }
     }
 

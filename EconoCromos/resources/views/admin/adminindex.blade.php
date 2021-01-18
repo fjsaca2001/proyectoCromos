@@ -38,7 +38,7 @@ Lista de usuarios
       <tbody>
       @foreach ($usuariosC as $usuariosC)
       @php
-      $roles = ['Super Usuario', 'Admin', 'Usuario'];
+      $roles = ['Administrador', 'Editor', 'Usuario'];
       @endphp
       <tr>
         <td>{{ $usuariosC->idUsuario }}</td>

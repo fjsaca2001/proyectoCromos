@@ -6,6 +6,8 @@ use App\Models\Pregunta;
 use App\Models\Tematica;
 use App\Models\Actividad;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
+
 
 class PreguntaController extends Controller
 {
@@ -21,10 +23,14 @@ class PreguntaController extends Controller
 
     public function index()
     {
-        //
-        $datos['tematica']=Tematica::all();
-        $datos2['pregunta']=Pregunta::all();
-        return view('admin.agregarpreguntas',$datos,$datos2);
+        // Si es admin o super
+        if(Gate::allows('acciones-admin') || Gate::allows('acciones-super')){
+            $datos['tematica']=Tematica::all();
+            $datos2['pregunta']=Pregunta::all();
+            return view('admin.agregarpreguntas',$datos,$datos2);
+        }else{
+            return redirect('/');
+        }
     }
 
     /**
@@ -46,11 +52,15 @@ class PreguntaController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $datos=request()->except('_token');
-        Pregunta::insert($datos);
-        
-        return redirect('agregarPregunta');
+        // Si es admin o super
+        if(Gate::allows('acciones-admin') || Gate::allows('acciones-super')){
+            $datos=request()->except('_token');
+            Pregunta::insert($datos);
+            
+            return redirect('agregarPregunta');
+        }else{
+            return redirect('/');
+        }
 
     }
 
@@ -73,10 +83,13 @@ class PreguntaController extends Controller
      */
     public function edit($idPregunta)
     {
-        //
-
-        $pregunta=Pregunta::findOrFail($idPregunta);
-        return view('admin.editPregunta',compact('pregunta'));
+        // Si es admin o super
+        if(Gate::allows('acciones-admin') || Gate::allows('acciones-super')){
+            $pregunta=Pregunta::findOrFail($idPregunta);
+            return view('admin.editPregunta',compact('pregunta'));
+        }else{
+            return redirect('/');
+        }
 
     }
 
@@ -89,10 +102,14 @@ class PreguntaController extends Controller
      */
     public function update(Request $request, $idPregunta)
     {
-        //
-        $datosPregunta=request()->except(['_token','_method']);
-        Pregunta::where('idPregunta','=',$idPregunta)->update($datosPregunta);
-        return redirect('agregarPregunta');
+        // Si es admin o super
+        if(Gate::allows('acciones-admin') || Gate::allows('acciones-super')){
+            $datosPregunta=request()->except(['_token','_method']);
+            Pregunta::where('idPregunta','=',$idPregunta)->update($datosPregunta);
+            return redirect('agregarPregunta');
+        }else{
+            return redirect('/');
+        }
             
     }
 
@@ -103,9 +120,12 @@ class PreguntaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($idPregunta)
-    {
-        Pregunta::destroy($idPregunta);
-        return redirect('agregarPregunta');
+    {   if(Gate::allows('acciones-admin') || Gate::allows('acciones-super')){
+            Pregunta::destroy($idPregunta);
+            return redirect('agregarPregunta');
+        }else{
+            return redirect('/');
+        }
     }
 
 }

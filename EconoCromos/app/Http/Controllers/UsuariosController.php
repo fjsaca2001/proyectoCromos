@@ -6,6 +6,8 @@ use App\Models\User;
 use App\Models\Album;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
+
 
 class UsuariosController extends Controller
 {
@@ -16,12 +18,14 @@ class UsuariosController extends Controller
      */
     public function index()
     {
-        //
-        $datos['usuariosC']=User::paginate(5);
+        // Si es admin o super
+        if(Gate::allows('acciones-admin')){
+            $datos['usuariosC']=User::paginate(5);
+            return view('admin.adminindex',$datos);
+        } else {
+            return redirect("/");
+        }
         
-        //$temas = DB::select('select nombreTematica from tematica');
-        
-        return view('admin.adminindex',$datos);
     }
 
     /**
@@ -70,9 +74,12 @@ class UsuariosController extends Controller
      */
     public function edit($idUsuario)
     {
-        //
-        $usuarios=User::findOrFail($idUsuario);
-        return view('admin.edit',compact('usuarios'));
+        if(Gate::allows('acciones-admin')){
+            $usuarios=User::findOrFail($idUsuario);
+            return view('admin.edit',compact('usuarios'));
+        } else {
+            return redirect("/");
+        }
     }
 
     /**
@@ -84,13 +91,12 @@ class UsuariosController extends Controller
      */
     public function update(Request $request,$idUsuario)
     {
-        //
         
         $datosUsuario=request()->except(['_token','_method']);
         User::where('idUsuario','=',$idUsuario)->update($datosUsuario);
 
         $usuarios=User::findOrFail($idUsuario);
-        //return view('usuarios.edit',compact('usuarios'));
+
         if(auth()->user()->rol != 3){
             return redirect('usuarios')->with('Mensaje','Usuario modificado con exito');
             
@@ -107,13 +113,12 @@ class UsuariosController extends Controller
      */
     public function destroy($idUsuario)
     {
-        //
-        User::destroy($idUsuario);
-        return redirect('usuarios')->with('Mensaje','Usuario eliminado con exito');
-    }
-
-    public function album()
-    {
-        return $this->belongsTo(Album::class, 'idAlbum');
+        // Si es admin o super
+        if(Gate::allows('acciones-admin') ){
+            User::destroy($idUsuario);
+            return redirect('usuarios')->with('Mensaje','Usuario eliminado con exito');
+        } else {
+            return redirect("/");
+        }
     }
 }
