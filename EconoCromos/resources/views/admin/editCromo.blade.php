@@ -20,7 +20,7 @@
             @enderror
             <br>
             <label for="descripcion" >{{ __('Descripción del Cromo') }}</label>
-            <input id="descripcion" type="text" name="descripcion" value="{{$cromos->descripcion}}" required autocomplete="descripcion">
+            <textarea id="descripcion" type="text" name="descripcion" required autocomplete="descripcion">{{$cromos->descripcion}}</textarea>
             @error('descripcion')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -30,7 +30,7 @@
             <label for="imgURL" >{{ __('Imagen del cromo') }}</label>
             <br> <img style="width: 200px" src="{{ asset('storage').'/'.$cromos->imgURL }}"> <br>
             Cargar nueva imagen
-            <input id="imgURL" type="file" name="imgURL" value="{{$cromos->imgURl}}" >
+            <input id="imgURL" type="file" name="imgURL" value="{{$cromos->imgURl}}" accept="image/*">
             <br>
             <label for="idTematica" class="">{{ __('Tematica a la que pertenece') }}</label>
             <select id="idTematica" name="idTematica">

@@ -232,29 +232,21 @@ return [
         ['header' => 'Menú de opciones'],
         
         [
-            'text' => 'Preguntas',
-            'icon' => 'fas fa-fw fa-user',
-            'submenu' => [
-                [
-                'text' => 'Agregar Preguntas',
-                'url'  => 'agregarPregunta'
-                ]
-            ]   
-        ],
-        [
             'text' => 'Usuarios',
             'icon' => 'fas fa-fw fa-user',
-            'submenu' => [
-                [
-                    'text' => 'Listar Usuarios',
-                    'url'  => 'usuarios'
-                ]
-            ]
+            'url'  => 'usuarios'
         ],
+
+        [
+            'text' => 'Preguntas',
+            'icon' => 'fas fa-fw fa-user',
+            'url'  => 'agregarPregunta'  
+        ],
+
         [
             'text' => ' Cromos',
             'url'  => 'agregarCromo',
-            'icon' => 'far fa-file',
+            'icon' => 'fas fa-fw fa-user',
         ]
     ],
 
