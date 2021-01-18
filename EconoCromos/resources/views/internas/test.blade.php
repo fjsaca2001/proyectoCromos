@@ -6,17 +6,23 @@
         @php 
             $n = 1;  
         @endphp
-        @foreach( $actividad[0]->preguntas as $pregunta)
+        @foreach( $actividad[$idenviado-1]->preguntas as $pregunta)
             <article>
                 <h3>{{$pregunta->pregunta}}</h3>
-                {{--  <button class="opcion{{$n}}"> {{$pregunta->opcion1}}</button>
-                <button class="opcion{{$n}}"> {{$pregunta->opcion2}}</button>
-                <button class="opcion{{$n}}"> {{$pregunta->opcion3}}</button>
-                <button class="opcion{{$n}}"> {{$pregunta->respuestaCorrecta}}</button>  --}}
-                <input type="radio" name="respuesta" value="0"> {{$pregunta->opcion1}} <br>
-                <input type="radio" name="respuesta" value="0"> {{$pregunta->opcion2}} <br>
-                <input type="radio" name="respuesta" value="0"> {{$pregunta->opcion3}} <br>
-                <input type="radio" name="respuesta" value="0"> {{$pregunta->respuestaCorrecta}} <br>
+                <form action="">
+                    <div class="opcion{{$n}}">
+                        <input type="radio" value=""> {{$pregunta->opcion1}} <br>
+                    </div>
+                    <div class="opcion{{$n}}">
+                        <input type="radio" value=""> {{$pregunta->opcion2}} <br>
+                    </div>
+                    <div class="opcion{{$n}}">
+                        <input type="radio" value=""> {{$pregunta->opcion3}} <br>
+                    </div>
+                    <div class="opcion{{$n}}">
+                        <input type="radio" value=""> {{$pregunta->respuestaCorrecta}} <br>
+                    </div>
+                </form>
             </article>
             @php 
                 $n = $n+1;  

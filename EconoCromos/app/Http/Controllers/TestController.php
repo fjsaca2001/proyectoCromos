@@ -12,9 +12,10 @@ class TestController extends Controller
     public function index(){
         
     }
-    public function show($id)
+    public function show($idenviado)
     {
-        $actividad = Actividad::where('idActividad', $id)->get();
-        return view('internas.test',compact ('actividad'));
+        $actividad = Actividad::All();
+        $idenviado = intval($idenviado);
+        return view('internas.test',compact ('actividad'), compact('idenviado'));
     }
 }
