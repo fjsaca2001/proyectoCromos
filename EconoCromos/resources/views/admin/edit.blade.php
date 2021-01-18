@@ -76,8 +76,8 @@
                                     @enderror
                                 </div>
                             </div>
-                            <p>Modifique el Rol en base a los siguintes valores: 1: <strong>Super Usuario</strong>, 2:
-                                <strong>Admin</strong> y 3: <strong>Usuario</strong>
+                            <p>Modifique el Rol en base a los siguientes valores: 1: <strong>Administrador</strong>, 2:
+                                <strong>Editor</strong> y 3: <strong>Usuario</strong>
                             </p>
                             <div class="form-group row">
                                 <label for="rol" class="col-md-4 col-form-label text-md-right">{{ __('Rol') }}</label>

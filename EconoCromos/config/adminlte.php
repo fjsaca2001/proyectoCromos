@@ -225,37 +225,37 @@ return [
 
     'menu' => [
         [
-            'text' => 'blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
+            'text' => 'Álbum',
+            'icon' => 'fas fa-fw fa-book-open',
+            'url'  => '',
+            'can'   => [ 'acciones-admin'],  
         ],
+        
         ['header' => 'Menú de opciones'],
         
         [
-            'text' => 'Preguntas',
-            'icon' => 'fas fa-fw fa-user',
-            'submenu' => [
-                [
-                'text' => 'Agregar Preguntas',
-                'url'  => 'agregarPregunta'
-                ]
-            ]   
-        ],
-        [
             'text' => 'Usuarios',
-            'icon' => 'fas fa-fw fa-user',
-            'submenu' => [
-                [
-                    'text' => 'Listar Usuarios',
-                    'url'  => 'usuarios'
-                ]
-            ]
+            'icon' => 'fas fa-fw fa-address-book',
+            'url'  => 'usuarios',
+            'can'   => [ 'acciones-admin'],
         ],
+
         [
-            'text' => ' Cromos',
+            'text' => 'Cromos',
             'url'  => 'agregarCromo',
-            'icon' => 'far fa-file',
-        ]
+            'icon' => 'far fa-fw fa-file-alt',
+            'can'   => [ 'acciones-admin', 'acciones-super'],
+        ],
+
+        [
+            'text' => 'Preguntas',
+            'icon' => 'fas fa-fw fa-question-circle',
+            'url'  => 'agregarPregunta',
+            'can'   => [ 'acciones-admin', 'acciones-super'],  
+        ],
+
+        
+        
     ],
 
     /*

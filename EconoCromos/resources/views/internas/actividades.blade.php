@@ -35,6 +35,9 @@
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <br>
                 <div class="table-responsive">
+                    @php 
+                        $n2 = 1;
+                    @endphp
                     <div id="tematica1" class="classTem1">
                         <h2>{{ $albumContenido->tematicas[0]->nombreTematica }}</h2>
                         <ul class="nav flex-column">
@@ -45,66 +48,24 @@
                             @endforeach
                         </ul>
                     </div>
-
-                    <div id="tematica2" class="classTem1" style="display: none;">
-                        <h2>{{ $albumContenido->tematicas[1]->nombreTematica }}</h2>
-                        <ul class="nav flex-column">
-                            @foreach ($albumContenido->tematicas[1]->actividad as $actividad)
-                                <li class="nav-itemA">
-                                    @php
-                                        $id = $actividad->idActividad;
-                                    @endphp
-                                    <a class="nav-link" href="{{url('test', $id)}}">{{ $actividad->nombreActividad }}</a>
-                                </li>
-                            @endforeach
-                        </ul>
-                    </div>
-
-                    <div id="tematica3" class="classTem1" style="display: none;">
-                        <h2>{{ $albumContenido->tematicas[2]->nombreTematica }}</h2>
-                        <ul class="nav flex-column">
-                            @foreach ($albumContenido->tematicas[2]->actividad as $actividad)
-                                <li class="nav-itemA">
-                                    <a class="nav-link" href="{{url('test/')}}">{{ $actividad->nombreActividad }}</a>
-                                </li>
-                            @endforeach
-                        </ul>
-                    </div>
-
-                    <div id="tematica4" class="classTem1" style="display: none;">
-                        <h2>{{ $albumContenido->tematicas[3]->nombreTematica }}</h2>
-                        <ul class="nav flex-column">
-                            @foreach ($albumContenido->tematicas[3]->actividad as $actividad)
-                                <li class="nav-itemA">
-                                    <a class="nav-link" href="{{url('test/')}}">{{ $actividad->nombreActividad }}</a>
-                                </li>
-                            @endforeach
-                        </ul>
-                    </div>
-
-                    <div id="tematica5" class="classTem1" style="display: none;">
-                        <h2>{{ $albumContenido->tematicas[4]->nombreTematica }}</h2>
-                        <ul class="nav flex-column">
-                            @foreach ($albumContenido->tematicas[4]->actividad as $actividad)
-                                <li class="nav-itemA">
-                                    <a class="nav-link" href="{{url('test/')}}">
-                                        {{ $actividad->nombreActividad }}
-                                    </a>
-                                </li>
-                            @endforeach
-                        </ul>
-                    </div>
-
-                    <div id="tematica6" class="classTem1" style="display: none;">
-                        <h2>{{ $albumContenido->tematicas[5]->nombreTematica }}</h2>
-                        <ul class="nav flex-column">
-                            @foreach ($albumContenido->tematicas[5]->actividad as $actividad)
-                                <li class="nav-itemA">
-                                    <a class="nav-link" href="{{url('test/')}}">{{ $actividad->nombreActividad }}</a>
-                                </li>
-                            @endforeach
-                        </ul>
-                    </div>
+                    @foreach ($albumContenido->tematicas as $tematica)
+                        <div id="tematica{{$n2}}" class="classTem1" style="display: none;">
+                            <h2>{{ $tematica->nombreTematica }}</h2>
+                            <ul class="nav flex-column">
+                                @foreach ($tematica->actividad as $actividad)
+                                    <li class="nav-itemA">
+                                        @php
+                                            $idenviado = $actividad->idActividad;
+                                        @endphp
+                                        <a class="nav-link" href="{{url('test', $idenviado)}}">{{ $actividad->nombreActividad }}</a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        @php 
+                            $n2 = $n2 +1;  
+                        @endphp
+                    @endforeach
                 </div>
             </main>
         </div>

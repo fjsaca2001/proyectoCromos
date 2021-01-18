@@ -1,18 +1,70 @@
 @extends('adminlte::page')
 @section('tittle', 'Admin Panel | Economía a tu alcance')
 @section('content_header')
-<h1>Tablero</h1>
+<h1>Bienvenido {{auth()->user()->nombre}}</h1>
+<h4>Administrador</h4>
 @endsection
 @section('content')
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-
-Bienvenido {{auth()->user()->nombre}}
-<br>Administrador
-<br>
-<br>
 @if (Session::has('Mensaje')){{ Session::get('Mensaje') }}
 @endif
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<meta content='lab2023' name='author'>
+<meta content='' name='description'>
+<meta content='' name='keywords'>
+<link href="assets/stylesheets/application-a07755f5.css" rel="stylesheet" type="text/css"/><link href="//netdna.bootstrapcdn.com/font-awesome/3.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<link href="assets/images/favicon.ico" rel="icon" type="image/ico"/>
+
+<h4>
+Lista de preguntas
+</h4>
+<br>
+<section class="table-responsive">
+  <div class="tablaPreguntas">
+    <table class='table table-fixed table-hover table-bordered'>
+      <thead class="thead-dark">
+        <tr>
+          <th>Pregunta</th>
+          <th>Opción 1</th>
+          <th>Opción 2</th>
+          <th>Opción 3</th>
+          <th>Respuesta correcta</th>
+          <th>Temática</th>
+          <th>Actividad</th>
+          <th class='actions'>
+            Acciones
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+      @foreach ($pregunta as $pregunta)
+      <tr>
+        <td>{{ $pregunta->pregunta }}</td>
+        <td>{{ $pregunta->opcion1 }}</td>
+        <td>{{ $pregunta->opcion2 }}</td>
+        <td>{{ $pregunta->opcion3 }}</td>
+        <td><em>{{ $pregunta->respuestaCorrecta }}</em></td>
+        <td>{{ $pregunta->tematica['nombreTematica'] }}</td>
+        <td>{{ $pregunta->actividad['nombreActividad'] }}</td>
+        <td class='action'>
+          <a class='btn btn-info' href="{{  url('agregarPregunta/'. $pregunta->idPregunta.'/edit')  }}">
+            <i class='icon-edit'></i>
+          </a>
+          <form class="accionUsuario" method="POST" action="{{  url('agregarPregunta/'. $pregunta->idPregunta) }}" style="display:inline">
+            {{ csrf_field() }}
+            {{ method_field('DELETE') }}
+            <button class="btn btn-danger" type="submit" onclick="return confirm('¿Está seguro de eliminar esta pregunta?');">
+              <i class='icon-trash'></i>
+            </button>
+          </form>
+        </td>
+      </tr>
+      @endforeach
+      </tbody>
+    </table>
+  </div>
+</section>
+
 <h2>Agregar una pregunta</h2>
 <section>
     <form action="{{ url('/agregarPregunta')}}" method="POST">
@@ -104,48 +156,5 @@ Bienvenido {{auth()->user()->nombre}}
 
 </section>
 
-</section>
-<h2>Lista de Preguntas</h2>
-<section class="table-responsive">
-    <table class="table table-light">
-        <thead class="thead-light">
-            <tr>
-                <th>Pregunta</th>
-                <th>Opcion 1</th>
-                <th>Opcion 2</th>
-                <th>Opcion 3</th>
-                <th>Repuesta Correcta</th>
-                <th>Tematica</th>
-                <th>Actividad</th>
-                <th></th>
-            </tr>
-        </thead>
-
-        <tbody>
-            @foreach ($pregunta as $pregunta)
-            <tr>
-                <td>{{ $pregunta->pregunta }}</td>
-                <td>{{ $pregunta->opcion1 }}</td>
-                <td>{{ $pregunta->opcion2 }}</td>
-                <td>{{ $pregunta->opcion3 }}</td>
-                <td><em>{{ $pregunta->respuestaCorrecta }}</em></td>
-                <td>{{ $pregunta->tematica['nombreTematica'] }}</td>
-                <td>{{ $pregunta->actividad['nombreActividad'] }}</td>
-                <td>
-                    <a href="{{  url('agregarPregunta/'. $pregunta->idPregunta.'/edit')  }}">
-                        Editar
-                    </a>
-
-                    <form method="POST" action="{{  url('agregarPregunta/'. $pregunta->idPregunta) }}">
-                        {{ csrf_field() }}
-                        {{ method_field('DELETE') }}
-                        <button type="submit" onclick="return confirm('¿Desea Borrar?');">Borrar</button>
-                    </form>
-                </td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
-</section>
 <script src="js/preguntas.js"></script>
 @endsection

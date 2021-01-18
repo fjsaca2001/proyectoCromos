@@ -7,15 +7,21 @@ use App\Models\Cromo;
 use App\Models\Tematica;
 use App\Models\User;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Gate;
 
 class CromoController extends Controller
 {
     public function index()
     {   
-        $datos['cromo']=Cromo::paginate(100);
-        $nombretematica['tematica'] = Tematica::paginate(10);
-        return view('admin.agregarCromo',$datos, $nombretematica);
+        $datos['cromo']=Cromo::all();
+        $nombretematica['tematica'] = Tematica::all();
         
+        // Si es admin o super
+        if(Gate::allows('acciones-admin') || Gate::allows('acciones-super')){
+            return view('admin.agregarCromo',$datos, $nombretematica);
+        } else {
+            return redirect("/");
+        }
         /*
         $tematicas = Tematica::first();
         return view('admin.agregarCromo',compact ('tematicas'));
@@ -25,12 +31,16 @@ class CromoController extends Controller
     public function edit($idCromo)
     {
         $cromos=Cromo::findOrFail($idCromo);
-        $nombretematica['tematica'] = Tematica::paginate(10);
-        return view('admin.editCromo',compact('cromos'), $nombretematica);
+        $nombretematica['tematica'] = Tematica::all();
+
+        // Si es admin o super
+        if(Gate::allows('acciones-admin') || Gate::allows('acciones-super')){
+            return view('admin.editCromo',compact('cromos'), $nombretematica);
+        } else {
+            return redirect("/");
+        }
     }
     /*
-    // validar la correcta insersion de datos en los campos de registro de cromo
-    protected function validator(array $data)
     {
         return Validator::make($data, [
             'nombre' => ['required', 'string', 'max:255'],
@@ -56,16 +66,17 @@ class CromoController extends Controller
             Storage::delete('public/'.$cromos->imgURL);
             $dataCromo['imgURL'] =$request->file('imgURL')->store('uploads','public');
         }
-        Cromo::where('idCromo','=',$idCromo)->update($dataCromo);
+        
         /*
         $datos['usuariosC']=User::paginate(5);        
         return view('admin.adminindex',$datos);
         */
-        if(auth()->user()->rol != 3){
+        // Si es admin o super
+        if(Gate::allows('acciones-admin') || Gate::allows('acciones-super')){
+            Cromo::where('idCromo','=',$idCromo)->update($dataCromo);
             return redirect('agregarCromo')->with('Mensaje','Cromo modificado correctamente');
-            
         }else{
-            return redirect('perfil')->with('Mensaje','Usuario modificado con exito');
+            return redirect('/');
         }
     }
 
@@ -78,15 +89,25 @@ class CromoController extends Controller
         if($request->hasFile('imgURL')){
             $dataCromo['imgURL'] =$request->file('imgURL')->store('uploads','public');
         }
-        Cromo::insert($dataCromo);
-        return redirect('agregarCromo')->with('Mensaje', 'Cromos registrado correctamente');
+
+        // Si es admin o super
+        if(Gate::allows('acciones-admin') || Gate::allows('acciones-super')){
+            Cromo::insert($dataCromo);
+            return redirect('agregarCromo')->with('Mensaje', 'Cromos registrado correctamente');
+        }else{
+            return redirect('/');
+        }
 
     }
     public function destroy($idCromo)
     {
-        //
-        Cromo::destroy($idCromo);
-        return redirect('agregarCromo')->with('Mensaje','Usuario eliminado con exito');
+        // Si es admin o super
+        if(Gate::allows('acciones-admin') || Gate::allows('acciones-super')){
+            Cromo::destroy($idCromo);
+            return redirect('agregarCromo')->with('Mensaje','Usuario eliminado con exito');
+        }else{
+            return redirect('/');
+        }
     }
 
 }
