@@ -22,11 +22,8 @@ class CromoController extends Controller
         } else {
             return redirect("/");
         }
-        /*
-        $tematicas = Tematica::first();
-        return view('admin.agregarCromo',compact ('tematicas'));
-        */
     }
+
     // Editar un cromo
     public function edit($idCromo)
     {
@@ -40,37 +37,30 @@ class CromoController extends Controller
             return redirect("/");
         }
     }
-    /*
-    {
-        return Validator::make($data, [
-            'nombre' => ['required', 'string', 'max:255'],
-            'nickname' => ['required', 'string', 'max:15', 'unique:usuariosC'],
-            'email' => ['required', 'string', 'max:255', 'unique:usuariosC'],
-            'pais' => ['required', 'string', 'max:25'],
-            'edad' => ['required', 'integer',],
-            'password' => ['required', 'string', 'min:8'],
-        ]);
-    }
-    */
 
     public function update(Request $request,$idCromo)
     {
+        $validarInfoFormCromo = [
+            'nombre' => 'required|string|max:30',
+            'descripcion' => 'required|string|max:350',
+            'imgURL' => 'max:10000|mimes:jpg,jpeg,png'
+        ];
+        $Mensaje=['required' => 'El :attribute es requerido'];
+
+        $this->validate($request, $validarInfoFormCromo, $Mensaje);
         //se capta toda la informacion y se desecha los datos de mas del form        
         $dataCromo=request()->except(['_token','_method']);
 
         
         $cromos=Cromo::findOrFail($idCromo);
-        $nombretematica['tematica'] = Tematica::paginate(10);
+        $nombretematica['tematica'] = Tematica::all();
+
         // se añade la ruta de la imagen y se borra la anterior
         if($request->hasFile('imgURL')){
             Storage::delete('public/'.$cromos->imgURL);
             $dataCromo['imgURL'] =$request->file('imgURL')->store('uploads','public');
         }
-        
-        /*
-        $datos['usuariosC']=User::paginate(5);        
-        return view('admin.adminindex',$datos);
-        */
+                
         // Si es admin o super
         if(Gate::allows('acciones-admin') || Gate::allows('acciones-super')){
             Cromo::where('idCromo','=',$idCromo)->update($dataCromo);
@@ -82,10 +72,19 @@ class CromoController extends Controller
 
     public function store(Request $request)
     {
+        $validarInfoFormCromo = [
+            'nombre' => 'required|string|max:30|unique:cromo',
+            'descripcion' => 'required|string|max:350',
+            'imgURL' => 'required|max:10000|mimes:jpg,jpeg,png'
+        ];
+        $Mensaje=['required' => 'El :attribute es requerido'];
+
+        $this->validate($request, $validarInfoFormCromo, $Mensaje);
         
-        $dataCromo=request()->all();
+        //$dataCromo=request()->all();
         $dataCromo=request()->except('_token');
 
+        // Ruta de la imagen y carga en el sistema
         if($request->hasFile('imgURL')){
             $dataCromo['imgURL'] =$request->file('imgURL')->store('uploads','public');
         }
