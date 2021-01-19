@@ -28,17 +28,16 @@
                 $n = $n+1;  
             @endphp
         @endforeach
-        <input type="submit" value="Enviar Respuestas">
-    </form>
-    <script>
-        for (var x = 1; x <= 10; x++) {
-            var cards = $(".opcion" + x);
-            for (var i = 0; i < cards.length; i++) {
-                var target = Math.floor(Math.random() * cards.length - 1) + 1;
-                var target2 = Math.floor(Math.random() * cards.length - 1) + 1;
-                cards.eq(target).before(cards.eq(target2));
+        
+        <script>
+            for (var x = 1; x<= 10; x++) {
+                var cards = $(".opcion"+x);
+                for(var i = 0; i < cards.length; i++){
+                    var target = Math.floor(Math.random() * cards.length -1) + 1;
+                    var target2 = Math.floor(Math.random() * cards.length -1) +1;
+                    cards.eq(target).before(cards.eq(target2));
+                } 
             }
-        }
-    </script>
-</section>
+        </script>
+    </section>
 @endsection
