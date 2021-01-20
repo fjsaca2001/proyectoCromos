@@ -13,7 +13,6 @@
 <meta content='' name='keywords'>
 <link href="assets/stylesheets/application-a07755f5.css" rel="stylesheet" type="text/css"/><link href="//netdna.bootstrapcdn.com/font-awesome/3.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 <link href="assets/images/favicon.ico" rel="icon" type="image/ico"/>
-
 <h4>Lista de cromos</h4>
 <br>
 <section class="table-responsive">
@@ -63,7 +62,6 @@
     </table>
   </div>
 </section>
-
 <h2>Agregar cromo</h2>
 <section class="agregarCromo">
     <article >

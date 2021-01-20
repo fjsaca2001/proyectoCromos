@@ -32,7 +32,7 @@ Route::view('perfil','usuario.perfil')->name('perfil')->middleware('auth');
 Route::view('contactos','internas.contactos')->name('contactos');
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('/');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/register', [App\Http\Controllers\HomeController::class, 'register'])->name('register');
 Route::get('/album', [App\Http\Controllers\AlbumController::class, 'index'])->name('album');

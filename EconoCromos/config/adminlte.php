@@ -241,19 +241,18 @@ return [
         ],
 
         [
-            'text' => 'Cromos',
-            'url'  => 'agregarCromo',
-            'icon' => 'far fa-fw fa-file-alt',
-            'can'   => [ 'acciones-admin', 'acciones-super'],
-        ],
-
-        [
             'text' => 'Preguntas',
             'icon' => 'fas fa-fw fa-question-circle',
             'url'  => 'agregarPregunta',
             'can'   => [ 'acciones-admin', 'acciones-super'],  
         ],
 
+        [
+            'text' => 'Cromos',
+            'url'  => 'agregarCromo',
+            'icon' => 'far fa-fw fa-file-alt',
+            'can'   => [ 'acciones-admin', 'acciones-super'],
+        ],    
         
         
     ],

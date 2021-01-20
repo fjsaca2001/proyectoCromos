@@ -61,10 +61,6 @@
                     </svg>
                 </a>
             </li>
-
-            <li class="nav-items">
-                <a class="nav-link active" href="#tematica">Temáticas</a>
-            </li>
             <li class="nav-items">
                 <a class="nav-link" href="{{ url('actividades') }}">Actividades</a>
             </li>
@@ -83,6 +79,11 @@
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" data-target="desplegable" href="#">
                 {{ auth()->user()->nickname }} </a>
                 <div class="dropdown-menu">
+                    @if(Gate::allows('acciones-admin') )
+                        <a class="nav-link" href="{{ url('usuarios') }}">Administración </a>
+                    @elseif (Gate::allows('acciones-super'))
+                        <a class="nav-link" href="{{ url('agregarCromo') }}">Administración </a>
+                    @endif
                     <a class="dropdown-item" href="{{ route('perfil') }}">Editar perfil</a>
                     <a class="nav-link" href="#" onclick="event.preventDefault();
                                                     document.getElementById('logout-form').submit();">Cerrar sesión
