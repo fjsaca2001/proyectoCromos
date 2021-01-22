@@ -17,8 +17,14 @@ class TestController extends Controller
         $actividad = Actividad::where('idActividad', $id)->get();
         return view('internas.test',compact ('actividad'));
         */
+        /*
         $actividad = Actividad::All();
         $idenviado = intval($idenviado);
         return view('internas.test',compact ('actividad'), compact('idenviado'));
+        */
+        $idenviado = intval($idenviado);
+        $actividad = Actividad::find($idenviado);
+        return view('internas.test',compact ('actividad'));
+
     }
 }

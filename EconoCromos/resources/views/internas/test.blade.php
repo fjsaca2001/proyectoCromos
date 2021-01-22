@@ -6,7 +6,7 @@
         @php 
             $n = 1;  
         @endphp
-        @foreach( $actividad[$idenviado-1]->preguntas as $pregunta)
+        @foreach( $actividad->preguntas as $pregunta)
             <article>
                 <h3>{{$pregunta->pregunta}}</h3>
                 <form action="">

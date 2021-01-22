@@ -20,7 +20,7 @@ class UsuariosController extends Controller
     {
         // Si es admin o super
         if(Gate::allows('acciones-admin')){
-            $datos['usuariosC']=User::paginate(5);
+            $datos['usuariosC']=User::all();
             return view('admin.adminindex',$datos);
         } else {
             return redirect("/");

@@ -24,7 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {   
-        $albumContenido = Album::first();
+        $albumContenido = Album::All();
         return view('/home', compact ('albumContenido'));
     }
      public function register()

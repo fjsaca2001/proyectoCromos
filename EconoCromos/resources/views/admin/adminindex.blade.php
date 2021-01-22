@@ -48,18 +48,20 @@ Lista de usuarios
         <td>{{ $usuariosC->pais }}</td>
         <td>{{ $usuariosC->edad }}</td>
         <th>{{ $roles[$usuariosC->rol - 1] }}</th>
-        <td class='action'>
-          <a class='btn btn-info' href="{{ url('/usuarios/' . $usuariosC->idUsuario . '/edit/') }}">
-            <i class='icon-edit'></i>
-          </a>
-          <form class="accionUsuario" method="POST" action="{{ url('/usuarios/' . $usuariosC->idUsuario) }}" style="display:inline">
-            {{ csrf_field() }}
-            {{ method_field('DELETE') }}
-            <button class="btn btn-danger" type="submit" onclick="return confirm('Seguro que desea eliminar este usuario');">
-              <i class='icon-trash'></i>
-            </button>
-          </form>
-        </td>
+          <td class='action'>
+            <a class='btn btn-info' href="{{ url('/usuarios/' . $usuariosC->idUsuario . '/edit/') }}">
+              <i class='icon-edit'></i>
+            </a>
+            @if(!(auth()->user()->idUsuario == $usuariosC->idUsuario))
+              <form class="accionUsuario" method="POST" action="{{ url('/usuarios/' . $usuariosC->idUsuario) }}" style="display:inline">
+                {{ csrf_field() }}
+                {{ method_field('DELETE') }}
+                <button class="btn btn-danger" type="submit" onclick="return confirm('Seguro que desea eliminar este usuario');">
+                  <i class='icon-trash'></i>
+                </button>
+              </form>
+            @endif
+          </td>
       </tr>
       @endforeach
       </tbody>

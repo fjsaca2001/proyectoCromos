@@ -29,22 +29,24 @@ Session::get('Mensaje')
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
     </a>
 </section>
-
-
-<section class="tematicas" id="tematica">
-    @foreach( $albumContenido->tematicas as $tematicas)
-        <article class="tema">
-            <div class="card" style="width: 25rem;">
-                <a href="">
-                    <img src="{{asset ($tematicas['imgTematica']) }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-text">{{$tematicas['nombreTematica']}}</p>
-                    </div>
-                </a>
-            </div>
-        </article>
-    @endforeach
-</section>
+@foreach( $albumContenido as $album)
+    <section class="tematicas" id="tematica">
+        <h2>{{$album->nombre}}</h2>
+        @foreach( $album->tematicas as $tematicas)
+            <article class="tema">
+                <div class="card" style="width: 25rem;">
+                    <a href="">
+                        <!--  <img src="{{asset ($tematicas['imgTematica']) }}" class="card-img-top" alt="..."> -->
+                        <img src="{{ asset('storage').'/'.$tematicas->imgTematica }}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <p class="card-text">{{$tematicas['nombreTematica']}}</p>
+                        </div>
+                    </a>
+                </div>
+            </article>
+        @endforeach
+    </section>
+@endforeach
 
 <script>
     var myCarousel = document.querySelector('#carouselExampleIndicators')

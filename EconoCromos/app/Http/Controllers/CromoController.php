@@ -6,19 +6,25 @@ use Illuminate\Http\Request;
 use App\Models\Cromo;
 use App\Models\Tematica;
 use App\Models\User;
+use App\Models\Album;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Gate;
 
 class CromoController extends Controller
-{
+{   
+    // mostrar tematicas de un album
+    public function byTematicas($id)
+    {
+        return Tematica::where('idAlbum', $id)->get();
+    }
+
+    // Funcion principal
     public function index()
-    {   
-        $datos['cromo']=Cromo::all();
-        $nombretematica['tematica'] = Tematica::all();
-        
+    {           
+        $albumContenido = Album::all();
         // Si es admin o super
         if(Gate::allows('acciones-admin') || Gate::allows('acciones-super')){
-            return view('admin.agregarCromo',$datos, $nombretematica);
+            return view('admin.agregarCromo', compact('albumContenido'));
         } else {
             return redirect("/");
         }

@@ -2,7 +2,11 @@
 @section('tittle', 'Admin Panel | Economía a tu alcance')
 @section('content_header')
 <h1>Bienvenido {{auth()->user()->nombre}}</h1>
-<h4>Administrador</h4>
+@if(auth()->user()->rol == 1)
+  <h4>Administrador</h4>
+@elseif(auth()->user()->rol == 2)
+  <h4>Editor</h4>
+@endif
 @endsection
 @section('content')
 @if (Session::has('Mensaje')){{ Session::get('Mensaje') }}
@@ -14,22 +18,20 @@
 <meta content='' name='keywords'>
 <link href="assets/stylesheets/application-a07755f5.css" rel="stylesheet" type="text/css"/><link href="//netdna.bootstrapcdn.com/font-awesome/3.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 <link href="assets/images/favicon.ico" rel="icon" type="image/ico"/>
-
-<h4>
-Lista de preguntas
-</h4>
 <br>
 <section class="table-responsive">
-  <div class="tablaPreguntas">
+  <div class="tablaCromos">
+  @foreach ($albumContenido as $album)
+    <h4>Preguntas de {{$album->nombre}}</h4>
     <table class='table table-fixed table-hover table-bordered'>
       <thead class="thead-dark">
         <tr>
           <th>Pregunta</th>
-          <th>Opción 1</th>
-          <th>Opción 2</th>
-          <th>Opción 3</th>
-          <th>Respuesta correcta</th>
-          <th>Temática</th>
+          <th>Opcion uno</th>
+          <th>Opcion dos</th>
+          <th>Opcion tres</th>
+          <th>Opcion Correcta</th>
+          <th>Tematica</th>
           <th>Actividad</th>
           <th class='actions'>
             Acciones
@@ -37,31 +39,36 @@ Lista de preguntas
         </tr>
       </thead>
       <tbody>
-      @foreach ($pregunta as $pregunta)
-      <tr>
-        <td>{{ $pregunta->pregunta }}</td>
-        <td>{{ $pregunta->opcion1 }}</td>
-        <td>{{ $pregunta->opcion2 }}</td>
-        <td>{{ $pregunta->opcion3 }}</td>
-        <td><em>{{ $pregunta->respuestaCorrecta }}</em></td>
-        <td>{{ $pregunta->tematica['nombreTematica'] }}</td>
-        <td>{{ $pregunta->actividad['nombreActividad'] }}</td>
-        <td class='action'>
-          <a class='btn btn-info' href="{{  url('agregarPregunta/'. $pregunta->idPregunta.'/edit')  }}">
-            <i class='icon-edit'></i>
-          </a>
-          <form class="accionUsuario" method="POST" action="{{  url('agregarPregunta/'. $pregunta->idPregunta) }}" style="display:inline">
-            {{ csrf_field() }}
-            {{ method_field('DELETE') }}
-            <button class="btn btn-danger" type="submit" onclick="return confirm('¿Está seguro de eliminar esta pregunta?');">
-              <i class='icon-trash'></i>
-            </button>
-          </form>
-        </td>
-      </tr>
+        @foreach ($album->tematicas as $tematica) 
+          @foreach ($tematica->actividad as $actividad)
+            @foreach ($actividad->preguntas as $pregunta)
+              <tr>
+                <td>{{ $pregunta->pregunta }}</td>
+                <td>{{ $pregunta->opcion1 }}</td>
+                <td>{{ $pregunta->opcion2 }}</td>
+                <td>{{ $pregunta->opcion3 }}</td>
+                <td>{{ $pregunta->respuestaCorrecta }}</td>
+                <td>{{ $tematica->nombreTematica }}</td>
+                <td>{{ $actividad->nombreActividad }}</td>
+                <td class='action'>
+                  <a class='btn btn-info' href="{{ url('/agregarPregunta/' . $pregunta->idPregunta . '/edit/') }}">
+                    <i class='icon-edit'></i>
+                  </a>
+                  <form class="accionCromo" method="POST" action="{{ url('/agregarPregunta/' . $pregunta->idPregunta) }}" style="display:inline">
+                    {{ csrf_field() }}
+                    {{ method_field('DELETE') }}
+                    <button class="btn btn-danger" type="submit" onclick="return confirm('¿Está seguro de eliminar este cromo?');">
+                      <i class='icon-trash'></i>
+                    </button>
+                  </form>
+                </td>
+              </tr>
+          @endforeach
+        @endforeach
       @endforeach
       </tbody>
     </table>
+  @endforeach
   </div>
 </section>
 
@@ -129,14 +136,20 @@ Lista de preguntas
             @enderror
             <br>
         </div>
-
+        <div>
+            <label for="album" class="">{{ __('Álbum') }}</label>
+            <select id="album" name="album" required>
+              <option value="" selected="selected">Elige un Álbum</option>
+                @foreach ($albumContenido as $album)
+                  <option value="{{ $album->idAlbum }}">{{ $album->nombre }}</option>
+                @endforeach
+            </select>
+            <br>
+        </div> 
         <div>
             <label for="tematica" class="">{{ __('Tematicas') }}</label>
             <select id="tematica" name="idTematica" required>
                 <option value="" selected="selected">Elige una tematica</option>
-                @foreach ($tematica as $tematica)
-                <option value="{{ $tematica->idTematica }}">{{ $tematica->nombreTematica }}</option>
-                @endforeach
             </select>
             <br>
         </div>

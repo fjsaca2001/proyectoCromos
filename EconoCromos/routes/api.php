@@ -18,6 +18,8 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
+Route::get('/agregarCromo/{id}/album',[App\Http\Controllers\CromoController::class, 'byTematicas']);
 
-Route::get('/agregarPregunta/{id}/actividades',[App\Http\Controllers\PreguntaController::class, 'byTematicas']);
+Route::get('/agregarPregunta/{id}/album',[App\Http\Controllers\PreguntaController::class, 'byTematicas']);
+Route::get('/agregarPregunta/{id}/actividades',[App\Http\Controllers\PreguntaController::class, 'byActividades']);
 // Route::get('/actividades/{id}/actividades',[App\Http\Controllers\TematicaController::class, 'byActividades']);
