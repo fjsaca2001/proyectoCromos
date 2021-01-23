@@ -6,19 +6,21 @@ use Illuminate\Http\Request;
 use App\Models\Cromo;
 use App\Models\Tematica;
 use App\Models\User;
+use App\Models\Album;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\DB;
+
 
 class CromoController extends Controller
-{
+{   
+    // Funcion principal
     public function index()
-    {   
-        $datos['cromo']=Cromo::all();
-        $nombretematica['tematica'] = Tematica::all();
-        
+    {           
+        $albumContenido = Album::all();
         // Si es admin o super
         if(Gate::allows('acciones-admin') || Gate::allows('acciones-super')){
-            return view('admin.agregarCromo',$datos, $nombretematica);
+            return view('admin.agregarCromo', compact('albumContenido'));
         } else {
             return redirect("/");
         }
@@ -28,11 +30,11 @@ class CromoController extends Controller
     public function edit($idCromo)
     {
         $cromos=Cromo::findOrFail($idCromo);
-        $nombretematica['tematica'] = Tematica::all();
+        $albumContenido = Album::all();
 
         // Si es admin o super
         if(Gate::allows('acciones-admin') || Gate::allows('acciones-super')){
-            return view('admin.editCromo',compact('cromos'), $nombretematica);
+            return view('admin.editCromo',compact('cromos'), compact('albumContenido'));
         } else {
             return redirect("/");
         }
@@ -42,7 +44,7 @@ class CromoController extends Controller
     {
         $validarInfoFormCromo = [
             'nombre' => 'required|string|max:30',
-            'descripcion' => 'required|string|max:350',
+            'descripcion' => 'required|string|max:400',
             'imgURL' => 'max:10000|mimes:jpg,jpeg,png'
         ];
         $Mensaje=['required' => 'El :attribute es requerido'];
@@ -50,11 +52,15 @@ class CromoController extends Controller
         $this->validate($request, $validarInfoFormCromo, $Mensaje);
         //se capta toda la informacion y se desecha los datos de mas del form        
         $dataCromo=request()->except(['_token','_method']);
+        $dataCromo['nombre'] = ucwords( $dataCromo['nombre'] ,"----_////_" );
 
-        
         $cromos=Cromo::findOrFail($idCromo);
-        $nombretematica['tematica'] = Tematica::all();
 
+        // actualiza la cantidad de cromos si la tematica es diferente
+        if( !($cromos['idTematica'] == $dataCromo['idTematica']) ){
+
+    
+        }
         // se añade la ruta de la imagen y se borra la anterior
         if($request->hasFile('imgURL')){
             Storage::delete('public/'.$cromos->imgURL);
@@ -74,7 +80,7 @@ class CromoController extends Controller
     {
         $validarInfoFormCromo = [
             'nombre' => 'required|string|max:30|unique:cromo',
-            'descripcion' => 'required|string|max:350',
+            'descripcion' => 'required|string|max:400',
             'imgURL' => 'required|max:10000|mimes:jpg,jpeg,png'
         ];
         $Mensaje=['required' => 'El :attribute es requerido'];
@@ -83,6 +89,7 @@ class CromoController extends Controller
         
         //$dataCromo=request()->all();
         $dataCromo=request()->except('_token');
+        $dataCromo['nombre'] = ucwords( $dataCromo['nombre'] ,"----_/" );
 
         // Ruta de la imagen y carga en el sistema
         if($request->hasFile('imgURL')){
@@ -92,7 +99,8 @@ class CromoController extends Controller
         // Si es admin o super
         if(Gate::allows('acciones-admin') || Gate::allows('acciones-super')){
             Cromo::insert($dataCromo);
-            return redirect('agregarCromo')->with('Mensaje', 'Cromos registrado correctamente');
+            //DB::table('album')->increment('cromosTotales', 1);
+            return redirect('agregarCromo')->with('Mensaje', 'Cromo registrado correctamente');
         }else{
             return redirect('/');
         }
@@ -102,8 +110,15 @@ class CromoController extends Controller
     {
         // Si es admin o super
         if(Gate::allows('acciones-admin') || Gate::allows('acciones-super')){
+
+            // borrado de la imagen
+            $cromos=Cromo::findOrFail($idCromo);
+            Storage::delete('public/'.$cromos->imgURL);
+
             Cromo::destroy($idCromo);
-            return redirect('agregarCromo')->with('Mensaje','Usuario eliminado con exito');
+            //DB::table('album')->decrement('cromosTotales', 1);
+
+            return redirect('agregarCromo')->with('Mensaje','Cromo eliminado del sistema');
         }else{
             return redirect('/');
         }

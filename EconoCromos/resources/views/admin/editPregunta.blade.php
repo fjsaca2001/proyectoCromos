@@ -28,7 +28,7 @@ Bienvenido {{ auth()->user()->nombre }}
 
 
         <div>
-            <label for="opcion1" class="">{{ __('Actualice la opcion 1') }}</label>
+            <label for="opcion1" class="">{{ __('Opción uno') }}</label>
             <input id="opcion1" type="text" class=" @error('opcion1') is-invalid @enderror" name="opcion1"
                 value="{{ $pregunta->opcion1 }}" required autocomplete="opcion1" autofocus>
             @error('opcion1')
@@ -40,7 +40,7 @@ Bienvenido {{ auth()->user()->nombre }}
         </div>
 
         <div>
-            <label for="opcion2" class="">{{ __('Actualice la opcion 2') }}</label>
+            <label for="opcion2" class="">{{ __('Opción dos') }}</label>
             <input id="opcion2" type="text" class=" @error('opcion2') is-invalid @enderror" name="opcion2"
                 value="{{ $pregunta->opcion2 }}" required autocomplete="opcion2" autofocus>
             @error('opcion2')
@@ -52,7 +52,7 @@ Bienvenido {{ auth()->user()->nombre }}
         </div>
 
         <div>
-            <label for="opcion3" class="">{{ __('Actualice la opcion 3') }}</label>
+            <label for="opcion3" class="">{{ __('Opción tres') }}</label>
             <input id="opcion3" type="text" class=" @error('opcion3') is-invalid @enderror" name="opcion3"
                 value="{{ $pregunta->opcion3 }}" required autocomplete="opcion3" autofocus>
             @error('opcion3')
@@ -64,7 +64,7 @@ Bienvenido {{ auth()->user()->nombre }}
         </div>
 
         <div>
-            <label for="respuestaCorrecta" class="">{{ __('Actualice la respuesta correcta') }}</label>
+            <label for="respuestaCorrecta" class="">{{ __('Respuesta correcta') }}</label>
             <input id="respuestaCorrecta" type="text" class=" @error('respuestaCorrecta') is-invalid @enderror"
                 name="respuestaCorrecta" value="{{ $pregunta->respuestaCorrecta }}" required
                 autocomplete="respuestaCorrecta" autofocus>
@@ -82,4 +82,5 @@ Bienvenido {{ auth()->user()->nombre }}
     </form>
 </div>
 <script src="js/preguntas.js"></script>
+
 @endsection

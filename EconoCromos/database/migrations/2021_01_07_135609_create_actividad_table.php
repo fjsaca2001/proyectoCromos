@@ -15,7 +15,7 @@ class CreateActividadTable extends Migration
     {
         Schema::create('actividad', function (Blueprint $table) {
             $table->increments('idActividad');
-            $table->string('nombreActividad');
+            $table->string('nombreActividad', 40);
             $table->timestamps();
         });
     }

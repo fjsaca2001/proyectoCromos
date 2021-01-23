@@ -49,10 +49,10 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'nombre' => ['required', 'string', 'max:255'],
-            'nickname' => ['required', 'string', 'max:15', 'unique:usuariosC'],
-            'email' => ['required', 'string', 'max:255', 'unique:usuariosC'],
-            'pais' => ['required', 'string', 'max:25'],
+            'nombre' => ['required', 'string', 'max:70'],
+            'nickname' => ['required', 'string', 'max:20', 'unique:usuariosC'],
+            'email' => ['required', 'string', 'max:100', 'unique:usuariosC'],
+            'pais' => ['required', 'string', 'max:50'],
             'edad' => ['required', 'integer',],
             'password' => ['required', 'string', 'min:8'],
         ]);
@@ -66,6 +66,8 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $data['nombre'] = ucwords( $data['nombre'] );
+
         return User::create([
             'nombre' => $data['nombre'],
             'nickname' => $data['nickname'],

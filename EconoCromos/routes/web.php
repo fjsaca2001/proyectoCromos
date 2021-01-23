@@ -19,7 +19,12 @@ Route::resource('/usuarios', 'App\Http\Controllers\UsuariosController')->middlew
 Route::resource('/album', 'App\Http\Controllers\AlbumController')->middleware('auth');
 Route::resource('/agregarPregunta', 'App\Http\Controllers\PreguntaController')->middleware('auth');
 Route::resource('/agregarCromo', 'App\Http\Controllers\CromoController')->middleware('auth');
+
+Route::resource('/agregarAlbum', 'App\Http\Controllers\CrearAlbumController')->middleware('auth');
+Route::resource('/crearActividad', 'App\Http\Controllers\CrearActividadController')->middleware('auth');
+Route::resource('/crearTematica', 'App\Http\Controllers\CrearTematicaController')->middleware('auth');
 Route::resource('/test', 'App\Http\Controllers\TestController')->middleware('auth');
+
 
 // Route::group(['middleware' => 'admin'], function () {
 //     Route::view('/usuarios', 'admin.adminindex')->name('usuarios');
@@ -36,5 +41,7 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('/'
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/register', [App\Http\Controllers\HomeController::class, 'register'])->name('register');
 Route::get('/album', [App\Http\Controllers\AlbumController::class, 'index'])->name('album');
+
+
 
 // Route::get('/login', [App\Http\Controllers\HomeController::class, 'login'])->name('login');

@@ -20,8 +20,7 @@ class AlbumSeeder extends Seeder
         // ]);
         Album::create([  
             'descripcion' => 'Álbum de economía',   
-            'nombre' => 'EconoCromos',   
-            'cromosTotales' => '180'
+            'nombre' => 'EconoCromos'
         ]);
         
     }

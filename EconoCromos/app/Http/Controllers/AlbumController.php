@@ -13,11 +13,8 @@ class AlbumController extends Controller
 {
     public function index()
     {
-        /*
-        $datos['cromo']=Cromo::paginate(10);
-        return view('usuario.album',$datos);
-        */
-        $albumContenido = Album::first();
+        $albumContenido = Album::all();
         return view('usuario.album',compact ('albumContenido'));
     }
+
 }

@@ -15,9 +15,8 @@ class Album extends Migration
     {
         Schema::create('album', function (Blueprint $table) {
             $table->increments('idAlbum');
-            $table->string('descripcion');
-            $table->string('nombre');
-            $table->integer('cromosTotales')->default(0);
+            $table->string('nombre', 30);
+            $table->string('descripcion', 500);
             $table->timestamps();
         });
     }

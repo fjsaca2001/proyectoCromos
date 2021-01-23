@@ -225,9 +225,9 @@ return [
 
     'menu' => [
         [
-            'text' => 'Álbum',
+            'text' => 'Álbumes',
             'icon' => 'fas fa-fw fa-book-open',
-            'url'  => '',
+            'url'  => 'agregarAlbum',
             'can'   => [ 'acciones-admin'],  
         ],
         
@@ -240,6 +240,20 @@ return [
             'can'   => [ 'acciones-admin'],
         ],
 
+        [
+            'text' => 'Temáticas',
+            'url'  => 'crearTematica',
+            'icon' => 'fas fa-fw fa-box-open',
+            'can'   => [ 'acciones-admin', 'acciones-super'],
+        ],  
+
+        [
+            'text' => 'Actividades',
+            'url'  => 'crearActividad',
+            'icon' => 'fas fa-fw fa-border-all',
+            'can'   => [ 'acciones-admin', 'acciones-super'],
+        ],  
+        
         [
             'text' => 'Preguntas',
             'icon' => 'fas fa-fw fa-question-circle',
