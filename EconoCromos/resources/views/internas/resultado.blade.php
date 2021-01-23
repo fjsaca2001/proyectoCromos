@@ -2,7 +2,7 @@
 @section('titulo', 'Economía a tu alcance')
 @section('contentactividades')
 
-<!-- <section class="estructuraTest">
+<section class="estructuraTest">
     <h1>{{$actividad[$idenviado-1]->nombreActividad}}</h1>
     @php
     $n = 1;
@@ -44,5 +44,5 @@
             }
         }
     </script>
-</section> -->
+</section>
 @endsection
