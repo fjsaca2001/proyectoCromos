@@ -37,8 +37,8 @@ class CrearTematicaController extends Controller
     public function store(Request $request)
     {
         $validarInfoFormTemat = [
-            'nombreTematica' => 'required|string|max:40|unique:tematica',
-            'descripcion' => 'required|string',
+            'nombreTematica' => 'required|string|max:25|unique:tematica',
+            'descripcion' => 'required|string|max:500',
             'imgTematica' => 'required|max:10000|mimes:jpg,jpeg,png'
         ];
         $Mensaje=['required' => 'El :attribute es requerido'];
@@ -47,6 +47,7 @@ class CrearTematicaController extends Controller
         
         //$dataTematica=request()->all();
         $dataTematica=request()->except('_token');
+        $dataTematica['nombreTematica'] = ucwords( $dataTematica['nombreTematica'] ,"----_////_" );
 
         // Ruta de la imagen y carga en el sistema
         if($request->hasFile('imgTematica')){
@@ -79,8 +80,8 @@ class CrearTematicaController extends Controller
     public function update(Request $request,$idTematica)
     {
         $validarInfoFormTemat = [
-            'nombreTematica' => 'required|string|max:40',
-            'descripcion' => 'required|string',
+            'nombreTematica' => 'required|string|max:25',
+            'descripcion' => 'required|string|max:500',
             'imgTematica' => 'max:10000|mimes:jpg,jpeg,png'
         ];
         $Mensaje=['required' => 'El :attribute es requerido'];
@@ -89,6 +90,7 @@ class CrearTematicaController extends Controller
 
         //se capta toda la informacion y se desecha los datos de mas del form        
         $dataTematica=request()->except(['_token','_method']);
+        $dataTematica['nombreTematica'] = ucwords( $dataTematica['nombreTematica'] ,"----_////_" );
         
         $tematicas=Tematica::findOrFail($idTematica);
 

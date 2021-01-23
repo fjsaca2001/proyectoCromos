@@ -37,6 +37,7 @@ class CrearAlbumController extends Controller
     {
         $validarInfoFormAlbum = [
             'nombre' => 'required|string|max:30|unique:album',
+            'descripcion' => 'required|string|max:500',
         ];
         $Mensaje=['required' => 'El :attribute es requerido'];
 
@@ -44,11 +45,12 @@ class CrearAlbumController extends Controller
         
         //$dataAlbum=request()->all();
         $dataAlbum=request()->except('_token');
+        $dataAlbum['nombre'] = ucwords( $dataAlbum['nombre'] ,"----_////_" );
 
         // Si es admin o super
         if(Gate::allows('acciones-admin') || Gate::allows('acciones-super')){
             Album::insert($dataAlbum);
-            return redirect('agregarAlbum')->with('Mensaje', 'Cromos registrado correctamente');
+            return redirect('agregarAlbum')->with('Mensaje', 'Nuevo álbum registrado en el sistema');
         }else{
             return redirect('/');
         }
@@ -73,6 +75,7 @@ class CrearAlbumController extends Controller
     {
         $validarInfoFormAlbum = [
             'nombre' => 'required|string|max:30',
+            'descripcion' => 'required|string|max:500',
         ];
         $Mensaje=['required' => 'El :attribute es requerido'];
 
@@ -80,13 +83,14 @@ class CrearAlbumController extends Controller
 
         //se capta toda la informacion y se desecha los datos de mas del form        
         $dataAlbum=request()->except(['_token','_method']);
+        $dataAlbum['nombre'] = ucwords( $dataAlbum['nombre'] ,"----_////_" );
 
         $albums=Album::findOrFail($idAlbum);
                 
         // Si es admin o super
         if(Gate::allows('acciones-admin') || Gate::allows('acciones-super')){
             Album::where('idAlbum','=',$idAlbum)->update($dataAlbum);
-            return redirect('agregarAlbum')->with('Mensaje','Cromo modificado correctamente');
+            return redirect('agregarAlbum')->with('Mensaje','Álbum modificado correctamente');
         }else{
             return redirect('/');
         }

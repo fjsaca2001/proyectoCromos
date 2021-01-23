@@ -15,9 +15,9 @@ class CreateTematicaTable extends Migration
     {
         Schema::create('tematica', function (Blueprint $table) {
             $table->increments('idTematica');
-            $table->string('nombreTematica', 100)->require()->unique();
-            $table->longText('descripcion')->require();
-            $table->string('imgTematica')->require();
+            $table->string('nombreTematica', 25)->require()->unique();
+            $table->string('descripcion', 500)->require();
+            $table->string('imgTematica');
             $table->timestamps();
         });
     }

@@ -41,7 +41,7 @@
                         </article>
                     @else
                         @foreach( $albumContenido[0]->desbloqueados as $desbloqueado)
-                            @if($desbloqueado->idCromo === $cromo->idCromo && auth()->user()->idUsuario == $desbloqueado->idUsuario && auth()->user()->idAlbum == $desbloqueado->idAlbum)
+                            @if($desbloqueado->idCromo === $cromo->idCromo && auth()->user()->idUsuario == $desbloqueado->idUsuario)
                                 @php 
                                     $encontrado = True;
                                 @endphp
@@ -52,11 +52,11 @@
                                 <img src="{{ asset('storage').'/'.$cromo->imgURL }}"> 
                                 <div class="cromo" id="cromo">
                                     <img src="{{ asset('storage').'/'.$cromo->imgURL }}"> 
-                                    Descripción del cromo <br>
+                                    {{$cromo->nombre}} <br>
                                     {{$cromo->descripcion}} <br>
-                                    Numero de cromo
-                                    {{$cromo->idCromo}}
+                                    # {{$cromo->idCromo}}
                                 </div>
+                                {{$cromo->nombre}}
                             </article>
                         @else
                             <article class="desactivarCromo">
@@ -89,7 +89,7 @@
                                 </article>
                             @else
                                 @foreach( $album->desbloqueados as $desbloqueado)
-                                    @if($desbloqueado->idCromo === $cromo->idCromo && auth()->user()->idUsuario == $desbloqueado->idUsuario && auth()->user()->idAlbum == $desbloqueado->idAlbum)
+                                    @if($desbloqueado->idCromo === $cromo->idCromo && auth()->user()->idUsuario == $desbloqueado->idUsuario)
                                         @php 
                                             $encontrado = True;
                                             $cantDes = $cantDes +1;
@@ -101,11 +101,11 @@
                                         <img src="{{ asset('storage').'/'.$cromo->imgURL }}"> 
                                         <div class="cromo" id="cromo">
                                             <img src="{{ asset('storage').'/'.$cromo->imgURL }}"> 
-                                            Descripción del cromo <br>
+                                            {{$cromo->nombre}} <br>
                                             {{$cromo->descripcion}} <br>
-                                            Numero de cromo
-                                            {{$cromo->idCromo}}
+                                            # {{$cromo->idCromo}}
                                         </div>
+                                        {{$cromo->nombre}}
                                     </article>
                                 @else
                                     <article class="desactivarCromo">

@@ -34,10 +34,15 @@
             <br>
             <label for="idTematica" class="">{{ __('Tematica a la que pertenece') }}</label>
             <select id="idTematica" name="idTematica">
-                @foreach ($tematica as $tematica)
-                <option value="{{ $tematica->idTematica }}">{{ $tematica->nombreTematica }}</option>
+                @foreach ($albumContenido as $album)
+                    <optgroup label="{{$album->nombre}}">
+                        @foreach ($album->tematicas as $tematica)
+                            <option value="{{ $tematica->idTematica }}">{{ $tematica->nombreTematica }}</option>
+                        @endforeach
+                    </optgroup>
                 @endforeach
             </select>
+
             <br>
             <button type="submit" class="btn btn-primary">
                 {{ __('Guardar cambios') }}

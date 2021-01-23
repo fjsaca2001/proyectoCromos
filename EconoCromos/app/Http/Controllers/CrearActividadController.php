@@ -37,7 +37,7 @@ class CrearActividadController extends Controller
     public function store(Request $request)
     {
         $validarInfoFormActv = [
-            'nombreActividad' => 'required|string|max:60|unique:actividad',
+            'nombreActividad' => 'required|string|max:40|unique:actividad',
         ];
         $Mensaje=['required' => 'El :attribute es requerido'];
 
@@ -45,7 +45,8 @@ class CrearActividadController extends Controller
         
         //$dataActividad=request()->all();
         $dataActividad=request()->except('_token');
-
+        $dataActividad['nombreActividad'] = ucwords( $dataActividad['nombreActividad'] ,"----_/" );
+        
         // Si es admin o super
         if(Gate::allows('acciones-admin') || Gate::allows('acciones-super')){
             Actividad::insert($dataActividad);
@@ -62,6 +63,8 @@ class CrearActividadController extends Controller
         $albumContenido = Album::all();
         $actividades=Actividad::findOrFail($idActividad);
 
+        $actividades['nombreActividad'] = ucwords( $actividades['nombreActividad'] ,"----_/" );
+
         // Si es admin o super
         if(Gate::allows('acciones-admin') || Gate::allows('acciones-super')){
             return view('admin.editActividad', compact('actividades'), compact('albumContenido'));
@@ -74,7 +77,7 @@ class CrearActividadController extends Controller
     public function update(Request $request,$idActividad)
     {
         $validarInfoFormActv = [
-            'nombreActividad' => 'required|string|max:60',
+            'nombreActividad' => 'required|string|max:40',
         ];
         $Mensaje=['required' => 'El :attribute es requerido'];
 
@@ -82,6 +85,7 @@ class CrearActividadController extends Controller
 
         //se capta toda la informacion y se desecha los datos de mas del form        
         $dataActividad=request()->except(['_token','_method']);
+        $dataActividad['nombreActividad'] = ucwords( $dataActividad['nombreActividad'] ,"----_/" );
 
         $actividades=Actividad::findOrFail($idActividad);
                 

@@ -2,7 +2,11 @@
 @section('tittle', 'Admin Panel | Economía a tu alcance')
 @section('content_header')
 <h1>Bienvenido {{auth()->user()->nombre}}</h1>
-<h3>Administrador</h3>
+@if(auth()->user()->rol == 1)
+  <h3>Administrador</h3>
+@elseif(auth()->user()->rol == 2)
+  <h3>Editor</h3>
+@endif
 @endsection
 @section('content')
 @if (Session::has('Mensaje')){{ Session::get('Mensaje') }}

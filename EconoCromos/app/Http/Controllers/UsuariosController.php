@@ -91,17 +91,26 @@ class UsuariosController extends Controller
      */
     public function update(Request $request,$idUsuario)
     {
+        $validarInfoFormUsu = [
+            'nombre' => 'required|string|max:70',
+            'nickname' => 'required|string|max:20',
+        ];
+        $Mensaje=['required' => 'El :attribute es requerido'];
+
+        $this->validate($request, $validarInfoFormUsu, $Mensaje);
         
         $datosUsuario=request()->except(['_token','_method']);
+        $datosUsuario['nombre'] = ucwords( $datosUsuario['nombre'] );
+
         User::where('idUsuario','=',$idUsuario)->update($datosUsuario);
 
         $usuarios=User::findOrFail($idUsuario);
 
-        if(auth()->user()->rol != 3){
-            return redirect('usuarios')->with('Mensaje','Usuario modificado con exito');
+        if(Gate::allows('acciones-admin') ){
+            return redirect('usuarios')->with('Mensaje','Usuario modificado con éxito');
             
-        }else{
-            return redirect('perfil')->with('Mensaje','Usuario modificado con exito');
+        }else {
+            return redirect("/");
         }
     }
 

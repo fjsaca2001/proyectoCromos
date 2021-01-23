@@ -215,6 +215,9 @@ footer article {
     border: 1px solid lightgrey;
 }
 
+.registrar select {
+
+}
 .nav-item {
     background: red;
 }
@@ -339,7 +342,7 @@ footer article {
     text-align: left;
 }
 
-.registrar input {
+.registrar input, .registrar select {
     width: 60%;
     margin: 0.4em;
     border-radius: 8px;

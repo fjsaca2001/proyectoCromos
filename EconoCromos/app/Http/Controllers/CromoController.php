@@ -12,12 +12,6 @@ use Illuminate\Support\Facades\Gate;
 
 class CromoController extends Controller
 {   
-    // mostrar tematicas de un album
-    public function byTematicas($id)
-    {
-        return Tematica::where('idAlbum', $id)->get();
-    }
-
     // Funcion principal
     public function index()
     {           
@@ -34,11 +28,11 @@ class CromoController extends Controller
     public function edit($idCromo)
     {
         $cromos=Cromo::findOrFail($idCromo);
-        $nombretematica['tematica'] = Tematica::all();
+        $albumContenido = Album::all();
 
         // Si es admin o super
         if(Gate::allows('acciones-admin') || Gate::allows('acciones-super')){
-            return view('admin.editCromo',compact('cromos'), $nombretematica);
+            return view('admin.editCromo',compact('cromos'), compact('albumContenido'));
         } else {
             return redirect("/");
         }
@@ -48,7 +42,7 @@ class CromoController extends Controller
     {
         $validarInfoFormCromo = [
             'nombre' => 'required|string|max:30',
-            'descripcion' => 'required|string|max:350',
+            'descripcion' => 'required|string|max:400',
             'imgURL' => 'max:10000|mimes:jpg,jpeg,png'
         ];
         $Mensaje=['required' => 'El :attribute es requerido'];
@@ -56,10 +50,9 @@ class CromoController extends Controller
         $this->validate($request, $validarInfoFormCromo, $Mensaje);
         //se capta toda la informacion y se desecha los datos de mas del form        
         $dataCromo=request()->except(['_token','_method']);
+        $dataCromo['nombre'] = ucwords( $dataCromo['nombre'] ,"----_////_" );
 
-        
         $cromos=Cromo::findOrFail($idCromo);
-        $nombretematica['tematica'] = Tematica::all();
 
         // se añade la ruta de la imagen y se borra la anterior
         if($request->hasFile('imgURL')){
@@ -80,7 +73,7 @@ class CromoController extends Controller
     {
         $validarInfoFormCromo = [
             'nombre' => 'required|string|max:30|unique:cromo',
-            'descripcion' => 'required|string|max:350',
+            'descripcion' => 'required|string|max:400',
             'imgURL' => 'required|max:10000|mimes:jpg,jpeg,png'
         ];
         $Mensaje=['required' => 'El :attribute es requerido'];
@@ -89,6 +82,7 @@ class CromoController extends Controller
         
         //$dataCromo=request()->all();
         $dataCromo=request()->except('_token');
+        $dataCromo['nombre'] = ucwords( $dataCromo['nombre'] ,"----_/" );
 
         // Ruta de la imagen y carga en el sistema
         if($request->hasFile('imgURL')){

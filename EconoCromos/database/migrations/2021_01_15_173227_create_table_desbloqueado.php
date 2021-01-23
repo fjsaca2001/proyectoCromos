@@ -14,7 +14,7 @@ class CreateTableDesbloqueado extends Migration
     public function up()
     {
         Schema::create('desbloqueado', function (Blueprint $table) {
-            $table->unsignedInteger('idAlbum')->default(1);
+            $table->unsignedInteger('idAlbum');
             $table->unsignedInteger('idCromo');
             $table->unsignedInteger('idUsuario');
             $table->foreign('idAlbum')->references('idAlbum')->on('album');

@@ -30,15 +30,15 @@
 <!-- Tabla que almacena la lista de cromos -->
 <div class="tablaCromos">
     <!-- Encabezado de la tabla -->
-    <table class="table table-fixed table-hover table-bordered">
     @foreach ($albumContenido as $album)
+    <table class="table table-fixed table-hover table-bordered">
     <h5>{{$album->nombre}}</h5>
     <br>
       <thead class="thead-dark">
         <tr>
           <th class="col-xs-2">#</th>
           <th class="col-xs-2">Título</th>
-          <th class="col-xs-2">Vista previa</th>
+          <th class="col-xs-2">Imagen</th>
           <th class="col-xs-2">Descripción</th>
           <th class="col-xs-2">Temática</th>
           <th class="actions">Acciones</th>
@@ -51,7 +51,7 @@
       <tr>
         <td class="col-xs-2">{{ $cromo->idCromo }}</td>
         <td class="col-xs-2">{{ $cromo->nombre }}</td>
-        <td class="col-xs-2"><img style="width: 100px" src="{{ asset('storage').'/'.$cromo->imgURL }}"></td>
+        <td class="col-xs-2"><img style="width: 80px" src="{{ asset('storage').'/'.$cromo->imgURL }}"></td>
         <td class="col-xs-2">{{ $cromo->descripcion }}</td>
         @foreach ($album->tematicas as $tematicas)
           @if ($cromo->idTematica === $tematicas->idTematica) 
@@ -108,7 +108,7 @@
         <!-- Campo para agregar la descripción del cromo -->
         <div class="mb-3">
           <label for="descripcion" class="col-form-label">{{ __('Descripción') }}</label>
-            <textarea type="text" class="form-control" id="descripcion" name="descripcion"></textarea>
+            <textarea type="text" class="form-control" id="descripcion" name="descripcion"  required autocomplete="descripcion"></textarea>
             @error('descripcion')
             <span class="invalid-feedback" role="alert">
               <strong>{{ $message }}</strong>
@@ -117,7 +117,7 @@
         </div>
         <!-- Campo para agregar la imagen del cromo -->
         <div class="mb-3">
-          <label for="imgURL" class="col-form-label">{{ __('Cargar cromo') }}</label>
+          <label for="imgURL" class="col-form-label">{{ __('Cargar imagen del cromo') }}</label>
           <input type="file" class="form-control" id="imgURL" name="imgURL" accept="image/*">
         </div>
         <!-- Campo para seleccionar la temática del cromo -->
@@ -135,7 +135,7 @@
         </div>
         <!-- Botón interno para agregar el cromo -->
         <div class="mb-3 text-center">
-          <button type="submit" class="btn btn-primary">{{ __('Crear Cromo') }}</button>
+          <button type="submit" class="btn btn-primary">{{ __('Crear cromo') }}</button>
         </div>
       </form>
       <!-- Footer de la ventana emergente -->

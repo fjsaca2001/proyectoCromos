@@ -15,8 +15,8 @@ class CreateTableCromo extends Migration
     {
         Schema::create('cromo', function (Blueprint $table) {
             $table->increments('idCromo');
-            $table->string('nombre');
-            $table->string('descripcion');
+            $table->string('nombre', 30);
+            $table->string('descripcion', 400);
             $table->string('imgURL');
             $table->unsignedInteger('idTematica');
             $table->foreign('idTematica')->references('idTematica')->on('tematica');
