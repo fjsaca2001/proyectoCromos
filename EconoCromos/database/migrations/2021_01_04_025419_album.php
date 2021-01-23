@@ -17,7 +17,6 @@ class Album extends Migration
             $table->increments('idAlbum');
             $table->string('nombre', 30);
             $table->string('descripcion', 500);
-            $table->integer('cromosTotales')->default(0);
             $table->timestamps();
         });
     }

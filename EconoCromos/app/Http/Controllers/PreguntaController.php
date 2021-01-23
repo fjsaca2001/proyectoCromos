@@ -72,7 +72,7 @@ class PreguntaController extends Controller
             $datos=request()->except(['_token','album']);
             Pregunta::insert($datos);
             
-            return redirect('agregarPregunta');
+            return redirect('agregarPregunta')->with('Mensaje','Pregunta registrada correctamente');
         }else{
             return redirect('/');
         }
@@ -123,7 +123,7 @@ class PreguntaController extends Controller
         if(Gate::allows('acciones-admin') || Gate::allows('acciones-super')){
             $datosPregunta=request()->except(['_token','_method']);
             Pregunta::where('idPregunta','=',$idPregunta)->update($datosPregunta);
-            return redirect('agregarPregunta');
+            return redirect('agregarPregunta')->with('Mensaje','Información de la pregunta actualizada');
         }else{
             return redirect('/');
         }
@@ -139,7 +139,7 @@ class PreguntaController extends Controller
     public function destroy($idPregunta)
     {   if(Gate::allows('acciones-admin') || Gate::allows('acciones-super')){
             Pregunta::destroy($idPregunta);
-            return redirect('agregarPregunta');
+            return redirect('agregarPregunta')->with('Mensaje','Pregunta eliminada del sistema');
         }else{
             return redirect('/');
         }

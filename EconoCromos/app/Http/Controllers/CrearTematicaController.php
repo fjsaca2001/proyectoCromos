@@ -27,8 +27,12 @@ class CrearTematicaController extends Controller
     {
         // Si es admin o super
         if(Gate::allows('acciones-admin') || Gate::allows('acciones-super')){
+
+            $tematicas=Tematica::findOrFail($idTematica);
+            Storage::delete('public/'.$tematicas->imgTematica);
+
             Tematica::destroy($idTematica);
-            return redirect('crearTematica')->with('Mensaje','Usuario eliminado con exito');
+            return redirect('crearTematica')->with('Mensaje','Temática eliminada del sistema');
         }else{
             return redirect('/');
         }
@@ -103,7 +107,7 @@ class CrearTematicaController extends Controller
         // Si es admin o super
         if(Gate::allows('acciones-admin') || Gate::allows('acciones-super')){
             Tematica::where('idTematica','=',$idTematica)->update($dataTematica);
-            return redirect('crearTematica')->with('Mensaje','Cromo modificado correctamente');
+            return redirect('crearTematica')->with('Mensaje','Información de la temática actualizada correctamente');
         }else{
             return redirect('/');
         }

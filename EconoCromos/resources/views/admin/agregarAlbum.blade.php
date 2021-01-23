@@ -42,10 +42,22 @@
         <td class="col-xs-2">{{ $album->descripcion }}</td>
         <td class="col-xs-2">
           @foreach ($album->tematicas as $tematica)
-          {{$tematica->nombreTematica}}<br>
+            {{$tematica->nombreTematica}}<br>
           @endforeach
         </td>
-        <td>{{ $album->cromosTotales }}</td>
+        <td>
+          @php
+            $cuenta=0;
+          @endphp
+          @foreach ($album->tematicas as $tematica)
+            @foreach ($tematica->cromos as $cromo)
+              @php
+                $cuenta = $cuenta +1;
+              @endphp  
+            @endforeach
+          @endforeach
+          {{$cuenta}}
+        </td>
         <td class='action'>
           <a class='btn btn-info' href="{{ url('/agregarAlbum/' . $album->idAlbum . '/edit/') }}">
             <i class='icon-edit'></i>
@@ -53,7 +65,7 @@
           <form class="accionAlbum" method="POST" action="{{ url('/agregarAlbum/' . $album->idAlbum) }}" style="display:inline">
           {{ csrf_field() }}
           {{ method_field('DELETE') }}
-            <button class="btn btn-danger" type="submit" onclick="return confirm('¿Está seguro de eliminar este álbum?');">
+            <button class="btn btn-danger" type="submit" onclick="return confirm('¿Está seguro de eliminar este álbum? Recuerda toda la información ligada a este sera eliminada, tales como cromos, temáticas, actividades y preguntas, ¿Deseas continuar? ');">
               <i class='icon-trash'></i>
             </button>
           </form>
@@ -83,7 +95,7 @@
       <!-- Campo para agregar el nombre del álbum -->
       <div class="mb-3">
           <label for="nombre" class="col-form-label">{{ __('Nombre') }}</label>
-            <input type="text" class="form-control" id="nombre" name="nombre" require>
+            <input type="text" class="form-control" id="nombre" name="nombre" required autocomplete="nombre" maxlength="30">
             @error('nombre')
             <span class="invalid-feedback" role="alert">
               <strong>{{ $message }}</strong>
@@ -93,7 +105,7 @@
         <!-- Campo para agregar la descripción del álbum -->
         <div class="mb-3">
           <label for="descripcion" class="col-form-label">{{ __('Descripción') }}</label>
-            <textarea type="text" class="form-control" id="descripcion" name="descripcion"></textarea>
+            <textarea type="text" class="form-control" id="descripcion" name="descripcion" required autocomplete="descripcion" style="height:130px" maxlength="500"></textarea>
             @error('descripcion')
             <span class="invalid-feedback" role="alert">
               <strong>{{ $message }}</strong>

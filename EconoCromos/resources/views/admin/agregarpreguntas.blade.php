@@ -64,7 +64,7 @@
           <form class="accionUsuario" method="POST" action="{{  url('agregarPregunta/'. $pregunta->idPregunta) }}" style="display:inline">
           {{ csrf_field() }}
           {{ method_field('DELETE') }}
-            <button class="btn btn-danger" type="submit" onclick="return confirm('¿Está seguro de eliminar esta pregunta?');">
+            <button class="btn btn-danger" type="submit" onclick="return confirm('¿Está seguro de eliminar esta pregunta de {{$pregunta->actividad->nombreActividad}}?');"> 
               <i class='icon-trash'></i>
             </button>
           </form>
@@ -97,7 +97,7 @@
         <!-- Campo para agregar la pregunta -->
         <div class="mb-3">
           <label for="pregunta" class="col-form-label">{{ __('Pregunta') }}</label>
-          <textarea class="form-control @error('pregunta') is-invalid @enderror" id="pregunta" name="pregunta" value="{{ old('pregunta') }}" required autocomplete="pregunta"></textarea>
+          <textarea class="form-control @error('pregunta') is-invalid @enderror" id="pregunta" name="pregunta" value="{{ old('pregunta') }}" required autocomplete="pregunta" style="height:100px" maxlength="360"></textarea>
           @error('pregunta')
           <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>
@@ -107,7 +107,7 @@
         <!-- Campo para agregar la opción 1 -->
         <div class="mb-3">
           <label for="opcion1" class="col-form-label">{{ __('Ingrese la opción 1') }}</label>
-          <input type="text" class="form-control @error('opcion1') is-invalid @enderror" id="opcion1" name="opcion1" value="{{ old('opcion1') }}" required autocomplete="opcion1">
+          <input type="text" class="form-control @error('opcion1') is-invalid @enderror" id="opcion1" name="opcion1" value="{{ old('opcion1') }}" required autocomplete="opcion1" maxlength="90">
           @error('opcion1')
           <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>
@@ -117,7 +117,7 @@
         <!-- Campo para ingresar la opción 2 -->
         <div class="mb-3">
           <label for="opcion2" class="col-form-label">{{ __('Ingrese la opción 2') }}</label>
-          <input type="text" class="form-control @error('opcion2') is-invalid @enderror" id="opcion2" name="opcion2" value="{{ old('opcion2') }}" required autocomplete="opcion2">
+          <input type="text" class="form-control @error('opcion2') is-invalid @enderror" id="opcion2" name="opcion2" value="{{ old('opcion2') }}" required autocomplete="opcion2" maxlength="90">
           @error('opcion2')
           <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>
@@ -127,7 +127,7 @@
         <!-- Campo para ingresar la opción 3 -->
         <div class="mb-3">
           <label for="opcion3" class="col-form-label">{{ __('Ingrese la opción 3') }}</label>
-          <input type="text" class="form-control @error('opcion3') is-invalid @enderror" id="opcion3" name="opcion3" value="{{ old('opcion3') }}" required autocomplete="opcion3">
+          <input type="text" class="form-control @error('opcion3') is-invalid @enderror" id="opcion3" name="opcion3" value="{{ old('opcion3') }}" required autocomplete="opcion3" maxlength="90">
           @error('opcion3')
           <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>
@@ -137,7 +137,7 @@
         <!-- Campo para ingresar la respuesta correcta -->
         <div class="mb-3">
           <label for="respuestaCorrecta" class="col-form-label">{{ __('Ingrese la respuesta correcta') }}</label>
-          <input type="text" class="form-control @error('respuestaCorrecta') is-invalid @enderror" id="respuestaCorrecta" name="respuestaCorrecta" value="{{ old('respuestaCorrecta') }}" required autocomplete="respuestaCorrecta">
+          <input type="text" class="form-control @error('respuestaCorrecta') is-invalid @enderror" id="respuestaCorrecta" name="respuestaCorrecta" value="{{ old('respuestaCorrecta') }}" required autocomplete="respuestaCorrecta" maxlength="130">
           @error('respuestaCorrecta')
           <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>
@@ -147,7 +147,7 @@
         <!-- Campo para seleccionar el álbum de la pregunta -->
         <div class="mb-3">
           <label for="album" class="col-form-label">{{ __('Álbum') }}</label>
-          <select class="form-control" id="album" name="album" required>
+          <select class="form-control" id="album" name="album">
             <option selected="selected">Seleccione un álbum</option>
             @foreach ($albumContenido as $album)
               <option value="{{ $album->idAlbum }}">{{ $album->nombre }}</option>
@@ -157,14 +157,14 @@
         <!-- Campo para seleccionar la temática de la pregunta -->
         <div class="mb-3">
           <label for="tematica" class="col-form-label">{{ __('Temática') }}</label>
-          <select class="form-control" id="tematica" name="idTematica" required>
+          <select class="form-control" id="tematica" name="idTematica" required autocomplete="album">
             <option selected="selected">Seleccione una temática</option>
           </select>
         </div>
         <!-- Campo para agregar la actividad de la pregunta -->
         <div class="mb-3">
         <label for="actividad" class="col-form-label">{{ __('Actividades') }}</label>
-          <select class="form-control" id="actividad" name="idActividad" required>
+          <select class="form-control" id="actividad" name="idActividad" required autocomplete="tematica">
             <option selected="selected">Seleccione una actividad</option>
           </select>
         </div>

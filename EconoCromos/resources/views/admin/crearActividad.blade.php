@@ -55,7 +55,7 @@
           <form class="accionCromo" method="POST" action="{{ url('/crearActividad/' . $actividad->idActividad) }}" style="display:inline">
           {{ csrf_field() }}
           {{ method_field('DELETE') }}
-            <button class="btn btn-danger" type="submit" onclick="return confirm('¿Está seguro de eliminar esta temática del álbum {{$album->nombre}}?');">
+            <button class="btn btn-danger" type="submit" onclick="return confirm('¿Está seguro de eliminar {{$actividad->nombreActividad}} de la tematica {{$tematica->nombreTematica}}? Recuerda toda las preguntas y respuestas ligadas a esta seran eliminadas ¿Deseas continuar?');">
               <i class='icon-trash'></i>
             </button>
           </form>
@@ -87,7 +87,7 @@
         <!-- Campo para agregar el nombre de la actividad -->
         <div class="mb-3">
           <label for="nombreActividad" class="col-form-label">{{ __('Nombre') }}</label>
-            <input type="text" class="form-control" id="nombreActividad" name="nombreActividad">
+            <input type="text" class="form-control" id="nombreActividad" name="nombreActividad" required autocomplete="nombreActividad" maxlength="40">
             @error('nombre')
             <span class="invalid-feedback" role="alert">
               <strong>{{ $message }}</strong>

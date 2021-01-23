@@ -56,7 +56,7 @@
           <form class="accionTematica" method="POST" action="{{ url('/crearTematica/' . $tematica->idTematica) }}" style="display:center">
           {{ csrf_field() }}
           {{ method_field('DELETE') }}
-            <button class="btn btn-danger" type="submit" onclick="return confirm('¿Está seguro de eliminar esta temática del álbum {{$album->nombre}}?');">
+            <button class="btn btn-danger" type="submit" onclick="return confirm('¿Está seguro de eliminar esta temática del álbum {{$album->nombre}}? Recuerda toda la información ligada a esta sera eliminada, tales como cromos, actividades y preguntas, ¿Deseas continuar?');">
               <i class='icon-trash'></i>
             </button>
           </form>
@@ -87,7 +87,7 @@
         <!-- Campo para agregar el nombre de la temática-->
         <div class="mb-3">
           <label for="nombreTematica" class="col-form-label">{{ __('Título') }}</label>
-            <input type="text" class="form-control" id="nombreTematica" name="nombreTematica">
+            <input type="text" class="form-control" id="nombreTematica" name="nombreTematica" required autocomplete="nombreTematica" maxlength="25">
             @error('nombreTematica')
             <span class="invalid-feedback" role="alert">
               <strong>{{ $message }}</strong>
@@ -97,7 +97,7 @@
         <!-- Campo para agregar la descripción de la temática -->
         <div class="mb-3">
           <label for="descripcion" class="col-form-label">{{ __('Descripción') }}</label>
-            <textarea type="text" class="form-control" id="descripcion" name="descripcion"></textarea>
+            <textarea type="text" class="form-control" id="descripcion" name="descripcion" name="descripcion" required autocomplete="descripcion" style="height:130px" maxlength="500"></textarea>
             @error('descripcion')
             <span class="invalid-feedback" role="alert">
               <strong>{{ $message }}</strong>
@@ -107,7 +107,7 @@
         <!-- Campo para agregar la imagen de la temática -->
         <div class="mb-3">
           <label for="imgTematica" class="col-form-label">{{ __('Cargar imagen de la temática') }}</label>
-          <input type="file" class="form-control" id="imgTematica" name="imgTematica" accept="image/*">
+          <input type="file" class="form-control" id="imgTematica" name="imgTematica" accept="image/*" required autocomplete="imgTematica">
         </div>
         <!-- Campo para seleccionar el álbum al que pertenece la temática -->
         <div class="mb-3">

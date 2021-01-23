@@ -27,7 +27,7 @@ class CrearAlbumController extends Controller
         // Si es admin o super
         if(Gate::allows('acciones-admin') || Gate::allows('acciones-super')){
             Album::destroy($idAlbum);
-            return redirect('agregarAlbum')->with('Mensaje','Usuario eliminado con exito');
+            return redirect('agregarAlbum')->with('Mensaje','Álbum eliminado del sistema');
         }else{
             return redirect('/');
         }
@@ -90,7 +90,7 @@ class CrearAlbumController extends Controller
         // Si es admin o super
         if(Gate::allows('acciones-admin') || Gate::allows('acciones-super')){
             Album::where('idAlbum','=',$idAlbum)->update($dataAlbum);
-            return redirect('agregarAlbum')->with('Mensaje','Álbum modificado correctamente');
+            return redirect('agregarAlbum')->with('Mensaje','Información del álbum actualizada correctamente');
         }else{
             return redirect('/');
         }

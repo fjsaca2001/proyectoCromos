@@ -15,7 +15,7 @@ class AddTematicaToActividad extends Migration
     {
         Schema::table('actividad', function (Blueprint $table) {
             $table->unsignedInteger('idTematica')->nullable();
-            $table->foreign('idTematica')->references('idTematica')->on('tematica');
+            $table->foreign('idTematica')->references('idTematica')->on('tematica')->onDelete('cascade');;
             // $table->unsignedInteger('idPregunta')->nullable();
             // $table->foreign('idPregunta')->references('idPregunta')->on('pregunta');
         });

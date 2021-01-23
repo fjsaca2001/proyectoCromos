@@ -17,9 +17,9 @@ class CreateTableDesbloqueado extends Migration
             $table->unsignedInteger('idAlbum');
             $table->unsignedInteger('idCromo');
             $table->unsignedInteger('idUsuario');
-            $table->foreign('idAlbum')->references('idAlbum')->on('album');
-            $table->foreign('idUsuario')->references('idUsuario')->on('usuariosC');
-            $table->foreign('idCromo')->references('idCromo')->on('cromo');
+            $table->foreign('idAlbum')->references('idAlbum')->on('album')->onDelete('cascade');
+            $table->foreign('idUsuario')->references('idUsuario')->on('usuariosC')->onDelete('cascade');
+            $table->foreign('idCromo')->references('idCromo')->on('cromo')->onDelete('cascade');
             $table->timestamps();
         });
     }

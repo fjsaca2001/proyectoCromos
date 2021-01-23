@@ -9,6 +9,8 @@ use App\Models\User;
 use App\Models\Album;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\DB;
+
 
 class CromoController extends Controller
 {   
@@ -54,6 +56,11 @@ class CromoController extends Controller
 
         $cromos=Cromo::findOrFail($idCromo);
 
+        // actualiza la cantidad de cromos si la tematica es diferente
+        if( !($cromos['idTematica'] == $dataCromo['idTematica']) ){
+
+    
+        }
         // se añade la ruta de la imagen y se borra la anterior
         if($request->hasFile('imgURL')){
             Storage::delete('public/'.$cromos->imgURL);
@@ -92,7 +99,8 @@ class CromoController extends Controller
         // Si es admin o super
         if(Gate::allows('acciones-admin') || Gate::allows('acciones-super')){
             Cromo::insert($dataCromo);
-            return redirect('agregarCromo')->with('Mensaje', 'Cromos registrado correctamente');
+            //DB::table('album')->increment('cromosTotales', 1);
+            return redirect('agregarCromo')->with('Mensaje', 'Cromo registrado correctamente');
         }else{
             return redirect('/');
         }
@@ -102,8 +110,15 @@ class CromoController extends Controller
     {
         // Si es admin o super
         if(Gate::allows('acciones-admin') || Gate::allows('acciones-super')){
+
+            // borrado de la imagen
+            $cromos=Cromo::findOrFail($idCromo);
+            Storage::delete('public/'.$cromos->imgURL);
+
             Cromo::destroy($idCromo);
-            return redirect('agregarCromo')->with('Mensaje','Usuario eliminado con exito');
+            //DB::table('album')->decrement('cromosTotales', 1);
+
+            return redirect('agregarCromo')->with('Mensaje','Cromo eliminado del sistema');
         }else{
             return redirect('/');
         }

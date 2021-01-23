@@ -65,7 +65,7 @@
           <form class="accionCromo" method="POST" action="{{ url('/agregarCromo/' . $cromo->idCromo) }}" style="display:inline">
           {{ csrf_field() }}
           {{ method_field('DELETE') }}
-            <button class="btn btn-danger" type="submit" onclick="return confirm('¿Está seguro de eliminar este cromo?');">
+            <button class="btn btn-danger" type="submit" onclick="return confirm('¿Está seguro de eliminar el cromo {{$cromo->nombre}}? Recuerda, a todos los usuarios quienes hayan obtenido este cromo se les elimará de sus álbumes ¿Deseas continuar? ');">
               <i class='icon-trash'></i>
             </button>
           </form>
@@ -98,7 +98,7 @@
         <!-- Campo para agregar el nombre del cromo -->
         <div class="mb-3">
           <label for="nombre" class="col-form-label">{{ __('Nombre') }}</label>
-            <input type="text" class="form-control" id="nombre" name="nombre">
+            <input type="text" class="form-control" id="nombre" name="nombre" required autocomplete="nombre" maxlength="30">
             @error('nombre')
             <span class="invalid-feedback" role="alert">
               <strong>{{ $message }}</strong>
@@ -108,7 +108,7 @@
         <!-- Campo para agregar la descripción del cromo -->
         <div class="mb-3">
           <label for="descripcion" class="col-form-label">{{ __('Descripción') }}</label>
-            <textarea type="text" class="form-control" id="descripcion" name="descripcion"  required autocomplete="descripcion"></textarea>
+            <textarea type="text" class="form-control" id="descripcion" name="descripcion" required autocomplete="descripcion" style="height:130px" maxlength="400"></textarea>
             @error('descripcion')
             <span class="invalid-feedback" role="alert">
               <strong>{{ $message }}</strong>
@@ -118,7 +118,7 @@
         <!-- Campo para agregar la imagen del cromo -->
         <div class="mb-3">
           <label for="imgURL" class="col-form-label">{{ __('Cargar imagen del cromo') }}</label>
-          <input type="file" class="form-control" id="imgURL" name="imgURL" accept="image/*">
+          <input type="file" class="form-control" id="imgURL" name="imgURL" accept="image/*" required autocomplete="imgURL">
         </div>
         <!-- Campo para seleccionar la temática del cromo -->
         <div class="mb-3">

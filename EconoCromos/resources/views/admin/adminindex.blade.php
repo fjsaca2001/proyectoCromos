@@ -60,7 +60,7 @@
           <form class="accionUsuario" method="POST" action="{{ url('/usuarios/' . $usuariosC->idUsuario) }}" style="display:inline">
           {{ csrf_field() }}
           {{ method_field('DELETE') }}
-            <button class="btn btn-danger" type="submit" onclick="return confirm('Seguro que desea eliminar este usuario');">
+            <button class="btn btn-danger" type="submit" onclick="return confirm('Esta seguro que desea eliminar el usuario {{$usuariosC->nombre}}');">
               <i class='icon-trash'></i>
             </button>
           </form>

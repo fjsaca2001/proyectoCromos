@@ -27,7 +27,7 @@ class CrearActividadController extends Controller
         // Si es admin o super
         if(Gate::allows('acciones-admin') || Gate::allows('acciones-super')){
             Actividad::destroy($idActividad);
-            return redirect('crearActividad')->with('Mensaje','Actividad eliminada con exito');
+            return redirect('crearActividad')->with('Mensaje','Actividad eliminada del sistema');
         }else{
             return redirect('/');
         }
@@ -92,7 +92,7 @@ class CrearActividadController extends Controller
         // Si es admin o super
         if(Gate::allows('acciones-admin') || Gate::allows('acciones-super')){
             Actividad::where('idActividad','=',$idActividad)->update($dataActividad);
-            return redirect('crearActividad')->with('Mensaje','Actividad modificada con éxito');
+            return redirect('crearActividad')->with('Mensaje','Información de la actividad actualizada correctamente');
         }else{
             return redirect('/');
         }

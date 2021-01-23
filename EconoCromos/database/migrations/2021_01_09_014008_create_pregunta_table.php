@@ -16,10 +16,10 @@ class CreatePreguntaTable extends Migration
         Schema::create('pregunta', function (Blueprint $table) {
             $table->increments('idPregunta');
             $table->string('pregunta', 360)->unique();
-            $table->string('opcion1', 130);
-            $table->string('opcion2', 130);
-            $table->string('opcion3', 130);
-            $table->string('respuestaCorrecta', 130);
+            $table->string('opcion1', 90);
+            $table->string('opcion2', 90);
+            $table->string('opcion3', 90);
+            $table->string('respuestaCorrecta', 90);
             $table->timestamps();
         });
     }

@@ -154,7 +154,7 @@
             {{ csrf_field() }}
             <label for="nombre" class="">{{ __('Nombre') }}</label>
             <input id="nombre" type="text" class=" @error('nombre') is-invalid @enderror" name="nombre"
-                value="{{ old('nombre') }}" required autocomplete="nombre" autofocus>
+                value="{{ old('nombre') }}" required autocomplete="nombre" maxlength="70">
             @error('nombre')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
@@ -163,7 +163,7 @@
 
             <label for="nickname" class="">{{ __('Alias') }}</label>
             <input id="nickname" type="text" class=" @error('nickname') is-invalid @enderror" name="nickname"
-                value="{{ old('nickname') }}" required autocomplete="nickname" autofocus>
+                value="{{ old('nickname') }}" required autocomplete="nickname" maxlength="20">
             @error('nickname')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
@@ -172,7 +172,7 @@
 
             <label for="email" class="">{{ __('Correo') }}</label>
             <input id="email" type="email" class=" @error('email') is-invalid @enderror" name="email"
-                value="{{ old('email') }}" required autocomplete="email">
+                value="{{ old('email') }}" required autocomplete="email" maxlength="100">
             @error('email')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
@@ -428,7 +428,7 @@
 
             <label for="edad" class="">{{ __('Edad') }}</label>
             <input id="edad" type="number" class=" @error('edad') is-invalid @enderror" name="edad"
-                value="{{ old('edad') }}" required autocomplete="edad" autofocus>
+                value="{{ old('edad') }}" required autocomplete="edad" min="5" max="110">
             @error('edad')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
@@ -437,7 +437,7 @@
 
             <label for="password" class="">{{ __('Contraseña') }}</label>
             <input id="password" type="password" class=" @error('password') is-invalid @enderror" name="password"
-                required autocomplete="password">
+                required autocomplete="password" minlength="8">
             @error('password')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
