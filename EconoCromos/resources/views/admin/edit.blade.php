@@ -1,8 +1,9 @@
-@extends('layouts.layout')
-@section('titulo', 'Economía a tu alcance')
-@section('contentedit')
-    @if (Session::has('Mensaje')){{ Session::get('Mensaje') }}
-    @endif
+@extends('adminlte::page')
+@section('tittle', 'Admin Panel | Economía a tu alcance')
+@section('content_header')
+<h1>Tablero</h1>
+@endsection
+@section('content')
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">

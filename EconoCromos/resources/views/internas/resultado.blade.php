@@ -2,7 +2,12 @@
 @section('titulo', 'Economía a tu alcance')
 @section('contentalbum')
 <section style="margin-top: 6em">
-{{$count}}
-<br>
-{{$cantidadPreguntas}}
+    {{$correctas}}
+    <br>
+    {{$cantidadPreguntas}}
+
+    @foreach( $albumContenido as $album)
+        {{$album->nombre}}
+    @endforeach
+
 </section>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Actividad;
 use App\Models\Tematica;
 use App\Models\Pregunta;
+use App\Models\Album;
 use Illuminate\Support\Facades\Log;
 
 class TestController extends Controller
@@ -31,17 +32,23 @@ class TestController extends Controller
 
     public function store(Request $request )
     {   
-        
-        $array = array_values($request->input('question'));
-        $count = 0;
-        $cantidadPreguntas = count($array);
-        foreach($array as $array2) {
-            if( $array2 == "correcta") {
-                $count = $count +1;
+        $correctas = 0;
+        $cantidadPreguntas= $request->input('numeroPreg');
+
+        if(! ($request->input('question') == NULL) ) {
+            $array = array_values($request->input('question'));
+            
+            foreach($array as $array2) {
+                if( $array2 == "correcta") {
+                    $correctas = $correctas +1;
+                }
             }
         }
-        //dd($array);
-        return view('internas.resultado', compact('count'), compact('cantidadPreguntas'));
+
+        $albumContenido = Album::all();
+
+        //$cantidadPreguntas = count($array);
+        return view('internas.resultado', compact('correctas', 'cantidadPreguntas', 'albumContenido') );
 
     }
 }
