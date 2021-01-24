@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 */
 //Route::view('/', 'home')->name('home');//para paginas con poca logica
 Route::view('/usuarios', 'admin.adminindex')->name('usuarios');
+Route::view('/resultado', 'internas.resultado')->name('resultado');
+
 Route::resource('/usuarios', 'App\Http\Controllers\UsuariosController')->middleware('auth');
 Route::resource('/album', 'App\Http\Controllers\AlbumController')->middleware('auth');
 Route::resource('/agregarPregunta', 'App\Http\Controllers\PreguntaController')->middleware('auth');
@@ -42,6 +44,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/register', [App\Http\Controllers\HomeController::class, 'register'])->name('register');
 Route::get('/album', [App\Http\Controllers\AlbumController::class, 'index'])->name('album');
 
-
+Route::get('/test', [App\Http\Controllers\TestController::class, 'store'])->name('test.store');
 
 // Route::get('/login', [App\Http\Controllers\HomeController::class, 'login'])->name('login');

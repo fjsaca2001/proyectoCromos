@@ -42,10 +42,11 @@ class CrearAlbumController extends Controller
         $Mensaje=['required' => 'El :attribute es requerido'];
 
         $this->validate($request, $validarInfoFormAlbum, $Mensaje);
-        
+
         //$dataAlbum=request()->all();
         $dataAlbum=request()->except('_token');
-        $dataAlbum['nombre'] = ucwords( $dataAlbum['nombre'] ,"----_////_" );
+        $dataAlbum['nombre'] = ucfirst( $dataAlbum['nombre']);
+        $dataAlbum['descripcion'] = ucfirst( $dataAlbum['descripcion']);
 
         // Si es admin o super
         if(Gate::allows('acciones-admin') || Gate::allows('acciones-super')){
@@ -83,7 +84,9 @@ class CrearAlbumController extends Controller
 
         //se capta toda la informacion y se desecha los datos de mas del form        
         $dataAlbum=request()->except(['_token','_method']);
-        $dataAlbum['nombre'] = ucwords( $dataAlbum['nombre'] ,"----_////_" );
+        
+        $dataAlbum['nombre'] = ucfirst( $dataAlbum['nombre']);
+        $dataAlbum['descripcion'] = ucfirst( $dataAlbum['descripcion']);
 
         $albums=Album::findOrFail($idAlbum);
                 

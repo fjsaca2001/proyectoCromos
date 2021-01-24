@@ -52,15 +52,12 @@ class CromoController extends Controller
         $this->validate($request, $validarInfoFormCromo, $Mensaje);
         //se capta toda la informacion y se desecha los datos de mas del form        
         $dataCromo=request()->except(['_token','_method']);
-        $dataCromo['nombre'] = ucwords( $dataCromo['nombre'] ,"----_////_" );
+
+        $dataCromo['nombre'] = ucfirst( $dataCromo['nombre']);
+        $dataCromo['descripcion'] = ucfirst( $dataCromo['descripcion']);
 
         $cromos=Cromo::findOrFail($idCromo);
-
-        // actualiza la cantidad de cromos si la tematica es diferente
-        if( !($cromos['idTematica'] == $dataCromo['idTematica']) ){
-
-    
-        }
+        
         // se añade la ruta de la imagen y se borra la anterior
         if($request->hasFile('imgURL')){
             Storage::delete('public/'.$cromos->imgURL);
@@ -89,7 +86,8 @@ class CromoController extends Controller
         
         //$dataCromo=request()->all();
         $dataCromo=request()->except('_token');
-        $dataCromo['nombre'] = ucwords( $dataCromo['nombre'] ,"----_/" );
+        $dataCromo['nombre'] = ucfirst( $dataCromo['nombre']);
+        $dataCromo['descripcion'] = ucfirst( $dataCromo['descripcion']);
 
         // Ruta de la imagen y carga en el sistema
         if($request->hasFile('imgURL')){

@@ -45,7 +45,7 @@ class CrearActividadController extends Controller
         
         //$dataActividad=request()->all();
         $dataActividad=request()->except('_token');
-        $dataActividad['nombreActividad'] = ucwords( $dataActividad['nombreActividad'] ,"----_/" );
+        $dataActividad['nombreActividad'] = ucfirst( $dataActividad['nombreActividad']);
         
         // Si es admin o super
         if(Gate::allows('acciones-admin') || Gate::allows('acciones-super')){
@@ -63,7 +63,7 @@ class CrearActividadController extends Controller
         $albumContenido = Album::all();
         $actividades=Actividad::findOrFail($idActividad);
 
-        $actividades['nombreActividad'] = ucwords( $actividades['nombreActividad'] ,"----_/" );
+        $actividades['nombreActividad'] = ucfirst( $actividades['nombreActividad']);
 
         // Si es admin o super
         if(Gate::allows('acciones-admin') || Gate::allows('acciones-super')){
@@ -85,7 +85,7 @@ class CrearActividadController extends Controller
 
         //se capta toda la informacion y se desecha los datos de mas del form        
         $dataActividad=request()->except(['_token','_method']);
-        $dataActividad['nombreActividad'] = ucwords( $dataActividad['nombreActividad'] ,"----_/" );
+        $dataActividad['nombreActividad'] = ucfirst( $dataActividad['nombreActividad']);
 
         $actividades=Actividad::findOrFail($idActividad);
                 

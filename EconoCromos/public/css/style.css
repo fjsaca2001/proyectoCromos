@@ -168,7 +168,7 @@ footer article {
 }
 
 .cromo {
-    width: 35%;
+    width: 40%;
     background-color: #1b4a76;
     border-radius: 1em;
     padding: 1.5em;
@@ -178,9 +178,6 @@ footer article {
     z-index: 200;
     display: none;
     color: rgb(235, 235, 235);
-}
-.cromo img{
-    width: 50%;
 }
 
 .login {

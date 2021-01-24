@@ -70,6 +70,16 @@ class PreguntaController extends Controller
         // Si es admin o super
         if(Gate::allows('acciones-admin') || Gate::allows('acciones-super')){
             $datos=request()->except(['_token','album']);
+
+            $datos['pregunta'] = ucfirst( $datos['pregunta']);
+            $datos['pregunta'] = ucwords( $datos['pregunta'] ,"?" );
+            $datos['pregunta'] = ucwords( $datos['pregunta'] ,"¿" );
+            
+            $datos['opcion1'] = ucfirst( $datos['opcion1']);
+            $datos['opcion2'] = ucfirst( $datos['opcion2']);
+            $datos['opcion3'] = ucfirst( $datos['opcion3']);
+            $datos['respuestaCorrecta'] = ucfirst( $datos['respuestaCorrecta']);
+
             Pregunta::insert($datos);
             
             return redirect('agregarPregunta')->with('Mensaje','Pregunta registrada correctamente');
@@ -122,6 +132,16 @@ class PreguntaController extends Controller
         // Si es admin o super
         if(Gate::allows('acciones-admin') || Gate::allows('acciones-super')){
             $datosPregunta=request()->except(['_token','_method']);
+
+            $datosPregunta['pregunta'] = ucfirst( $datosPregunta['pregunta']);
+            $datosPregunta['pregunta'] = ucwords( $datosPregunta['pregunta'] ,"?" );
+            $datosPregunta['pregunta'] = ucwords( $datosPregunta['pregunta'] ,"¿" );
+            
+            $datosPregunta['opcion1'] = ucfirst( $datosPregunta['opcion1']);
+            $datosPregunta['opcion2'] = ucfirst( $datosPregunta['opcion2']);
+            $datosPregunta['opcion3'] = ucfirst( $datosPregunta['opcion3']);
+            $datosPregunta['respuestaCorrecta'] = ucfirst( $datosPregunta['respuestaCorrecta']);
+
             Pregunta::where('idPregunta','=',$idPregunta)->update($datosPregunta);
             return redirect('agregarPregunta')->with('Mensaje','Información de la pregunta actualizada');
         }else{

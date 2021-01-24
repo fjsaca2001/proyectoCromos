@@ -51,7 +51,8 @@ class CrearTematicaController extends Controller
         
         //$dataTematica=request()->all();
         $dataTematica=request()->except('_token');
-        $dataTematica['nombreTematica'] = ucwords( $dataTematica['nombreTematica'] ,"----_////_" );
+        $dataTematica['nombreTematica'] = ucfirst( $dataTematica['nombreTematica']);
+        $dataTematica['descripcion'] = ucfirst( $dataTematica['descripcion']);
 
         // Ruta de la imagen y carga en el sistema
         if($request->hasFile('imgTematica')){
@@ -94,7 +95,9 @@ class CrearTematicaController extends Controller
 
         //se capta toda la informacion y se desecha los datos de mas del form        
         $dataTematica=request()->except(['_token','_method']);
-        $dataTematica['nombreTematica'] = ucwords( $dataTematica['nombreTematica'] ,"----_////_" );
+        
+        $dataTematica['nombreTematica'] = ucfirst( $dataTematica['nombreTematica']);
+        $dataTematica['descripcion'] = ucfirst( $dataTematica['descripcion']);
         
         $tematicas=Tematica::findOrFail($idTematica);
 
