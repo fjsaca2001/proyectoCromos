@@ -14,7 +14,7 @@ class AddTemtaticaToAlbum extends Migration
     public function up()
     {
         Schema::table('tematica', function (Blueprint $table) {
-            $table->unsignedInteger('idAlbum')->default(1);
+            $table->unsignedInteger('idAlbum');
             $table->foreign('idAlbum')->references('idAlbum')->on('album')->onDelete('cascade');
         });
     }

@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 @section('tittle', 'Admin Panel | Economía a tu alcance')
 @section('content_header')
-<h3>Modificar temáticas</h3>
+<h3>{{$tematicas->nombreTematica}}</h3>
 @endsection
 @section('content')
 <!-- Importación -->
@@ -30,7 +30,7 @@
         <!-- Campo para modificar la descripción de la temática -->
         <div class="col-md-10">
             <label for="descripcion" class="form-label">{{ __('Descripción de la temática') }}</label>
-            <textarea type="text" class="form-control @error('descripcion') is-invalid @enderror" id="descripcion" name="descripcion" value="{{$tematicas->descripcion}}" required autocomplete="descripcion"></textarea>
+            <textarea type="text" class="form-control @error('descripcion') is-invalid @enderror" id="descripcion" name="descripcion" required autocomplete="descripcion" style="height: 150px">{{$tematicas->descripcion}}</textarea>
             @error('descripcion')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
@@ -39,18 +39,19 @@
         </div>
         <!-- Campo que muestra la imagen de la temática -->
         <div class="col-md-4">
-            <label for="imgTematica" class="form-label">{{ __('Imagen de la temática') }}</label><br>
+            <label for="imgTematica" class="form-label">{{ __('Imagen actual de la temática') }}</label><br>
             <img style="width: 200px" src="{{ asset('storage').'/'.$tematicas->imgTematica }}">
         </div>
         <!-- Campo para modificar la imagen de la temática -->
         <div class="col-md-6">
             <label for="imgTematica" class="form-label">{{ __('Cargar nueva imagen') }}</label>
-            <input type="file" class="form-control" id="imgTematica" name="imgTematica" accept="image/*" required autocomplete="imgTematica">
+            <input type="file" class="form-control" id="imgTematica" name="imgTematica" accept="image/*">
         </div>
         <!-- Campo para editar el álbum al que pertenece  la temática -->
         <div class="col-md-4">
-            <label for="idTematica" class="form-label">{{ __('Álbum al que pertenece') }}</label>
+            <label for="idTematica" class="form-label">{{ __('Álbum') }}</label>
             <select class="form-control @error('idAlbum') is-invalid @enderror" id="idAlbum" name="idAlbum">
+                <option disabled selected value="{{$tematicas->idAlbum}}">Seleccionar un álbum</option>
                 @foreach ($albumContenido as $album)
                 <option value="{{ $album->idAlbum }}">{{ $album->nombre }}</option>
                 @endforeach

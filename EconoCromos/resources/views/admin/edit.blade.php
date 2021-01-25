@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 @section('tittle', 'Admin Panel | Economía a tu alcance')
 @section('content_header')
-<h3>Modificar datos del usuario</h3>
+<h3>{{ $usuarios->nombre }}</h3>
 @endsection
 @section('content')
 <!-- Importación -->
@@ -60,9 +60,8 @@
         <!-- Campo para modificar el país del usuario -->
         <div class="col-md-4">
             <label for="pais" class="form-label">{{ __('Pais') }}</label>
-            <select class="seleccionarPais form-control  @error('pais') is-invalid @enderror" id="pais" name="pais" value="{{ $usuarios->pais }}" required autocomplete="pais">
-                <option selected>Elija el país</option>
-                <option value="Ecuador" id="AF">Ecuador</option>
+            <select class="seleccionarPais form-control  @error('pais') is-invalid @enderror" id="pais" name="pais" required autocomplete="pais">
+                <option selected>{{ $usuarios->pais }}</option>
                 <option value="Afganistán" id="AF">Afganistán</option>
                 <option value="Albania" id="AL">Albania</option>
                 <option value="Alemania" id="DE">Alemania</option>

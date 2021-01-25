@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 @section('tittle', 'Admin Panel | Economía a tu alcance')
 @section('content_header')
-<h1>Bienvenido {{auth()->user()->nombre}}</h1>
+<h1>{{auth()->user()->nombre}}</h1>
 <h3>Administrador</h3>
 @endsection
 @section('content')
@@ -23,7 +23,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 
 <!-- Encabezado -->
-<h4>Lista de usuarios:</h4>
+<h4>Lista de usuarios</h4>
 <br>
 <!-- Tabla que almacena la lista de los usuarios -->
 <div class="tablaUsuarios">
@@ -57,13 +57,15 @@
           <a class='btn btn-info' href="{{ url('/usuarios/' . $usuariosC->idUsuario . '/edit/') }}">
             <i class='icon-edit'></i>
           </a>
-          <form class="accionUsuario" method="POST" action="{{ url('/usuarios/' . $usuariosC->idUsuario) }}" style="display:inline">
-          {{ csrf_field() }}
-          {{ method_field('DELETE') }}
-            <button class="btn btn-danger" type="submit" onclick="return confirm('Esta seguro que desea eliminar el usuario {{$usuariosC->nombre}}');">
-              <i class='icon-trash'></i>
-            </button>
-          </form>
+          @if( !(auth()->user()->idUsuario == $usuariosC->idUsuario))
+            <form class="accionUsuario" method="POST" action="{{ url('/usuarios/' . $usuariosC->idUsuario) }}" style="display:inline">
+            {{ csrf_field() }}
+            {{ method_field('DELETE') }}
+              <button class="btn btn-danger" type="submit" onclick="return confirm('Esta seguro que desea eliminar el usuario {{$usuariosC->nombre}}');">
+                <i class='icon-trash'></i>
+              </button>
+            </form>
+          @endif
         </td>
       </tr>
       @endforeach

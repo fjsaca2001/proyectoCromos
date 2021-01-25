@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 @section('tittle', 'Admin Panel | Economía a tu alcance')
 @section('content_header')
-<h3>Modificar álbumes</h3>
+<h3>{{$albums->nombre}}</h3>
 @endsection
 @section('content')
 <!-- Importación -->
@@ -30,7 +30,7 @@
         <!-- Campo para modificar la descripción del álbum -->
         <div class="col-md-8">
             <label for="descripcion" class="form-label">{{ __('Descripción del álbum') }}</label>
-            <textarea type="text" class="form-control @error('descripcion') is-invalid @enderror" id="descripcion" name="descripcion" value="{{$albums->descripcion}}" required autocomplete="descripcion"></textarea>
+            <textarea type="text" class="form-control @error('descripcion') is-invalid @enderror" id="descripcion" name="descripcion" required autocomplete="descripcion" style="height: 150px; width: 640px">{{$albums->descripcion}}</textarea>
             @error('descripcion')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>

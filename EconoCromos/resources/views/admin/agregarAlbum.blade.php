@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 @section('tittle', 'Admin Panel | Economía a tu alcance')
 @section('content_header')
-<h1>Bienvenido {{auth()->user()->nombre}}</h1>
+<h1>{{auth()->user()->nombre}}</h1>
 <h3>Administrador</h3>
 @endsection
 @section('content')
@@ -19,7 +19,7 @@
 <!-- Option 1: Bootstrap Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 <!-- Encabezado -->
-<h4>Lista de álbumes:</h4>
+<h4>Lista de álbumes</h4>
 <br>
 <!-- Tabla que almacena la lista de cromos -->
 <div class="tablaAlbumes">
@@ -117,10 +117,6 @@
           <button type="submit" class="btn btn-primary">{{ __('Crear álbum') }}</button>
         </div>
       </form>
-      <!-- Footer de la ventana emergente -->
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-      </div>
     </div>
   </div>
 </div>

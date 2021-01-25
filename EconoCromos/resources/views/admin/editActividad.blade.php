@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 @section('tittle', 'Admin Panel | Economía a tu alcance')
 @section('content_header')
-<h3>Modificar actividades</h3>
+<h3>{{$actividades->nombreActividad}}</h3>
 @endsection
 @section('content')
 <!-- Importación -->
@@ -50,9 +50,9 @@
     <!-- Campo para seleccionar el album al que pertenece la actividad-->
     <div class="col-md-6">
       <label for="albun" class="form-label">{{ __('Album') }}</label>
-      <select class="form-control @error('idAlbum') is-invalid @enderror" id="albun" name="albun" required
+      <select class="form-control @error('idAlbum') is-invalid @enderror" id="albun" name="albun"
         autocomplete="albun">
-        <option selected="selected">Seleccione un álbum</option>
+        <option disabled selected >Seleccione un álbum</option>
         @foreach ($albumContenido as $album)
         <option value="{{ $album->idAlbum }}">{{ $album->nombre }}</option>
         @endforeach
@@ -64,7 +64,7 @@
       <label for="tematica" class="form-label">{{ __('Temática') }}</label>
       <select class="form-control @error('idAlbum') is-invalid @enderror" id="tematica" name="idTematica" required
         autocomplete="albun">
-        <option selected="selected">Seleccione una temática</option>
+        <option  disabled selected value="{{$actividades->idActividad}}">Seleccionar una temática</option>
       </select>
     </div>
 

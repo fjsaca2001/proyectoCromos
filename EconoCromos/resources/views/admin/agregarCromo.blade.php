@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 @section('tittle', 'Admin Panel | Economía a tu alcance')
 @section('content_header')
-<h1>Bienvenido {{auth()->user()->nombre}}</h1>
+<h1>{{auth()->user()->nombre}}</h1>
 @if(auth()->user()->rol == 1)
   <h3>Administrador</h3>
 @elseif(auth()->user()->rol == 2)
@@ -27,7 +27,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 
 <!-- Encabezado -->
-<h4>Lista de cromos:</h4>
+<h4>Lista de cromos</h4>
 <!-- Tabla que almacena la lista de cromos -->
 <div class="tablaCromos">
     <!-- Encabezado de la tabla -->
@@ -125,20 +125,20 @@
         <div class="mb-3">
           <label for="idTematica" class="col-form-label">{{ __('Temática') }}</label>
             <select class="form-control" id="idTematica" name="idTematica">
-            @foreach ($albumContenido as $album)
-            <optgroup label="{{$album->nombre}}">
-              @foreach ($album->tematicas as $tematica)
-              <option value="{{ $tematica->idTematica }}">{{ $tematica->nombreTematica }}</option>
+              @foreach ($albumContenido as $album)
+              <optgroup label="{{$album->nombre}}">
+                @foreach ($album->tematicas as $tematica)
+                <option value="{{ $tematica->idTematica }}">{{ $tematica->nombreTematica }}</option>
+                @endforeach
+              </optgroup>
               @endforeach
-            </optgroup>
-            @endforeach
-          </select>
+            </select>
         </div> --}}
         <!-- Campo para seleccionar el álbum del cromo -->
         <div class="mb-3">
           <label for="albun" class="col-form-label">{{ __('Álbum') }}</label>
-          <select class="form-control" id="albun" name="albun">
-            <option selected="selected">Seleccione un álbum</option>
+          <select class="form-control" id="albun" name="albun" required >
+            <option  disabled selected value="">Seleccionar un álbum</option>
             @foreach ($albumContenido as $album)
               <option value="{{ $album->idAlbum }}">{{ $album->nombre }}</option>
             @endforeach
@@ -148,8 +148,8 @@
         <!-- Campo para seleccionar la temática del cromo -->
         <div class="mb-3">
           <label for="tematica" class="col-form-label">{{ __('Temática') }}</label>
-          <select class="form-control" id="tematica" name="idTematica" required autocomplete="albun">
-            <option selected="selected">Seleccione una temática</option>
+          <select class="form-control" id="tematica" name="idTematica" required autocomplete="tematica">
+            <option disabled selected> Seleccionar una temática</option>
           </select>
         </div>
 
@@ -158,10 +158,6 @@
           <button type="submit" class="btn btn-primary">{{ __('Crear cromo') }}</button>
         </div>
       </form>
-      <!-- Footer de la ventana emergente -->
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-      </div>
     </div>
   </div>
 </div>

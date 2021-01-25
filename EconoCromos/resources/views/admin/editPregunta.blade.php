@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 @section('tittle', 'Admin Panel | Economía a tu alcance')
 @section('content_header')
-<h3>Modificar preguntas</h3>
+<h3>{{ $pregunta->pregunta }}</h3>
 @endsection
 @section('content')
 <!-- Importación -->
@@ -24,7 +24,7 @@
         {{ method_field('PATCH') }}
         <!-- Campo para modificar el nombre de la pregunta-->
         <div class="col-md-12">
-            <label for="pregunta" class="form-label">{{ __('Pregunta') }}</label>
+            <label for="pregunta" class="form-label">{{ __('Texto') }}</label>
             <input type="text" class="form-control @error('pregunta') is-invalid @enderror" id="pregunta"
                 name="pregunta" value="{{ $pregunta->pregunta }}" required autocomplete="pregunta">
             @error('pregunta')
@@ -36,7 +36,7 @@
         </div>
         <!-- Campo para modificar el valor de la opción 1 -->
         <div class="col-md-4">
-            <label for="opcion1" class="form-label">{{ __('Opción 1') }}</label>
+            <label for="opcion1" class="form-label">{{ __('Opción uno') }}</label>
             <input type="text" class="form-control @error('opcion1') is-invalid @enderror" id="opcion1" name="opcion1"
                 value="{{ $pregunta->opcion1 }}" required autocomplete="opcion1">
             @error('opcion1')
@@ -48,7 +48,7 @@
         </div>
         <!-- Campo para modificar el valor de la opción 2 -->
         <div class="col-md-4">
-            <label for="opcion2" class="form-label">{{ __('Opción 2') }}</label>
+            <label for="opcion2" class="form-label">{{ __('Opción dos') }}</label>
             <input type="text" class="form-control @error('opcion2') is-invalid @enderror" id="opcion2" name="opcion2"
                 value="{{ $pregunta->opcion2 }}" required autocomplete="opcion2">
             @error('opcion2')
@@ -60,7 +60,7 @@
         </div>
         <!-- Campo para modificar el valor de la opción 3-->
         <div class="col-md-4">
-            <label for="opcion3" class="form-label">{{ __('Opción 3') }}</label>
+            <label for="opcion3" class="form-label">{{ __('Opción tres') }}</label>
             <input type="text" class="form-control @error('opcion3') is-invalid @enderror" id="opcion3" name="opcion3"
                 value="{{ $pregunta->opcion3 }}" required autocomplete="opcion3">
             @error('opcion3')
@@ -88,7 +88,7 @@
         <div class="col-md-6">
             <label for="albun" class="form-label">{{ __('Álbum') }}</label>
             <select class="form-control @error('idAlbum') is-invalid @enderror" id="albun" name="albun">
-                <option selected="selected">Seleccione un álbum</option>
+                <option disabled selected value="">Seleccione un álbum</option>
                 @foreach ($albumContenido as $album)
                 <option value="{{ $album->idAlbum }}">{{ $album->nombre }}</option>
                 @endforeach
@@ -99,7 +99,7 @@
         <div class="col-md-6">
             <label for="tematica" class="form-label">{{ __('Temática') }}</label>
             <select class="form-control @error('udTematica') is-invalid @enderror" id="tematica" name="idTematica" required autocomplete="album">
-                <option selected="selected">Seleccione una temática</option>
+                <option disabled selected value="{{$pregunta->idTematica}}">Seleccione una temática</option>
             </select>
         </div>
 
@@ -107,7 +107,7 @@
         <div class="col-md-6">
             <label for="actividad" class="form-label">{{ __('Actividades') }}</label>
             <select class="form-control @error('idActividad') is-invalid @enderror" id="actividad" name="idActividad" required autocomplete="tematica">
-                <option selected="selected">Seleccione una actividad</option>
+                <option disabled selected value="{{$pregunta->idActividad}}">Seleccione una actividad</option>
             </select>
         </div>
 

@@ -5,14 +5,14 @@ $(function() {
 function onSelectChange(){
     var id = $(this).val();
     if(! id){
-        $('#tematica').html('<option value=""> Seleccione una actividad</option>');
+        $('#tematica').html('<option disabled selected value="">Seleccione una actividad</option>');
         return;
     }
 
 
     // ajax
     $.get('/api/agregarPregunta/'+id+'/album', function (data) {  
-        var html_select = '<option value=""> Seleccione una actividad</option>';
+        var html_select = '<option disabled selected value="">Seleccione una actividad</option>';
         for (var i = 0; i < data.length; ++i){
             html_select += '<option value="'+data[i].idTematica+'">'+data[i].nombreTematica+'</option>';
         }
@@ -28,13 +28,13 @@ $(function() {
 function onSelectChange2(){
     var id = $(this).val();
     if(! id){
-        $('#actividad').html('<option value=""> Seleccione una actividad</option>');
+        $('#actividad').html('<option disabled selected value="">Seleccione una actividad</option>');
         return;
     }
 
     // ajax
     $.get('/api/agregarPregunta/'+id+'/actividades', function (data) {  
-        var html_select = '<option value=""> Seleccione una actividad</option>';
+        var html_select = '<option disabled selected value="">Seleccione una actividad</option>';
         for (var i = 0; i < data.length; ++i){
             html_select += '<option value="'+data[i].idActividad+'">'+data[i].nombreActividad+'</option>';
         }
@@ -50,13 +50,13 @@ $(function() {
 function onSelectChange3(){
     var id = $(this).val();
     if(! id){
-        $('#tematica').html('<option value=""> Seleccione una temática</option>');
+        $('#tematica').html('<option disabled selected value="">Seleccione una temática</option>');
         return;
     }
 
     // ajax
     $.get('/api/agregarActividad/'+id+'/tematicas', function (data) {  
-        var html_select = '<option value=""> Seleccione una temática</option>';
+        var html_select = '<option disabled selected value="">Seleccione una temática</option>';
         for (var i = 0; i < data.length; ++i){
             html_select += '<option value="'+data[i].idTematica+'">'+data[i].nombreTematica+'</option>';
         }

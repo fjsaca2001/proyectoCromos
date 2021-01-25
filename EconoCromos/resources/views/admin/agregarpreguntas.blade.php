@@ -1,7 +1,7 @@
 @extends('adminlte::page')
 @section('tittle', 'Admin Panel | Economía a tu alcance')
 @section('content_header')
-<h1>Bienvenido {{auth()->user()->nombre}}</h1>
+<h1>{{auth()->user()->nombre}}</h1>
 @if(auth()->user()->rol == 1)
   <h3>Administrador</h3>
 @elseif(auth()->user()->rol == 2)
@@ -26,7 +26,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 
 <!-- Encabezado -->
-<h4>Lista de preguntas:</h4>
+<h4>Lista de preguntas</h4>
 <!-- Tabla que almacena la lista de preguntas-->
 <div class="tablaPreguntas">
   @foreach ($albumContenido as $album)
@@ -137,7 +137,7 @@
         <!-- Campo para ingresar la respuesta correcta -->
         <div class="mb-3">
           <label for="respuestaCorrecta" class="col-form-label">{{ __('Ingrese la respuesta correcta') }}</label>
-          <input type="text" class="form-control @error('respuestaCorrecta') is-invalid @enderror" id="respuestaCorrecta" name="respuestaCorrecta" value="{{ old('respuestaCorrecta') }}" required autocomplete="respuestaCorrecta" maxlength="130">
+          <input type="text" class="form-control @error('respuestaCorrecta') is-invalid @enderror" id="respuestaCorrecta" name="respuestaCorrecta" value="{{ old('respuestaCorrecta') }}" required autocomplete="respuestaCorrecta" maxlength="90">
           @error('respuestaCorrecta')
           <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>
@@ -147,8 +147,8 @@
         <!-- Campo para seleccionar el álbum de la pregunta -->
         <div class="mb-3">
           <label for="album" class="col-form-label">{{ __('Álbum') }}</label>
-          <select class="form-control" id="album" name="album">
-            <option selected="selected">Seleccione un álbum</option>
+          <select class="form-control" id="album" name="album" required>
+          <option  disabled selected value="">Seleccionar un álbum</option>
             @foreach ($albumContenido as $album)
               <option value="{{ $album->idAlbum }}">{{ $album->nombre }}</option>
             @endforeach
@@ -158,14 +158,14 @@
         <div class="mb-3">
           <label for="tematica" class="col-form-label">{{ __('Temática') }}</label>
           <select class="form-control" id="tematica" name="idTematica" required autocomplete="album">
-            <option selected="selected">Seleccione una temática</option>
+            <option disabled selected>Seleccione una temática</option>
           </select>
         </div>
         <!-- Campo para agregar la actividad de la pregunta -->
         <div class="mb-3">
         <label for="actividad" class="col-form-label">{{ __('Actividades') }}</label>
           <select class="form-control" id="actividad" name="idActividad" required autocomplete="tematica">
-            <option selected="selected">Seleccione una actividad</option>
+            <option disabled selected>Seleccione una actividad</option>
           </select>
         </div>
         <!-- Botón interno para agregar la pregunta -->
@@ -173,9 +173,6 @@
           <button type="submit" class="btn btn-primary">Crear pregunta</button>
         </div>
       </form>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-      </div>
     </div>
   </div>
 </div>
