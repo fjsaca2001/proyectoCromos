@@ -224,13 +224,7 @@ return [
     */
 
     'menu' => [
-        [
-            'text' => 'Álbumes',
-            'icon' => 'fas fa-fw fa-book-open',
-            'url'  => 'agregarAlbum',
-            'can'   => [ 'acciones-admin'],  
-        ],
-        
+
         ['header' => 'Menú de opciones'],
         
         [
@@ -238,6 +232,13 @@ return [
             'icon' => 'fas fa-fw fa-address-book',
             'url'  => 'usuarios',
             'can'   => [ 'acciones-admin'],
+        ],
+
+        [
+            'text' => 'Álbumes',
+            'icon' => 'fas fa-fw fa-book-open',
+            'url'  => 'agregarAlbum',
+            'can'   => [ 'acciones-admin'],  
         ],
 
         [

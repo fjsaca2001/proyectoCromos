@@ -1,54 +1,65 @@
 @extends('adminlte::page')
 @section('tittle', 'Admin Panel | Economía a tu alcance')
 @section('content_header')
-<h1>Tablero</h1>
+<h3>Modificar cromos</h3>
 @endsection
 @section('content')
-<section class="modificarCromo">
-    <article>
-        <h2>Nueva Información</h2>
-        <form method="POST" action="{{ url('/agregarCromo/'. $cromos->idCromo)}}" enctype="multipart/form-data">
+<!-- Importación -->
+<link href="{{ asset('css/administracion.css') }}" rel="stylesheet">
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 
-            @csrf
-            {{ csrf_field() }}
-            {{ method_field('PATCH') }}
-            <label for="nombre" >{{ __('Nombre') }}</label>
-            <input id="nombre" type="text" name="nombre" value="{{$cromos->nombre}}" required autocomplete="nombre">
+<!-- Formulario para modificar los datos del cromo -->
+<div class="formularioCromos container">
+    <form class="row g-3" method="POST" action="{{ url('/agregarCromo/'. $cromos->idCromo)}}" enctype="multipart/form-data">
+        @csrf
+        {{ csrf_field() }}
+        {{ method_field('PATCH') }}
+        <!-- Campo para modificar el nombre del cromo -->
+        <div class="col-md-4">
+            <label for="nombre" class="form-label">{{ __('Nombre del cromo') }}</label>
+            <input type="text" class="form-control @error('nombre') is-invalid @enderror" id="nombre" name="nombre" value="{{$cromos->nombre}}" required autocomplete="nombre">
             @error('nombre')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
             @enderror
-            <br>
-            <label for="descripcion" >{{ __('Descripción del Cromo') }}</label>
-            <textarea id="descripcion" type="text" name="descripcion" required autocomplete="descripcion">{{$cromos->descripcion}}</textarea>
+        </div>
+        <!-- Campo para modificar la descripción del cromo -->
+        <div class="col-md-10">
+            <label for="descripcion" class="form-label">{{ __('Descripción del cromo') }}</label>
+            <textarea type="text" class="form-control @error('descripcion') is-invalid @enderror" id="descripcion" name="descripcion" value="{{$cromos->descripcion}}" required autocomplete="descripcion"></textarea>
             @error('descripcion')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
             @enderror
-            <br>
-            <label for="imgURL" >{{ __('Imagen del cromo') }}</label>
-            <br> <img style="width: 200px" src="{{ asset('storage').'/'.$cromos->imgURL }}"> <br>
-            Cargar nueva imagen
-            <input id="imgURL" type="file" name="imgURL" value="{{$cromos->imgURl}}" accept="image/*">
-            <br>
-            <label for="idTematica" class="">{{ __('Tematica a la que pertenece') }}</label>
-            <select id="idTematica" name="idTematica">
+        </div>
+        <!-- Campo que muestra la imagen de la temática -->
+        <div class="col-md-4">
+            <label for="imgURL" class="form-label">{{ __('Imagen de la temática') }}</label><br>
+            <img style="width: 200px" src="{{ asset('storage').'/'.$cromos->imgURL }}">
+        </div>
+        <!-- Campo para agregar la imagen del cromo -->
+        <div class="col-md-6">
+          <label for="imgURL" class="form-label">{{ __('Cargar nueva imagen') }}</label>
+          <input type="file" class="form-control" id="imgURL" name="imgURL" accept="image/*" required autocomplete="imgURL">
+        </div>
+        <!-- Campo para editar el álbum al que pertenece el cromo -->
+        <div class="col-md-4">
+            <label for="idTematica" class="form-label">{{ __('Álbum') }}</label>
+            <select class="form-control @error('idAlbum') is-invalid @enderror" id="idAlbum" name="idAlbum">
                 @foreach ($albumContenido as $album)
-                    <optgroup label="{{$album->nombre}}">
-                        @foreach ($album->tematicas as $tematica)
-                            <option value="{{ $tematica->idTematica }}">{{ $tematica->nombreTematica }}</option>
-                        @endforeach
-                    </optgroup>
+                <option value="{{ $album->idAlbum }}">{{ $album->nombre }}</option>
                 @endforeach
             </select>
-
-            <br>
-            <button type="submit" class="btn btn-primary">
-                {{ __('Guardar cambios') }}
-            </button>
-        </form>
-    </article>
-</section> 
+        </div>
+        <!-- Botón interno para modificar los datos de la temática-->
+        <div class="botonModificarCromos col-20">
+            <button type="submit" class="btn btn-primary">{{ __('Modificar datos') }}</button>
+        </div>
+    </form>
+</div>
 @endsection
