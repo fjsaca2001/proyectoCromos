@@ -1,27 +1,42 @@
 @extends('adminlte::page')
 @section('tittle', 'Admin Panel | Economía a tu alcance')
 @section('content_header')
-<h1>Tablero</h1>
+<h3>Modificar actividades</h3>
 @endsection
 @section('content')
+<!-- Importación -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-<section class="modificarAlbum" style="margin-top:6em">
-  <article>
-    <h2>Nueva Información</h2>
-    <form method="POST" action="{{ url('/crearActividad/'. $actividades->idActividad )}}" enctype="multipart/form-data">
+<link href="{{ asset('css/administracion.css') }}" rel="stylesheet">
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 
-      @csrf
-      {{ csrf_field() }}
-      {{ method_field('PATCH') }}
-      <label for="nombreActividad">{{ __('Nombre de la Actividad') }}</label>
-      <input id="nombreActividad" type="text" name="nombreActividad" value="{{$actividades->nombreActividad}}" require>
-      @error('nombre')
+<!-- Formulario para modificar los datos de la actividad -->
+<div class="formularioActividades container">
+  <form class="row g-3" method="POST" action="{{ url('/crearActividad/'. $actividades->idActividad )}}"
+    enctype="multipart/form-data">
+    @csrf
+    {{ csrf_field() }}
+    {{ method_field('PATCH') }}
+    <!-- Campo para modificar el nombre de la la actividad -->
+    <div class="col-md-6">
+      <label for="nombreActividad" class="form-label">{{ __('Nombre de la actividad') }}</label>
+      <input type="text" class="form-control @error('nombreActividad') is-invalid @enderror" id="nombreActividad"
+        name="nombreActividad" value="{{$actividades->nombreActividad}}" required autocomplete="nombreActividad">
+      @error('nombreActividad')
       <span class="invalid-feedback" role="alert">
         <strong>{{ $message }}</strong>
       </span>
       @enderror
-      <br>
-      {{-- <select id="idTematica" name="idTematica">
+    </div>
+    {{--
+    <!-- Campo para editar el álbum al que pertenece  la actividad -->
+    <div class="col-md-6">
+      <label for="idTematica" class="form-label">{{ __('Álbum al que pertenece') }}</label>
+      <select class="form-control @error('idAlbum') is-invalid @enderror" id="idTematica" name="idTematica">
         @foreach ($albumContenido as $album)
         <optgroup label="{{$album->nombre}}">
           @foreach ($album->tematicas as $tematica)
@@ -29,26 +44,35 @@
           @endforeach
         </optgroup>
         @endforeach
-      </select> --}}
-
-      <!-- Campo para seleccionar el album al que pertenece la actividad-->
-      <select id="albun" name="albun" required autocomplete="albun">
+      </select>
+    </div> --}}
+    
+    <!-- Campo para seleccionar el album al que pertenece la actividad-->
+    <div class="col-md-6">
+      <label for="albun" class="form-label">{{ __('Album') }}</label>
+      <select class="form-control @error('idAlbum') is-invalid @enderror" id="albun" name="albun" required
+        autocomplete="albun">
         <option selected="selected">Seleccione un álbum</option>
         @foreach ($albumContenido as $album)
         <option value="{{ $album->idAlbum }}">{{ $album->nombre }}</option>
         @endforeach
       </select>
+    </div>
 
-      <!-- Campo para seleccionar la tematica a la que pertenece la actividad-->
-      <select id="tematica" name="idTematica" required autocomplete="albun">
+    <!-- Campo para seleccionar la tematica a la que pertenece la actividad-->
+    <div class="col-md-6">
+      <label for="tematica" class="form-label">{{ __('Temática') }}</label>
+      <select class="form-control @error('idAlbum') is-invalid @enderror" id="tematica" name="idTematica" required
+        autocomplete="albun">
         <option selected="selected">Seleccione una temática</option>
       </select>
+    </div>
 
-      <button type="submit" class="btn btn-primary">
-        {{ __('Guardar cambios') }}
-      </button>
-    </form>
-  </article>
-</section>
+    <!-- Botón interno para modificar los datos de la actividad -->
+    <div class="botonModificarActividades col-20">
+      <button type="submit" class="btn btn-primary">{{ __('Modificar datos') }}</button>
+    </div>
+  </form>
+</div>
 <script src="../../js/preguntas.js"></script>
 @endsection

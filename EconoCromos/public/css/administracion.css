@@ -50,3 +50,47 @@ h3 {
     height: 400px;
     overflow: auto;
 }
+
+/* Estilos para el formulario de modificación de usuarios */
+.formularioUsuarios{
+    width:100%;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+/* Estilos para el formulario de modificación de temáticas */
+.formularioTematicas{
+    width:100%;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+/* Estilos para el formulario de modificación de actividades */
+.formularioActividades{
+    width:100%;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+/* Estilos para el formulario de modificación de actividades */
+.formularioPreguntas{
+    width:100%;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+/* Estilos para el formulario de modificación de álbumes */
+.formularioAlbumes{
+    width:100%;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+/* Estilos para el formulario de modificación de álbumes */
+.formularioCromos{
+    width:100%;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+
