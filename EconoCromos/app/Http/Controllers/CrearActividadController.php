@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Album;
+use App\Models\Tematica;
 use App\Models\Actividad;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Gate;
@@ -9,6 +10,11 @@ use Illuminate\Http\Request;
 
 class CrearActividadController extends Controller
 {
+    public function byTematicas($id)
+    {
+        return Tematica::where('idAlbum', $id)->get();
+    }
+
     // funcion por defecto
     public function index()
     {           
@@ -44,7 +50,7 @@ class CrearActividadController extends Controller
         $this->validate($request, $validarInfoFormActv, $Mensaje);
         
         //$dataActividad=request()->all();
-        $dataActividad=request()->except('_token');
+        $dataActividad=request()->except('_token','albun');
         $dataActividad['nombreActividad'] = ucfirst( $dataActividad['nombreActividad']);
         
         // Si es admin o super
@@ -84,7 +90,7 @@ class CrearActividadController extends Controller
         $this->validate($request, $validarInfoFormActv, $Mensaje);
 
         //se capta toda la informacion y se desecha los datos de mas del form        
-        $dataActividad=request()->except(['_token','_method']);
+        $dataActividad=request()->except(['_token','_method','albun']);
         $dataActividad['nombreActividad'] = ucfirst( $dataActividad['nombreActividad']);
 
         $actividades=Actividad::findOrFail($idActividad);

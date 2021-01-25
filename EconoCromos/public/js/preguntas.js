@@ -41,3 +41,25 @@ function onSelectChange2(){
         $('#actividad').html(html_select);
     });
 }
+
+// Funcion para cambiar las tematicas por album
+$(function() {
+    $('#albun').on('change', onSelectChange3);
+});
+
+function onSelectChange3(){
+    var id = $(this).val();
+    if(! id){
+        $('#tematica').html('<option value=""> Seleccione una temática</option>');
+        return;
+    }
+
+    // ajax
+    $.get('/api/agregarActividad/'+id+'/tematicas', function (data) {  
+        var html_select = '<option value=""> Seleccione una temática</option>';
+        for (var i = 0; i < data.length; ++i){
+            html_select += '<option value="'+data[i].idTematica+'">'+data[i].nombreTematica+'</option>';
+        }
+        $('#tematica').html(html_select);
+    });
+}

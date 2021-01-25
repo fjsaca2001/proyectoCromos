@@ -76,11 +76,35 @@ Bienvenido {{ auth()->user()->nombre }}
             <br>
         </div>
 
+        <!-- Campo para seleccionar el álbum de la pregunta -->
+        <div class="mb-3">
+          <label for="albun" class="">{{ __('Álbum') }}</label>
+          <select class="" id="albun" name="albun">
+            <option selected="selected">Seleccione un álbum</option>
+            @foreach ($albumContenido as $album)
+              <option value="{{ $album->idAlbum }}">{{ $album->nombre }}</option>
+            @endforeach
+          </select>
+        </div>
+        <!-- Campo para seleccionar la temática de la pregunta -->
+        <div class="mb-3">
+          <label for="tematica" class="">{{ __('Temática') }}</label>
+          <select class="" id="tematica" name="idTematica" required autocomplete="album">
+            <option selected="selected">Seleccione una temática</option>
+          </select>
+        </div>
+        <!-- Campo para agregar la actividad de la pregunta -->
+        <div class="mb-3">
+        <label for="actividad" class="">{{ __('Actividades') }}</label>
+          <select class="" id="actividad" name="idActividad" required autocomplete="tematica">
+            <option selected="selected">Seleccione una actividad</option>
+          </select>
+        </div>
         <button type="submit" class="btn btn-primary">
             {{ __('Modificar') }}
         </button>
     </form>
 </div>
-<script src="js/preguntas.js"></script>
+<script src="../../js/preguntas.js"></script>
 
 @endsection

@@ -131,7 +131,7 @@ class PreguntaController extends Controller
     {
         // Si es admin o super
         if(Gate::allows('acciones-admin') || Gate::allows('acciones-super')){
-            $datosPregunta=request()->except(['_token','_method']);
+            $datosPregunta=request()->except(['_token','_method','albun']);
 
             $datosPregunta['pregunta'] = ucfirst( $datosPregunta['pregunta']);
             $datosPregunta['pregunta'] = ucwords( $datosPregunta['pregunta'] ,"?" );
