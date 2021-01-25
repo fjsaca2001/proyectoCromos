@@ -5,6 +5,7 @@
 @endsection
 @section('content')
 <!-- Importación -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <link href="{{ asset('css/administracion.css') }}" rel="stylesheet">
 <!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
@@ -37,17 +38,20 @@
             </span>
             @enderror
         </div>
+
         <!-- Campo que muestra la imagen de la temática -->
         <div class="col-md-4">
             <label for="imgURL" class="form-label">{{ __('Imagen de la temática') }}</label><br>
             <img style="width: 200px" src="{{ asset('storage').'/'.$cromos->imgURL }}">
         </div>
+
         <!-- Campo para agregar la imagen del cromo -->
         <div class="col-md-6">
           <label for="imgURL" class="form-label">{{ __('Cargar nueva imagen') }}</label>
           <input type="file" class="form-control" id="imgURL" name="imgURL" accept="image/*" required autocomplete="imgURL">
         </div>
-        <!-- Campo para editar el álbum al que pertenece el cromo -->
+
+        {{-- <!-- Campo para editar el álbum al que pertenece el cromo -->
         <div class="col-md-4">
             <label for="idTematica" class="form-label">{{ __('Álbum') }}</label>
             <select class="form-control @error('idAlbum') is-invalid @enderror" id="idAlbum" name="idAlbum">
@@ -55,11 +59,32 @@
                 <option value="{{ $album->idAlbum }}">{{ $album->nombre }}</option>
                 @endforeach
             </select>
+        </div> --}}
+
+        <!-- Campo para seleccionar el álbum del cromo -->
+        <div class="col-md-4">
+          <label for="albun" class="form-label">{{ __('Álbum') }}</label>
+          <select class="form-control @error('idAlbum') is-invalid @enderror" id="albun" name="albun">
+            <option selected="selected">Seleccione un álbum</option>
+            @foreach ($albumContenido as $album)
+              <option value="{{ $album->idAlbum }}">{{ $album->nombre }}</option>
+            @endforeach
+          </select>
         </div>
+
+        <!-- Campo para seleccionar la temática del cromo -->
+        <div class="col-md-4">
+          <label for="tematica" class="form-label">{{ __('Temática') }}</label>
+          <select class="form-control @error('idAlbum') is-invalid @enderror" id="tematica" name="idTematica" required autocomplete="albun">
+            <option selected="selected">Seleccione una temática</option>
+          </select>
+        </div>
+
         <!-- Botón interno para modificar los datos de la temática-->
         <div class="botonModificarCromos col-20">
             <button type="submit" class="btn btn-primary">{{ __('Modificar datos') }}</button>
         </div>
     </form>
 </div>
+<script src="../../js/preguntas.js"></script>
 @endsection

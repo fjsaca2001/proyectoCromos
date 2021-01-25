@@ -51,7 +51,7 @@ class CromoController extends Controller
 
         $this->validate($request, $validarInfoFormCromo, $Mensaje);
         //se capta toda la informacion y se desecha los datos de mas del form        
-        $dataCromo=request()->except(['_token','_method']);
+        $dataCromo=request()->except(['_token','_method','albun']);
 
         $dataCromo['nombre'] = ucfirst( $dataCromo['nombre']);
         $dataCromo['descripcion'] = ucfirst( $dataCromo['descripcion']);
@@ -85,7 +85,7 @@ class CromoController extends Controller
         $this->validate($request, $validarInfoFormCromo, $Mensaje);
         
         //$dataCromo=request()->all();
-        $dataCromo=request()->except('_token');
+        $dataCromo=request()->except('_token','albun');
         $dataCromo['nombre'] = ucfirst( $dataCromo['nombre']);
         $dataCromo['descripcion'] = ucfirst( $dataCromo['descripcion']);
 

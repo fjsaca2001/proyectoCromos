@@ -16,6 +16,7 @@
 <meta content='lab2023' name='author'>
 <meta content='' name='description'>
 <meta content='' name='keywords'>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <link href="assets/stylesheets/application-a07755f5.css" rel="stylesheet" type="text/css"/><link href="//netdna.bootstrapcdn.com/font-awesome/3.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 <link href="assets/images/favicon.ico" rel="icon" type="image/ico"/>
 <link href="{{ asset('css/administracion.css') }}" rel="stylesheet">
@@ -120,7 +121,7 @@
           <label for="imgURL" class="col-form-label">{{ __('Cargar imagen del cromo') }}</label>
           <input type="file" class="form-control" id="imgURL" name="imgURL" accept="image/*" required autocomplete="imgURL">
         </div>
-        <!-- Campo para seleccionar la temática del cromo -->
+        {{-- <!-- Campo para seleccionar la temática del cromo -->
         <div class="mb-3">
           <label for="idTematica" class="col-form-label">{{ __('Temática') }}</label>
             <select class="form-control" id="idTematica" name="idTematica">
@@ -132,7 +133,26 @@
             </optgroup>
             @endforeach
           </select>
+        </div> --}}
+        <!-- Campo para seleccionar el álbum del cromo -->
+        <div class="mb-3">
+          <label for="albun" class="col-form-label">{{ __('Álbum') }}</label>
+          <select class="form-control" id="albun" name="albun">
+            <option selected="selected">Seleccione un álbum</option>
+            @foreach ($albumContenido as $album)
+              <option value="{{ $album->idAlbum }}">{{ $album->nombre }}</option>
+            @endforeach
+          </select>
         </div>
+
+        <!-- Campo para seleccionar la temática del cromo -->
+        <div class="mb-3">
+          <label for="tematica" class="col-form-label">{{ __('Temática') }}</label>
+          <select class="form-control" id="tematica" name="idTematica" required autocomplete="albun">
+            <option selected="selected">Seleccione una temática</option>
+          </select>
+        </div>
+
         <!-- Botón interno para agregar el cromo -->
         <div class="mb-3 text-center">
           <button type="submit" class="btn btn-primary">{{ __('Crear cromo') }}</button>
@@ -146,5 +166,5 @@
   </div>
 </div>
 
-<script src="js/preguntas.js"></script>
+<script src="../../js/preguntas.js"></script>
 @endsection
