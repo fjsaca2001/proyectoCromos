@@ -69,6 +69,13 @@
             <option disabled selected value="{{$cromos->idTematica}}">Seleccionar una temática</option>
           </select>
         </div>
+        <!-- Campo para agregar la actividad de la pregunta -->
+        <div class="col-md-6">
+            <label for="actividad" class="form-label">{{ __('Actividades') }}</label>
+            <select class="form-control @error('idActividad') is-invalid @enderror" id="actividad" name="idActividad" required autocomplete="actividad">
+                <option disabled selected value="{{$cromos->idActividad}}">Seleccione una actividad</option>
+            </select>
+        </div>
 
         <!-- Botón interno para modificar los datos de la temática-->
         <div class="botonModificarCromos col-20">

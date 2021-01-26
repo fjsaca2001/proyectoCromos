@@ -8,6 +8,7 @@ use App\Models\Tematica;
 use App\Models\Pregunta;
 use App\Models\Album;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\DB;
 
 class TestController extends Controller
 {
@@ -15,19 +16,10 @@ class TestController extends Controller
         
     }
     public function show($idenviado)
-    {   /*
-        $actividad = Actividad::where('idActividad', $id)->get();
-        return view('internas.test',compact ('actividad'));
-        */
-        /*
-        $actividad = Actividad::All();
-        $idenviado = intval($idenviado);
-        return view('internas.test',compact ('actividad'), compact('idenviado'));
-        */
+    {   
         $idenviado = intval($idenviado);
         $actividad = Actividad::find($idenviado);
         return view('internas.test',compact ('actividad'));
-
     }
 
     public function store(Request $request )
@@ -44,11 +36,155 @@ class TestController extends Controller
                 }
             }
         }
+    
+        // Buscar la actividad mediante idactividad (enviado desde test)
+        $valorInputActiv= $request->input('valorInputActiv');
+        $resultActividad = Actividad::find($valorInputActiv);
 
-        $albumContenido = Album::all();
+        $valorInputUser= $request->input('valorInputUser');
+        $arrayCromosDesbloqueados = Array();
 
-        //$cantidadPreguntas = count($array);
-        return view('internas.resultado', compact('correctas', 'cantidadPreguntas', 'albumContenido') );
+        // Reparticion de cromos
+        // 100%
+        if($correctas == $cantidadPreguntas){
+            foreach( $resultActividad->cromos as $cromo){
+                if(DB::table('desbloqueado')
+                            ->where('idAlbum', $cromo->tematica->album->idAlbum)
+                            ->where('idCromo', $cromo->idCromo)
+                            ->where('idUsuario', $valorInputUser)->doesntExist() ){
+                    DB::table('desbloqueado')->insert([
+                        'idAlbum' => $cromo->tematica->album->idAlbum,
+                        'idCromo' => $cromo->idCromo,
+                        'idUsuario' => $valorInputUser
+                    ]);
+                }
+                $arrayCromosDesbloqueados[] = array($cromo->idCromo, $cromo->imgURL, $cromo->nombre);
+            }
+           // Si no obiene el 100%, entonces...
+        } else{
+            $porcentaje = ($correctas/$cantidadPreguntas)*100;
+            $cantidadCromos = count($resultActividad->cromos);
+            $contador = 0;
+            if( $porcentaje <=30){
+                foreach( $resultActividad->cromos as $cromo){
+                    $contador++;
+                    if($contador <= $cantidadCromos*0.255){
+                        if(DB::table('desbloqueado')
+                            ->where('idAlbum', $cromo->tematica->album->idAlbum)
+                            ->where('idCromo', $cromo->idCromo)
+                            ->where('idUsuario', $valorInputUser)->doesntExist() ){
+                            DB::table('desbloqueado')->insert([
+                                'idAlbum' => $cromo->tematica->album->idAlbum,
+                                'idCromo' => $cromo->idCromo,
+                                'idUsuario' => $valorInputUser
+                            ]);
+                        }
+                        $arrayCromosDesbloqueados[] = array($cromo->idCromo, $cromo->imgURL, $cromo->nombre);
+                    } else {
+                        break;
+                    }
+                }
+            }
+            elseif($porcentaje > 30 && $porcentaje <50){
+                foreach( $resultActividad->cromos as $cromo){
+                    $contador++;
+                    if($contador <= $cantidadCromos*0.34){
+                        if(DB::table('desbloqueado')
+                            ->where('idAlbum', $cromo->tematica->album->idAlbum)
+                            ->where('idCromo', $cromo->idCromo)
+                            ->where('idUsuario', $valorInputUser)->doesntExist() ){
+                            DB::table('desbloqueado')->insert([
+                                'idAlbum' => $cromo->tematica->album->idAlbum,
+                                'idCromo' => $cromo->idCromo,
+                                'idUsuario' => $valorInputUser
+                            ]);
+                        }
+                        $arrayCromosDesbloqueados[] = array($cromo->idCromo, $cromo->imgURL, $cromo->nombre);
+                    } else {
+                        break;
+                    }
+                }
+            }
+            elseif($porcentaje >= 50 && $porcentaje <= 60){
+                foreach( $resultActividad->cromos as $cromo){
+                    $contador++;
+                    if($contador <= $cantidadCromos*0.50){
+                        if(DB::table('desbloqueado')
+                            ->where('idAlbum', $cromo->tematica->album->idAlbum)
+                            ->where('idCromo', $cromo->idCromo)
+                            ->where('idUsuario', $valorInputUser)->doesntExist() ){
+                            DB::table('desbloqueado')->insert([
+                                'idAlbum' => $cromo->tematica->album->idAlbum,
+                                'idCromo' => $cromo->idCromo,
+                                'idUsuario' => $valorInputUser
+                            ]);
+                        }
+                        $arrayCromosDesbloqueados[] = array($cromo->idCromo, $cromo->imgURL, $cromo->nombre);
+                    } else {
+                        break;
+                    }
+                }
+            }elseif($porcentaje > 60 && $porcentaje <= 75){
+                foreach( $resultActividad->cromos as $cromo){
+                    $contador++;
+                    if($contador <= $cantidadCromos*0.75){
+                        if(DB::table('desbloqueado')
+                            ->where('idAlbum', $cromo->tematica->album->idAlbum)
+                            ->where('idCromo', $cromo->idCromo)
+                            ->where('idUsuario', $valorInputUser)->doesntExist() ){
+                            DB::table('desbloqueado')->insert([
+                                'idAlbum' => $cromo->tematica->album->idAlbum,
+                                'idCromo' => $cromo->idCromo,
+                                'idUsuario' => $valorInputUser
+                            ]);
+                        }
+                        $arrayCromosDesbloqueados[] = array($cromo->idCromo, $cromo->imgURL, $cromo->nombre);
+                    } else {
+                        break;
+                    }
+                }
+            } elseif($porcentaje > 75 && $porcentaje < 85){
+                foreach( $resultActividad->cromos as $cromo){
+                    $contador++;
+                    if($contador <= $cantidadCromos*0.85){
+                        if(DB::table('desbloqueado')
+                            ->where('idAlbum', $cromo->tematica->album->idAlbum)
+                            ->where('idCromo', $cromo->idCromo)
+                            ->where('idUsuario', $valorInputUser)->doesntExist() ){
+                            DB::table('desbloqueado')->insert([
+                                'idAlbum' => $cromo->tematica->album->idAlbum,
+                                'idCromo' => $cromo->idCromo,
+                                'idUsuario' => $valorInputUser
+                            ]);
+                        }
+                        $arrayCromosDesbloqueados[] = array($cromo->idCromo, $cromo->imgURL, $cromo->nombre);
+                    } else {
+                        break;
+                    }
+                }
+            } elseif($porcentaje > 85 && $porcentaje < 100){
+                foreach( $resultActividad->cromos as $cromo){
+                    $contador++;
+                    if($contador <= $cantidadCromos*0.9){
+                        if(DB::table('desbloqueado')
+                            ->where('idAlbum', $cromo->tematica->album->idAlbum)
+                            ->where('idCromo', $cromo->idCromo)
+                            ->where('idUsuario', $valorInputUser)->doesntExist() ){
+                            DB::table('desbloqueado')->insert([
+                                'idAlbum' => $cromo->tematica->album->idAlbum,
+                                'idCromo' => $cromo->idCromo,
+                                'idUsuario' => $valorInputUser
+                            ]);
+                        }
+                        $arrayCromosDesbloqueados[] = array($cromo->idCromo, $cromo->imgURL, $cromo->nombre);
+                    } else {
+                        break;
+                    }
+                }
+            }
+        }
+              
+        return view('internas.resultado', compact('correctas', 'cantidadPreguntas', 'arrayCromosDesbloqueados', ) );
 
     }
 }

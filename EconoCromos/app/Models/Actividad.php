@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 Use \App\Models\Tematica;
 Use \App\Models\Pregunta;
+Use \App\Models\Cromo;
 
 class Actividad extends Model
 {
@@ -21,6 +22,12 @@ class Actividad extends Model
     public function preguntas()
     {
         return $this->hasMany(Pregunta::class, 'idActividad');
+    }
+
+    // Una actividad tiene muchos cromos
+    public function cromos()
+    {
+        return $this->hasMany(Cromo::class, 'idActividad');
     }
 
 }

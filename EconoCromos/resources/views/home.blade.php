@@ -36,7 +36,6 @@ Session::get('Mensaje')
             <article class="tema">
                 <div class="card" style="width: 25rem;">
                     <a href="">
-                        <!--  <img src="{{asset ($tematicas['imgTematica']) }}" class="card-img-top" alt="..."> -->
                         <img src="{{ asset('storage').'/'.$tematicas->imgTematica }}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <p class="card-text">{{$tematicas['nombreTematica']}}</p>
