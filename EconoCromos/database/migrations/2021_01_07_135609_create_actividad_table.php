@@ -16,6 +16,7 @@ class CreateActividadTable extends Migration
         Schema::create('actividad', function (Blueprint $table) {
             $table->increments('idActividad');
             $table->string('nombreActividad', 40);
+            $table->integer('duracionTestSeg')->default(60);
             $table->timestamps();
         });
     }
