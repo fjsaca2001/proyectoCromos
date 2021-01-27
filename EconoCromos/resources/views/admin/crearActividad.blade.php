@@ -35,41 +35,52 @@
 <!-- Tabla que almacena la lista de actividades -->
 <div class="tablaActividades">
   <!-- Encabezado de la tabla -->
-  <table class="table table-fixed table-hover table-bordered">
+  <table class="table table-fixed table-hover table-bordered hh">
     <thead class="thead-dark">
       <tr>
         <th class="col-xs-2">Título</th>
         <th class="col-xs-2">Álbum</th>
         <th class="col-xs-2">Temática</th>
+        <th class="col-xs-2">Duración del Quiz</th>
         <th class="actions">Acciones</th>
       </tr>
     </thead>
     <!-- Cuerpo de la tabla -->
     <tbody>
       @foreach ($albumContenido as $album)
-      @foreach ($album->tematicas as $tematica)
-      @foreach ($tematica->actividad as $actividad)
-      <tr>
-        <td class="col-xs-2">{{ $actividad->nombreActividad }}</td>
-        <td class="col-xs-2">{{ $album->nombre }}</td>
-        <td class="col-xs-2">{{ $tematica->nombreTematica}}</td>
-        <td class='action'>
-          <a class='btn btn-info' href="{{ url('/crearActividad/' . $actividad->idActividad . '/edit/') }}">
-            <i class='icon-edit'></i>
-          </a>
-          <form class="accionCromo" method="POST" action="{{ url('/crearActividad/' . $actividad->idActividad) }}"
-            style="display:inline">
-            {{ csrf_field() }}
-            {{ method_field('DELETE') }}
-            <button class="btn btn-danger" type="submit"
-              onclick="return confirm('¿Está seguro de eliminar {{$actividad->nombreActividad}} de la tematica {{$tematica->nombreTematica}}? Recuerda toda las preguntas y respuestas ligadas a esta seran eliminadas ¿Deseas continuar?');">
-              <i class='icon-trash'></i>
-            </button>
-          </form>
-        </td>
-      </tr>
-      @endforeach
-      @endforeach
+        @foreach ($album->tematicas as $tematica)
+          @foreach ($tematica->actividad as $actividad)
+          <tr>
+            <td class="col-xs-2">{{ $actividad->nombreActividad }}</td>
+            <td class="col-xs-2">{{ $album->nombre }}</td>
+            <td class="col-xs-2">{{ $tematica->nombreTematica}}</td>
+            @php
+              $minutos = floor(($actividad->duracionTestSeg/60) % 60);
+              $segundos = floor($actividad->duracionTestSeg % 60);
+            @endphp
+            @if($minutos == 1)
+              <td class="col-xs-2">{{$minutos}} minuto y {{$segundos}} segundos</td>
+            @else
+              <td class="col-xs-2">{{$minutos}} minutos y {{$segundos}} segundos</td>
+            @endif
+
+            <td class='action'>
+              <a class='btn btn-info' href="{{ url('/crearActividad/' . $actividad->idActividad . '/edit/') }}">
+                <i class='icon-edit'></i>
+              </a>
+              <form class="accionCromo" method="POST" action="{{ url('/crearActividad/' . $actividad->idActividad) }}"
+                style="display:inline">
+                {{ csrf_field() }}
+                {{ method_field('DELETE') }}
+                <button class="btn btn-danger" type="submit"
+                  onclick="return confirm('¿Está seguro de eliminar {{$actividad->nombreActividad}} de la tematica {{$tematica->nombreTematica}}? Recuerda toda las preguntas y respuestas ligadas a esta seran eliminadas ¿Deseas continuar?');">
+                  <i class='icon-trash'></i>
+                </button>
+              </form>
+            </td>
+          </tr>
+          @endforeach
+        @endforeach
       @endforeach
     </tbody>
   </table>
@@ -105,7 +116,7 @@
           </div>
           <!-- Campo para seleccionar el album al que pertenece la actividad-->
           <div class="mb-3">
-            <label for="albun" class="col-form-label">{{ __('Album') }}</label>
+            <label for="albun" class="col-form-label">{{ __('Álbum') }}</label>
             <select class="form-control" id="albun" name="albun" required>
               <option  disabled selected value="">Seleccionar un álbum</option>
                 @foreach ($albumContenido as $album)
@@ -121,7 +132,13 @@
               <option disabled selected>Seleccione una temática</option>
             </select>
           </div>
-
+          <!-- Campo para insertar duracion de la actividad-->
+          <div class="mb-3">
+            <label for="tiempoMin" class="col-form-label">{{ __('Duración del quiz') }}</label>
+            <input type="text" class="form-control" id="tiempoMin" name="tiempoMin" maxlength="1" placeholder="minutos" value="" required>
+              <br>
+            <input type="text" class="form-control" id="duracionTestSeg" name="duracionTestSeg" maxlength="2" placeholder="segundos" value="">
+          </div>
 
           <!-- Botón interno para agregar el cromo -->
           <div class="mb-3 text-center">

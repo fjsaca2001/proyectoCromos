@@ -67,7 +67,18 @@
         <option  disabled selected value="{{$actividades->idActividad}}">Seleccionar una temática</option>
       </select>
     </div>
-
+    <!-- Campo para insertar duracion de la actividad-->
+    <div class="col-md-6">
+      @php
+        $minutos = floor(($actividades->duracionTestSeg/60) % 60);
+        $segundos = floor($actividades->duracionTestSeg % 60);
+      @endphp
+      <label for="tiempoMin" class="form-label">{{ __('Duración del quiz') }}</label> <br>
+      <label for="tiempoMin" class="form-label">{{ __('Minutos ') }}</label>
+      <input type="text" class="form-control" id="tiempoMin" name="tiempoMin" maxlength="1" placeholder="minutos" value="{{$minutos}}"><br>
+      <label for="duracionTestSeg" class="form-label">{{ __('Segundos ') }}</label>
+      <input type="text" class="form-control" id="duracionTestSeg" name="duracionTestSeg" maxlength="2" placeholder="segundos" value="{{$segundos}}">
+    </div>
     <!-- Botón interno para modificar los datos de la actividad -->
     <div class="botonModificarActividades col-20">
       <button type="submit" class="btn btn-primary">{{ __('Modificar datos') }}</button>

@@ -5,18 +5,33 @@
     <section class="estructuraAct">
         <section class="navAlbum">
             @php 
-                $n = 1;  
+                $n = 1;
+                $n2 = 1;  
             @endphp
                 <nav>
-                Álbumes <br>
                 @foreach( $albumContenido as $album)
-                    {{$album->nombre}} <br>
-                    @foreach( $album->tematicas as $tematicas)
-                        <a class="nboton" target="{{$n}}" > {{$tematicas['nombreTematica']}}</a> <br>
-                        @php
-                            $n = $n+1;
-                        @endphp
-                    @endforeach
+                    <div class="accordion" id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="{{$n2}}">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#nombre{{$n2}}" aria-expanded="true" aria-controls="nombre{{$n2}}">
+                                {{$album->nombre}}
+                            </button>
+                            </h2>
+                            <div id="nombre{{$n2}}" class="accordion-collapse collapse show" aria-labelledby="{{$n2}}" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    @foreach( $album->tematicas as $tematicas)
+                                        <a class="nboton" target="{{$n}}" > {{$tematicas['nombreTematica']}}</a> <br>
+                                        @php
+                                            $n = $n+1;
+                                        @endphp
+                                    @endforeach
+                                </div>
+                            </div>
+                            @php
+                                $n2 = $n2+1;
+                            @endphp
+                        </div>
+                    </div>
                 @endforeach
                 <script>
                     jQuery(function(){
@@ -64,6 +79,8 @@
                 @endforeach
             </div>
         </section>
+    </section>
+
     </section>
 
 

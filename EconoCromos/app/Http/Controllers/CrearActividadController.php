@@ -50,9 +50,19 @@ class CrearActividadController extends Controller
         $this->validate($request, $validarInfoFormActv, $Mensaje);
         
         //$dataActividad=request()->all();
-        $dataActividad=request()->except('_token','albun');
+        $dataActividad=request()->except(['_token','albun', 'tiempoMin']);
         $dataActividad['nombreActividad'] = ucfirst( $dataActividad['nombreActividad']);
         
+        $minutos= $request->input('tiempoMin');
+        $minutos = $minutos*60;
+
+        if(($request->input('duracionTestSeg') == NULL) ) {
+            $dataActividad['duracionTestSeg'] = 0;
+        }
+
+        $dataActividad['duracionTestSeg'] = $dataActividad['duracionTestSeg'] +$minutos;
+
+
         // Si es admin o super
         if(Gate::allows('acciones-admin') || Gate::allows('acciones-super')){
             Actividad::insert($dataActividad);
@@ -90,8 +100,13 @@ class CrearActividadController extends Controller
         $this->validate($request, $validarInfoFormActv, $Mensaje);
 
         //se capta toda la informacion y se desecha los datos de mas del form        
-        $dataActividad=request()->except(['_token','_method','albun']);
+        $dataActividad=request()->except(['_token','_method','albun', 'tiempoMin']);
         $dataActividad['nombreActividad'] = ucfirst( $dataActividad['nombreActividad']);
+
+        $minutos= $request->input('tiempoMin');
+        $minutos = $minutos*60;
+
+        $dataActividad['duracionTestSeg'] = $dataActividad['duracionTestSeg'] +$minutos;
 
         $actividades=Actividad::findOrFail($idActividad);
                 

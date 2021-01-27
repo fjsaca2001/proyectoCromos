@@ -269,12 +269,13 @@ footer article {
     display: inline-block;
 }
 
-
-/* .cromos article:hover {
+/*
+ .cromos article img:hover {
     box-shadow: 0px 4px 16px 0px rgba(65, 63, 63, 0.2);
     transform: scale(1.25);
     transition: 0.3s;
-} */
+} 
+*/
 
 .cromos article img {
     width: 100%;
