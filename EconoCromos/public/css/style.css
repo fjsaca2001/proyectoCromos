@@ -368,6 +368,7 @@ footer article {
 }
 .estructuraTest {
     margin-top: 6em;
+    width: 100%;
 }
 
 /*
@@ -390,3 +391,12 @@ footer article {
     margin-top: 40px;
   }
   */
+
+.presentarResult {
+    margin: 5em 10em 5em 10em;
+}
+.cromosResult {
+    vertical-align: top;
+    display: inline-block;
+    width: 20%;
+}

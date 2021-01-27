@@ -23,6 +23,9 @@
                         <input type="radio" value="correcta" name="question[{{$pregunta->idPregunta}}]"> {{$pregunta->respuestaCorrecta}} <br>
                     </div>
                         <input type="hidden" name="numeroPreg" id="numeroPreg" value="{{$n}}"> 
+                        <input type="hidden" name="valorInputActiv" id="valorInputActiv" value="{{$actividad->idActividad}}"> 
+                        <input type="hidden" name="valorInputUser" id="valorInputUser" value="{{auth()->user()->idUsuario}}"> 
+
             </article>
             @php 
                 $n = $n+1;  

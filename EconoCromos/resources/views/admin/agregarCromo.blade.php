@@ -42,7 +42,8 @@
           <th class="col-xs-2">Imagen</th>
           <th class="col-xs-2">Descripción</th>
           <th class="col-xs-2">Temática</th>
-          <th class="actions">Acciones</th>
+          <th class="col-xs-2">Desbloqueo</th>
+          <th class="actions"> </th>
         </tr>
       </thead>
       <!-- Cuerpo de la tabla -->
@@ -54,11 +55,8 @@
         <td class="col-xs-2">{{ $cromo->nombre }}</td>
         <td class="col-xs-2"><img style="width: 80px" src="{{ asset('storage').'/'.$cromo->imgURL }}"></td>
         <td class="col-xs-2">{{ $cromo->descripcion }}</td>
-        @foreach ($album->tematicas as $tematicas)
-          @if ($cromo->idTematica === $tematicas->idTematica) 
-            <td>{{ $tematicas->nombreTematica }}</td>
-          @endif
-        @endforeach
+        <td>{{ $cromo->tematica->nombreTematica }}</td>  
+        <td>{{ $cromo->actividad->nombreActividad }}</td>
         <td class='action'>
           <a class='btn btn-info' href="{{ url('/agregarCromo/' . $cromo->idCromo . '/edit/') }}">
             <i class='icon-edit'></i>
@@ -121,19 +119,6 @@
           <label for="imgURL" class="col-form-label">{{ __('Cargar imagen del cromo') }}</label>
           <input type="file" class="form-control" id="imgURL" name="imgURL" accept="image/*" required autocomplete="imgURL">
         </div>
-        {{-- <!-- Campo para seleccionar la temática del cromo -->
-        <div class="mb-3">
-          <label for="idTematica" class="col-form-label">{{ __('Temática') }}</label>
-            <select class="form-control" id="idTematica" name="idTematica">
-              @foreach ($albumContenido as $album)
-              <optgroup label="{{$album->nombre}}">
-                @foreach ($album->tematicas as $tematica)
-                <option value="{{ $tematica->idTematica }}">{{ $tematica->nombreTematica }}</option>
-                @endforeach
-              </optgroup>
-              @endforeach
-            </select>
-        </div> --}}
         <!-- Campo para seleccionar el álbum del cromo -->
         <div class="mb-3">
           <label for="albun" class="col-form-label">{{ __('Álbum') }}</label>
@@ -152,7 +137,13 @@
             <option disabled selected> Seleccionar una temática</option>
           </select>
         </div>
-
+        <!-- Campo para agregar la actividad de la pregunta -->
+        <div class="mb-3">
+          <label for="actividad" class="col-form-label">{{ __('Actividad donde se desbloqueará') }}</label>
+          <select class="form-control" id="actividad" name="idActividad" required autocomplete="actvidad">
+            <option disabled selected>Seleccione una actividad</option>
+          </select>
+        </div>
         <!-- Botón interno para agregar el cromo -->
         <div class="mb-3 text-center">
           <button type="submit" class="btn btn-primary">{{ __('Crear cromo') }}</button>
