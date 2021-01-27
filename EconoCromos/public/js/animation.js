@@ -9,10 +9,6 @@ function aparecerForm(e){
     $('#obscurecer').click (desaparecerForm)
 }
 
-function aparecerCromo(e){
-    e.preventDefault(); 
-    $('#obscurecer').fadeIn(100, mostrarcromo)
-}
 function desapareceRegistro(){
     $('#obscurecer').fadeOut();
 
@@ -29,17 +25,22 @@ function desaparecerForm(){
     $('#registrar').fadeOut(300, desapareceRegistro);
 }
 
-function mostrarcromo(){
-    $('#cromo').fadeIn(300);
-    $('#obscurecer').click (desaparecerCromo)
-}
-function desaparecerCromo(){
-    $('#cromo').fadeOut(300);
-    $('#obscurecer').fadeOut();
-}
+// function aparecerCromo(e){
+//     e.preventDefault(); 
+//     $('#obscurecer').fadeIn(100, mostrarcromo)
+// }
+
+// function mostrarcromo(){
+//     $('#cromo').fadeIn(300);
+//     $('#obscurecer').click (desaparecerCromo)
+// }
+// function desaparecerCromo(){
+//     $('#cromo').fadeOut(300);
+//     $('#obscurecer').fadeOut();
+// }
 function mostrarLoginRegistro(){
     $('#activarLogin').click(aparecerLogin);
     $('#activarRegistro').click(aparecerForm);
-    $('#activarCromo').click(aparecerCromo);
+    //$('#activarCromo').click(aparecerCromo);
 }
 $(document).ready (mostrarLoginRegistro)

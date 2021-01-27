@@ -2,7 +2,7 @@
 @section('titulo', 'Economía a tu alcance')
 @section('contentalbum')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <section class="estructuraAlbum">
+<section class="estructuraAlbum" id="estructura">
         <section class="navAlbum">
             @php 
                 $n = 1;  
@@ -31,6 +31,9 @@
         <section class="cromos">
             <div id="tematica0" class="classTem1" >
                 <h1>Álbum de {{auth()->user()->nombre}}</h1> 
+                @php 
+                    $n = 1;  
+                @endphp
                 @foreach( $albumContenido[0]->tematicas[0]->cromos as $cromo)
                     @php
                         $encontrado = False;
@@ -48,16 +51,19 @@
                             @endif
                         @endforeach
                         @if($encontrado)
-                            <article id="activarCromo">
+                            <article target="{{$n}}" class="activarCromo">
                                 <img src="{{ asset('storage').'/'.$cromo->imgURL }}"> 
-                                <div class="cromo" id="cromo">
+                                <div class="cromo"  id="cromo{{$n}}" style="display: none;">
                                     <img src="{{ asset('storage').'/'.$cromo->imgURL }}"> 
-                                    {{$cromo->nombre}} <br>
-                                    {{$cromo->descripcion}} <br>
-                                    # {{$cromo->idCromo}}
+                                    <h3>{{$cromo->nombre}}</h3>
+                                    <h5>{{$cromo->descripcion}}</h5>
+                                    <h6>#{{$cromo->idCromo}}</h6>
                                 </div>
                                 {{$cromo->nombre}}
                             </article>
+                            @php
+                                    $n = $n+1;
+                            @endphp
                         @else
                             <article class="desactivarCromo">
                                 <img src="{{ asset('storage').'/'.$cromo->imgURL }}"> 
@@ -65,6 +71,7 @@
                         @endif
                     @endif
                 @endforeach
+                
             </div>
             
             @php 
@@ -97,7 +104,7 @@
                                     @endif
                                 @endforeach
                                 @if($encontrado)
-                                    <article id="activarCromo">
+                                    {{--  <article id="activarCromo">
                                         <img src="{{ asset('storage').'/'.$cromo->imgURL }}"> 
                                         <div class="cromo" id="cromo">
                                             <img src="{{ asset('storage').'/'.$cromo->imgURL }}"> 
@@ -106,7 +113,21 @@
                                             # {{$cromo->idCromo}}
                                         </div>
                                         {{$cromo->nombre}}
+                                    </article>  --}}
+
+                                    <article target="{{$n}}" class="activarCromo">
+                                        <img src="{{ asset('storage').'/'.$cromo->imgURL }}"> 
+                                        <div class="cromo"  id="cromo{{$n}}" style="display: none;">
+                                            <img src="{{ asset('storage').'/'.$cromo->imgURL }}"> 
+                                            <h3>{{$cromo->nombre}}</h3>
+                                            <h5>{{$cromo->descripcion}}</h5>
+                                            <h6>#{{$cromo->idCromo}}</h6>
+                                        </div>
+                                        {{$cromo->nombre}}
                                     </article>
+                                    @php
+                                            $n = $n+1;
+                                    @endphp
                                 @else
                                     <article class="desactivarCromo">
                                         <img src="{{ asset('storage').'/'.$cromo->imgURL }}"> 
@@ -123,4 +144,19 @@
             @endforeach
         </section>  
     </section>
+    {{--  Funcion Jquery para mostrar el contenido de los cromos  --}}
+    <script>
+        jQuery(function(){
+            jQuery('.activarCromo').click(function(){
+                jQuery('.cromo').hide();
+                jQuery('.obscurecer').toggle();
+                jQuery('#cromo'+$(this).attr('target')).toggle('slow');
+            });
+            jQuery('.obscurecer').click(function(){
+                jQuery('.obscurecer').fadeOut('slow');
+                jQuery('.cromo').hide();
+                jQuery('#cromo'+$(this).attr('target')).fadeOut('slow');
+            });
+        });
+    </script>
 @endsection
