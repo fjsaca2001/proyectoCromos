@@ -19,71 +19,56 @@ h6{
 
 /*Estilos para la tabla que contiene los álbumes */
 .tablaAlbumes{
-    width: 20%;
+    width: 15%;
     vertical-align: top;
     display: inline-block;
     margin-top: 5em;
-    margin-left: 2em;
-    margin-right: 1.5em;
+    margin-left: 12em;
+    margin-right: 3em;
     margin-bottom: 5em;
-    height: 525px;
+    height: 300px;
     border-radius: 10px; 
 }
 
 /* Estilos para el botón del álbum */
 .tablaAlbumes button{
-    background-image: linear-gradient(-225deg, #287bf7 0%, #86c0fa 48% ,#98bcdbde 100%);
+    background-image: linear-gradient(-225deg, #5D9FFF 0%, #B8DCFF 48%, #6BBBFF 100%);
 }
 
-/* Estilos para el fondo de la lista de temáticas 
+/* Estilos para el fondo de la lista de temáticas */
 .tablaAlbumes div.listaTematicas{
     background-image: linear-gradient(to top, #accbee 0%, #e7f0fd 100%);
 }
-*/
+
 /* Estilos para la letra de la lista de temáticas */
 .tablaAlbumes a{
     text-decoration: none;
-    color: rgba(0, 0, 0, 0.658);
-    text-shadow: 0.1em 0.1em 0.1em rgb(207 212 248);
-}
-
-.accordion-button:not(.collapsed) {
-    color: white; 
-    /* background-color: #e7f1ff; */
-}
-.accordion-button {
-    font-weight:450; 
-    color: white;
-    background-color: white;
-    border: 1px solid rgba(0,0,0,.125);
-    text-shadow: 0.1em 0.1em 0.1em rgb(159, 161, 176 );
+    color: black;
 
 }
+
+
 /* Estilos para la tabla que contiene las actividades */
 .tablaActividades{
-    width: 73%;
+    width: 60%;
+    height: 527px;
     vertical-align: top;
     display: inline-block;
     text-align: center;
     margin-top: 5em;
-    text-shadow: 0.1em 0.1em 0.1em rgb(207 212 248);
     margin-bottom: 5em;
 }
 
 /* Estilos para el nombre de la temática */
 .tablaActividades li{
-    background-image: linear-gradient(-225deg, #5d9effaf 0%, #b8dcffd5 48%, #6bbaff88 100%);
-    color: rgb(50, 50, 58);
-    font-weight:500; 
-    font-size: 23px;
-    text-shadow: 0.1em 0.1em 0.1em rgb(200, 200, 202);
+    background-image: linear-gradient(-225deg, #5D9FFF 0%, #B8DCFF 48%, #6BBBFF 100%);
 
 }
 
 
 .tablaActividades a{
-    color:rgba(0, 0, 0, 0.747);
+    color: black;
     text-align: left;
     text-decoration: none;
-    background-image: linear-gradient(to left, #accbee5e 0%, #e7f0fd 100%);
+    background-image: linear-gradient(to top, #accbee 0%, #e7f0fd 100%);
 }
