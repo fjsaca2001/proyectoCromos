@@ -184,15 +184,9 @@ footer article {
     display: none;
     color: rgb(20, 15, 15);
 }
-<<<<<<< HEAD
-.cromo img{
-    width: 50% !important;
-    height: auto !important;
-=======
 
 .cromo img {
     width: 60% !important;
->>>>>>> 7e70cb4e880cae8a160f27d56350f299cbf3286f
     margin: auto;
     overflow: hidden;
 }
