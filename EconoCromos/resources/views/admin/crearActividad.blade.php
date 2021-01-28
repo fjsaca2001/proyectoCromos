@@ -9,7 +9,19 @@
 @endif
 @endsection
 @section('content')
-@if (Session::has('Mensaje')){{ Session::get('Mensaje') }}
+@if (Session::has('Mensaje'))
+    <div class="alert alert-success" role="alert">
+        {{ Session::get('Mensaje') }}
+    </div>
+@endif
+@if(count($errors)>0)
+    <div class="alert alert-danger" role="alert">
+        <ul>
+            @foreach($errors->all() as $error)
+                <li>{{$error}}</li>
+            @endforeach
+        </ul>
+    </div>
 @endif
 <!-- Importación -->
 <meta content='lab2023' name='author'>
@@ -51,7 +63,7 @@
         @foreach ($album->tematicas as $tematica)
           @foreach ($tematica->actividad as $actividad)
           <tr>
-            <td class="col-xs-2">{{ $actividad->nombreActividad }}</td>
+            <td class="col-xs-2"><b>{{ $actividad->nombreActividad }}</b></td>
             <td class="col-xs-2">{{ $album->nombre }}</td>
             <td class="col-xs-2">{{ $tematica->nombreTematica}}</td>
             @php
@@ -59,9 +71,17 @@
               $segundos = floor($actividad->duracionTestSeg % 60);
             @endphp
             @if($minutos == 1)
-              <td class="col-xs-2">{{$minutos}} minuto y {{$segundos}} segundos</td>
+              @if($segundos == 0)
+                <td class="col-xs-2">{{$minutos}} minuto</td>
+              @else
+                <td class="col-xs-2">{{$minutos}} minuto y {{$segundos}} segundos</td>
+              @endif
             @else
-              <td class="col-xs-2">{{$minutos}} minutos y {{$segundos}} segundos</td>
+              @if($segundos == 0)
+                <td class="col-xs-2">{{$minutos}} minutos</td>
+              @else
+                <td class="col-xs-2">{{$minutos}} minutos y {{$segundos}} segundos</td>
+              @endif
             @endif
 
             <td class='action'>
@@ -73,7 +93,7 @@
                 {{ csrf_field() }}
                 {{ method_field('DELETE') }}
                 <button class="btn btn-danger" type="submit"
-                  onclick="return confirm('¿Está seguro de eliminar {{$actividad->nombreActividad}} de la tematica {{$tematica->nombreTematica}}? Recuerda toda las preguntas y respuestas ligadas a esta seran eliminadas ¿Deseas continuar?');">
+                  onclick="return confirm('¿Está seguro de eliminar {{$actividad->nombreActividad}} de la tematica {{$tematica->nombreTematica}}? Recuerda todos los cromos, las preguntas y respuestas ligadas a esta seran eliminadas ¿Deseas continuar?');">
                   <i class='icon-trash'></i>
                 </button>
               </form>
@@ -135,9 +155,9 @@
           <!-- Campo para insertar duracion de la actividad-->
           <div class="mb-3">
             <label for="tiempoMin" class="col-form-label">{{ __('Duración del quiz') }}</label>
-            <input type="text" class="form-control" id="tiempoMin" name="tiempoMin" maxlength="1" placeholder="minutos" value="" required>
+            <input type="number" class="form-control" id="tiempoMin" name="tiempoMin" placeholder="minutos" value="" min="1" max="9" required>
               <br>
-            <input type="text" class="form-control" id="duracionTestSeg" name="duracionTestSeg" maxlength="2" placeholder="segundos" value="">
+            <input type="number" class="form-control" id="duracionTestSeg" name="duracionTestSeg" placeholder="segundos" min="0" max="60" value="">
           </div>
 
           <!-- Botón interno para agregar el cromo -->

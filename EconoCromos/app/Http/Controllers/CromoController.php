@@ -48,6 +48,8 @@ class CromoController extends Controller
             'imgURL' => 'max:10000|mimes:jpg,jpeg,png'
         ];
         $Mensaje=['required' => 'El :attribute es requerido'];
+        $Mensaje=['mimes' => 'Solo se aceptan imagenes de tipo jpg, png o jpeg',
+                'unique' => 'No puedes crear dos cromos con el mismo nombre'];
 
         $this->validate($request, $validarInfoFormCromo, $Mensaje);
         //se capta toda la informacion y se desecha los datos de mas del form        
@@ -67,7 +69,7 @@ class CromoController extends Controller
         // Si es admin o super
         if(Gate::allows('acciones-admin') || Gate::allows('acciones-super')){
             Cromo::where('idCromo','=',$idCromo)->update($dataCromo);
-            return redirect('agregarCromo')->with('Mensaje','Cromo modificado correctamente');
+            return redirect('agregarCromo')->with('Mensaje','Información del cromo modificada correctamente');
         }else{
             return redirect('/');
         }
@@ -80,8 +82,9 @@ class CromoController extends Controller
             'descripcion' => 'required|string|max:400',
             'imgURL' => 'required|max:10000|mimes:jpg,jpeg,png'
         ];
-        $Mensaje=['required' => 'El :attribute es requerido'];
-
+        $Mensaje=['mimes' => 'Solo se aceptan imagenes de tipo jpg, png o jpeg',
+                'unique' => 'No puedes crear dos cromos con el mismo nombre'];
+        
         $this->validate($request, $validarInfoFormCromo, $Mensaje);
         
         //$dataCromo=request()->all();

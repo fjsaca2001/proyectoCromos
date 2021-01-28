@@ -4,6 +4,15 @@
 <h3>{{ $pregunta->pregunta }}</h3>
 @endsection
 @section('content')
+@if(count($errors)>0)
+    <div class="alert alert-danger" role="alert">
+        <ul>
+            @foreach($errors->all() as $error)
+                <li>{{$error}}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 <!-- Importación -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <link href="{{ asset('css/administracion.css') }}" rel="stylesheet">
@@ -112,7 +121,11 @@
         </div>
 
         <!-- Botón interno para modificar los datos de la pregunta -->
-        <div class="botonModificarPreguntas col-20">
+        <div class="botonModificarCromos col-8">
+            <a class='btn btn-secondary' href="{{ url('agregarPregunta') }}" >Descartar cambios </a>
+        </div>
+        <!-- Botón interno para modificar los datos de la temática-->
+        <div class="botonModificarCromos col-2" style="margin-left:3.5em">
             <button type="submit" class="btn btn-primary">{{ __('Modificar datos') }}</button>
         </div>
     </form>

@@ -9,7 +9,19 @@
 @endif
 @endsection
 @section('content')
-@if (Session::has('Mensaje')){{ Session::get('Mensaje') }}
+@if (Session::has('Mensaje'))
+    <div class="alert alert-success" role="alert">
+        {{ Session::get('Mensaje') }}
+    </div>
+@endif
+@if(count($errors)>0)
+    <div class="alert alert-danger" role="alert">
+        <ul>
+            @foreach($errors->all() as $error)
+                <li>{{$error}}</li>
+            @endforeach
+        </ul>
+    </div>
 @endif
 
 <!-- Importación -->
@@ -31,14 +43,14 @@
 <!-- Tabla que almacena la lista de cromos -->
 <div class="tablaTematicas">
   <!-- Encabezado de la tabla -->
-  <table class="table table-fixed table-hover table-bordered">
+  <table class="table table-fixed table-hover table-bordered hh">
     <thead class="thead-dark">
       <tr>
         <th class="col-xs-2">Imagen</th>
         <th class="col-xs-2">Título</th>
         <th class="col-xs-2">Descripción</th>
         <th class="col-xs-2">Álbum</th>
-        <th class="actions">Acciones</th>
+        <th class="actions"></th>
       </tr>
     </thead>
     <!-- Cuerpo de la tabla -->
@@ -47,7 +59,7 @@
       @foreach ($album->tematicas as $tematica)
       <tr>
         <td class="col-xs-2"><img style="width: 100px" src="{{ asset('storage').'/'.$tematica->imgTematica }}"></td>
-        <td class="col-xs-2">{{ $tematica->nombreTematica }}</td>
+        <td class="col-xs-2"><b>{{ $tematica->nombreTematica }}</b></td>
         <td class="col-xs-2">{{ $tematica->descripcion }}</td>
         <td class="col-xs-2">{{ $album->nombre }}</td>
         <td class='action'>
@@ -98,7 +110,7 @@
           <!-- Campo para agregar la descripción de la temática -->
           <div class="mb-3">
             <label for="descripcion" class="col-form-label">{{ __('Descripción') }}</label>
-            <textarea type="text" class="form-control" id="descripcion" name="descripcion" name="descripcion" required autocomplete="descripcion" style="height:130px" maxlength="500"></textarea>
+            <textarea type="text" class="form-control" id="descripcion" name="descripcion" name="descripcion" required autocomplete="descripcion" style="height:130px" maxlength="450"></textarea>
             @error('descripcion')
             <span class="invalid-feedback" role="alert">
               <strong>{{ $message }}</strong>

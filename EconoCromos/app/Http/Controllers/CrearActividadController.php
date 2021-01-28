@@ -45,7 +45,7 @@ class CrearActividadController extends Controller
         $validarInfoFormActv = [
             'nombreActividad' => 'required|string|max:40|unique:actividad',
         ];
-        $Mensaje=['required' => 'El :attribute es requerido'];
+        $Mensaje=['unique' => 'No puedes crear dos actividades con el mismo nombre'];
 
         $this->validate($request, $validarInfoFormActv, $Mensaje);
         

@@ -5,7 +5,19 @@
 <h3>Administrador</h3>
 @endsection
 @section('content')
-@if (Session::has('Mensaje')){{ Session::get('Mensaje') }}
+@if (Session::has('Mensaje'))
+    <div class="alert alert-success" role="alert">
+        {{ Session::get('Mensaje') }}
+    </div>
+@endif
+@if(count($errors)>0)
+    <div class="alert alert-danger" role="alert">
+        <ul>
+            @foreach($errors->all() as $error)
+                <li>{{$error}}</li>
+            @endforeach
+        </ul>
+    </div>
 @endif
 <!-- Importación -->
 <link href="assets/stylesheets/application-a07755f5.css" rel="stylesheet" type="text/css"/><link href="//netdna.bootstrapcdn.com/font-awesome/3.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
@@ -27,7 +39,7 @@
 <br>
 <!-- Tabla que almacena la lista de los usuarios -->
 <div class="tablaUsuarios">
-  <table class="table table-fixed table-hover table-bordered">
+  <table class="table table-fixed table-hover table-bordered hh">
     <thead class="thead-dark">
       <tr>
       <th class="col-xs-2">ID</th>

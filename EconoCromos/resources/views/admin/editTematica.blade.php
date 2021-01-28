@@ -4,6 +4,15 @@
 <h3>{{$tematicas->nombreTematica}}</h3>
 @endsection
 @section('content')
+@if(count($errors)>0)
+    <div class="alert alert-danger" role="alert">
+        <ul>
+            @foreach($errors->all() as $error)
+                <li>{{$error}}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 <!-- Importación -->
 <link href="{{ asset('css/administracion.css') }}" rel="stylesheet">
 <!-- Bootstrap CSS -->
@@ -30,7 +39,7 @@
         <!-- Campo para modificar la descripción de la temática -->
         <div class="col-md-10">
             <label for="descripcion" class="form-label">{{ __('Descripción de la temática') }}</label>
-            <textarea type="text" class="form-control @error('descripcion') is-invalid @enderror" id="descripcion" name="descripcion" required autocomplete="descripcion" style="height: 150px">{{$tematicas->descripcion}}</textarea>
+            <textarea type="text" class="form-control @error('descripcion') is-invalid @enderror" id="descripcion" name="descripcion" required autocomplete="descripcion" style="height: 150px" maxlength="465">{{$tematicas->descripcion}}</textarea>
             @error('descripcion')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
@@ -48,7 +57,7 @@
             <input type="file" class="form-control" id="imgTematica" name="imgTematica" accept="image/*">
         </div>
         <!-- Campo para editar el álbum al que pertenece  la temática -->
-        <div class="col-md-4">
+        <div class="col-md-4" style="margin-right:10em" >
             <label for="idTematica" class="form-label">{{ __('Álbum') }}</label>
             <select class="form-control @error('idAlbum') is-invalid @enderror" id="idAlbum" name="idAlbum">
                 <option disabled selected value="{{$tematicas->idAlbum}}">Seleccionar un álbum</option>
@@ -57,10 +66,14 @@
                 @endforeach
             </select>
         </div>
-        <!-- Botón interno para modificar los datos de la temática-->
-        <div class="botonModificarTematicas col-20">
-            <button type="submit" class="btn btn-primary">{{ __('Modificar datos') }}</button>
+        <br>
+        <div class="botonModificarCromos col-8">
+            <a class='btn btn-secondary' href="{{ url('crearTematica') }}" >Descartar cambios </a>
         </div>
+        <!-- Botón interno para modificar los datos de la temática-->
+        <div class="botonModificarCromos col-2" style="margin-left:3.5em">
+            <button type="submit" class="btn btn-primary">{{ __('Modificar datos') }}</button>
+        </div>        
     </form>
 </div>
 @endsection

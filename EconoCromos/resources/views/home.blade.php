@@ -30,7 +30,7 @@ Session::get('Mensaje')
     </a>
 </section>
 @foreach( $albumContenido as $album)
-    <section class="tematicas" id="tematica">
+    <section class="tematicas items" id="tematica">
         <h2>{{$album->nombre}}</h2>
         @foreach( $album->tematicas as $tematicas)
             <article class="tema">
@@ -41,12 +41,20 @@ Session::get('Mensaje')
                             <p class="card-text">{{$tematicas['nombreTematica']}}</p>
                         </div>
                     </a>
+                    <div class="overlay"> 
+                        <div class="textoculto">
+                            <h3 style="margin-top: 12px">! Descubre ¡</h3> 
+                            <p>{{$tematicas['descripcion']}}</p>
+                            <a href="">
+                                <img style="width:35px" src="{{ asset('img/flecha-der2.svg' )}}">
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </article>
         @endforeach
     </section>
 @endforeach
-
 <script>
     var myCarousel = document.querySelector('#carouselExampleIndicators')
     var carousel = new bootstrap.Carousel(myCarousel, {
