@@ -9,9 +9,20 @@
 @endif
 @endsection
 @section('content')
-@if (Session::has('Mensaje')){{ Session::get('Mensaje') }}
+@if (Session::has('Mensaje'))
+    <div class="alert alert-success" role="alert">
+        {{ Session::get('Mensaje') }}
+    </div>
 @endif
-
+@if(count($errors)>0)
+    <div class="alert alert-danger" role="alert">
+        <ul>
+            @foreach($errors->all() as $error)
+                <li>{{$error}}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 <!-- Importación -->
 <meta content='lab2023' name='author'>
 <meta content='' name='description'>
@@ -32,7 +43,7 @@
 <div class="tablaCromos">
     <!-- Encabezado de la tabla -->
     @foreach ($albumContenido as $album)
-    <table class="table table-fixed table-hover table-bordered">
+    <table class="table table-fixed table-hover table-bordered hh">
     <h5>{{$album->nombre}}</h5>
     <br>
       <thead class="thead-dark">
@@ -52,7 +63,7 @@
       @foreach ($tematica->cromos as $cromo)
       <tr>
         <td class="col-xs-2">{{ $cromo->idCromo }}</td>
-        <td class="col-xs-2">{{ $cromo->nombre }}</td>
+        <td class="col-xs-2"><b>{{ $cromo->nombre }}</b></td>
         <td class="col-xs-2"><img style="width: 80px" src="{{ asset('storage').'/'.$cromo->imgURL }}"></td>
         <td class="col-xs-2">{{ $cromo->descripcion }}</td>
         <td>{{ $cromo->tematica->nombreTematica }}</td>  
@@ -78,7 +89,6 @@
 </div>
 <br>
 <br>
-
 <!-- Botón para agregar cromo -->
 <div class="container text-center">
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Agregar cromo</button>

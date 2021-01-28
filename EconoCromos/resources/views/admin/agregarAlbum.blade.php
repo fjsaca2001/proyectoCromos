@@ -5,7 +5,19 @@
 <h3>Administrador</h3>
 @endsection
 @section('content')
-@if (Session::has('Mensaje')){{ Session::get('Mensaje') }}
+@if (Session::has('Mensaje'))
+    <div class="alert alert-success" role="alert">
+        {{ Session::get('Mensaje') }}
+    </div>
+@endif
+@if(count($errors)>0)
+    <div class="alert alert-danger" role="alert">
+        <ul>
+            @foreach($errors->all() as $error)
+                <li>{{$error}}</li>
+            @endforeach
+        </ul>
+    </div>
 @endif
 <!-- Importación -->
 <meta content='lab2023' name='author'>
@@ -24,7 +36,7 @@
 <!-- Tabla que almacena la lista de cromos -->
 <div class="tablaAlbumes">
   <!-- Encabezado de la tabla -->
-  <table class="table table-fixed table-hover table-bordered">
+  <table class="table table-fixed table-hover table-bordered hh">
     <thead class="thead-dark">
       <tr>
         <th class="col-xs-2">Nombre</th>
@@ -38,7 +50,7 @@
     <tbody>
     @foreach ($albumContenido as $album)
       <tr>
-        <td class="col-xs-2">{{ $album->nombre }}</td>
+        <td class="col-xs-2"><b>{{ $album->nombre }}</b></td>
         <td class="col-xs-2">{{ $album->descripcion }}</td>
         <td class="col-xs-2">
           @foreach ($album->tematicas as $tematica)

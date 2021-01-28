@@ -7,7 +7,7 @@
 
 <!-- Contenido de la página -->
 <section class="contenidoActividades">
-    <section class="tablaAlbumes table-responsive">
+    <section class="tablaAlbumes">
         @php
         $n = 1;
         $n2 = 1;
@@ -21,7 +21,7 @@
                             {{$album->nombre}}
                         </button>
                     </h2>
-                    <div id="nombre{{$n2}}" class="accordion-collapse collapse" aria-labelledby="{{$n2}}" data-bs-parent="#accordionExample">
+                    <div id="nombre{{$n2}}" class="accordion-collapse collapse show" aria-labelledby="{{$n2}}" data-bs-parent="#accordionExample">
                         <div class="listaTematicas accordion-body">
                             @foreach( $album->tematicas as $tematicas)
                             <a class="nboton link-primary" target="{{$n}}"> {{$tematicas['nombreTematica']}}</a> <br>
@@ -47,36 +47,38 @@
             </script>
         </nav>
     </section>
-    <section class="tablaActividades table-responsive">
-
-        <div id="tematica0" class="classTem1">
-            <ul class="list-group">
+    <section class="tablaActividades">
+        <div class="table-responsive">
+            <div id="tematica0" class="classTem1">
+                <ul class="list-group">
+                <li class="list-group-item">{{ $albumContenido[0]->tematicas[0]->actividad[0]->tematica->nombreTematica }}</li>
                 @foreach ($albumContenido[0]->tematicas[0]->actividad as $actividad)
-                <a class="list-group-item list-group-item-info" href="{{url('test',$actividad->idActividad )}}">{{ $actividad->nombreActividad }}</a>
+                        <a class="list-group-item list-group-item-info" href="{{url('test',$actividad->idActividad )}}">{{ $actividad->nombreActividad }}</a>
+                    @endforeach
+                </ul>
+            </div>
+            @php
+                $n2 = 1;
+            @endphp
+            @foreach ($albumContenido as $album)
+                @foreach ($album->tematicas as $tematica)
+                    <div id="tematica{{$n2}}" class="classTem1" style="display: none;">
+                        <ul class="list-group">
+                            <li class="list-group-item">{{ $tematica->nombreTematica }}</li>
+                            @foreach ($tematica->actividad as $actividad)
+                            @php
+                            $idenviado = $actividad->idActividad;
+                            @endphp
+                            <a class="list-group-item list-group-item-info" href="{{url('test', $idenviado)}}">{{ $actividad->nombreActividad }}</a>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @php
+                        $n2 = $n2 +1;
+                    @endphp
                 @endforeach
-            </ul>
+            @endforeach
         </div>
-        @php
-        $n2 = 1;
-        @endphp
-        @foreach ($albumContenido as $album)
-        @foreach ($album->tematicas as $tematica)
-        <div id="tematica{{$n2}}" class="classTem1" style="display: none;">
-            <ul class="list-group">
-                <li class="list-group-item">{{ $tematica->nombreTematica }}</li>
-                @foreach ($tematica->actividad as $actividad)
-                @php
-                $idenviado = $actividad->idActividad;
-                @endphp
-                <a class="list-group-item list-group-item-info" href="{{url('test', $idenviado)}}">{{ $actividad->nombreActividad }}</a>
-                @endforeach
-            </ul>
-        </div>
-        @php
-        $n2 = $n2 +1;
-        @endphp
-        @endforeach
-        @endforeach
     </section>
 </section>
 @endsection

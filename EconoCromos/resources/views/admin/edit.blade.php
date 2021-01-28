@@ -4,6 +4,15 @@
 <h3>{{ $usuarios->nombre }}</h3>
 @endsection
 @section('content')
+@if(count($errors)>0)
+    <div class="alert alert-danger" role="alert">
+        <ul>
+            @foreach($errors->all() as $error)
+                <li>{{$error}}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 <!-- Importación -->
 <link href="{{ asset('css/administracion.css') }}" rel="stylesheet">
 <!-- Bootstrap CSS -->
@@ -321,7 +330,11 @@
             @enderror
         </div>
         <!-- Botón interno para modificar los datos del usuario -->
-        <div class="botonModificarUsuarios col-20">
+        <div class="botonModificarCromos col-9">
+            <a class='btn btn-secondary' href="{{ url('usuarios') }}" >Descartar cambios </a>
+        </div>
+        <!-- Botón interno para modificar los datos de la temática-->
+        <div class="botonModificarCromos col-2" style="margin-left:3.5em">
             <button type="submit" class="btn btn-primary">{{ __('Modificar datos') }}</button>
         </div>
     </form>

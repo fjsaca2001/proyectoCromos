@@ -46,6 +46,8 @@ class CrearTematicaController extends Controller
             'imgTematica' => 'required|max:10000|mimes:jpg,jpeg,png'
         ];
         $Mensaje=['required' => 'El :attribute es requerido'];
+        $Mensaje=['mimes' => 'Solo se aceptan imagenes de tipo jpg, png o jpeg',
+                'unique' => 'No puedes crear dos temáticas con el mismo nombre'];
 
         $this->validate($request, $validarInfoFormTemat, $Mensaje);
         
@@ -90,6 +92,7 @@ class CrearTematicaController extends Controller
             'imgTematica' => 'max:10000|mimes:jpg,jpeg,png'
         ];
         $Mensaje=['required' => 'El :attribute es requerido'];
+        $Mensaje=['mimes' => 'Solo se aceptan imagenes de tipo jpg, png o jpeg'];
 
         $this->validate($request, $validarInfoFormTemat, $Mensaje);
 

@@ -9,9 +9,20 @@
 @endif
 @endsection
 @section('content')
-@if (Session::has('Mensaje')){{ Session::get('Mensaje') }}
+@if (Session::has('Mensaje'))
+    <div class="alert alert-success" role="alert">
+        {{ Session::get('Mensaje') }}
+    </div>
 @endif
-
+@if(count($errors)>0)
+    <div class="alert alert-danger" role="alert">
+        <ul>
+            @foreach($errors->all() as $error)
+                <li>{{$error}}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 <!-- Importación -->
 <link href="assets/stylesheets/application-a07755f5.css" rel="stylesheet" type="text/css"/><link href="//netdna.bootstrapcdn.com/font-awesome/3.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 <link href="assets/images/favicon.ico" rel="icon" type="image/ico"/>
@@ -32,7 +43,7 @@
   @foreach ($albumContenido as $album)
   <h5>{{$album->nombre}}</h5>
   <br>
-  <table class="table table-fixed table-hover table-bordered">
+  <table class="table table-fixed table-hover table-bordered hh">
     <thead class="thead-dark">
       <tr>
         <th class="col-xs-2">Pregunta</th>
@@ -42,7 +53,7 @@
         <th class="col-xs-2">Respuesta correcta</th>
         <th class="col-xs-2">Temática</th>
         <th class="col-xs-2">Actividad</th>
-        <th class="actions">Acciones</th>
+        <th class="actions"></th>
       </tr>
     </thead>
     <tbody>
@@ -50,13 +61,13 @@
       @foreach ($tematica->actividad as $actividad)
         @foreach ($actividad->preguntas as $pregunta)
       <tr>
-        <td class="col-xs-2">{{ $pregunta->pregunta }}</td>
+        <th class="col-xs-2">{{ $pregunta->pregunta }}</th>
         <td class="col-xs-2">{{ $pregunta->opcion1 }}</td>
         <td class="col-xs-2">{{ $pregunta->opcion2 }}</td>
         <td class="col-xs-2">{{ $pregunta->opcion3 }}</td>
         <td class="col-xs-2"><em>{{ $pregunta->respuestaCorrecta }}</em></td>
         <td class="col-xs-2">{{ $pregunta->tematica['nombreTematica'] }}</td>
-        <th class="col-xs-2">{{ $pregunta->actividad['nombreActividad'] }}</th>
+        <td class="col-xs-2">{{ $pregunta->actividad['nombreActividad'] }}</td>
         <td class='action'>
           <a class='btn btn-info' href="{{  url('agregarPregunta/'. $pregunta->idPregunta.'/edit')  }}">
             <i class='icon-edit'></i>
