@@ -59,9 +59,17 @@
               $segundos = floor($actividad->duracionTestSeg % 60);
             @endphp
             @if($minutos == 1)
-              <td class="col-xs-2">{{$minutos}} minuto y {{$segundos}} segundos</td>
+              @if($segundos == 0)
+                <td class="col-xs-2">{{$minutos}} minuto</td>
+              @else
+                <td class="col-xs-2">{{$minutos}} minuto y {{$segundos}} segundos</td>
+              @endif
             @else
-              <td class="col-xs-2">{{$minutos}} minutos y {{$segundos}} segundos</td>
+              @if($segundos == 0)
+                <td class="col-xs-2">{{$minutos}} minutos</td>
+              @else
+                <td class="col-xs-2">{{$minutos}} minutos y {{$segundos}} segundos</td>
+              @endif
             @endif
 
             <td class='action'>

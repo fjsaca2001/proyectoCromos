@@ -54,7 +54,7 @@
         <td class="col-xs-2">{{ $pregunta->opcion1 }}</td>
         <td class="col-xs-2">{{ $pregunta->opcion2 }}</td>
         <td class="col-xs-2">{{ $pregunta->opcion3 }}</td>
-        <td class="col-xs-2">{{ $pregunta->respuestaCorrecta }}</td>
+        <td class="col-xs-2"><em>{{ $pregunta->respuestaCorrecta }}</em></td>
         <td class="col-xs-2">{{ $pregunta->tematica['nombreTematica'] }}</td>
         <th class="col-xs-2">{{ $pregunta->actividad['nombreActividad'] }}</th>
         <td class='action'>

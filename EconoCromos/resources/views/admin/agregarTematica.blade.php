@@ -38,7 +38,7 @@
         <th class="col-xs-2">Título</th>
         <th class="col-xs-2">Descripción</th>
         <th class="col-xs-2">Álbum</th>
-        <th class="actions">Acciones</th>
+        <th class="actions"></th>
       </tr>
     </thead>
     <!-- Cuerpo de la tabla -->

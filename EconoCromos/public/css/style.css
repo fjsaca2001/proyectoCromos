@@ -239,7 +239,8 @@ footer article {
     width: 100%;
 }
 .cromos {
-    width: 80%;
+    margin-top: 6em;
+    width: 73%;
     vertical-align: top;
     display: inline-block;
     text-align: center;
