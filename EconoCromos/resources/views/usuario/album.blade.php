@@ -163,14 +163,14 @@
     <script>
         jQuery(function(){
             jQuery('.activarCromo').click(function(){
-                jQuery('.cromo').hide();
-                jQuery('.obscurecer').toggle();
-                jQuery('#cromo'+$(this).attr('target')).toggle('slow');
+                //jQuery('.cromo').hide();
+                jQuery('.obscurecer').fadeIn();
+                jQuery('#cromo'+$(this).attr('target')).show('linear');
             });
             jQuery('.obscurecer').click(function(){
-                jQuery('.obscurecer').fadeOut(300);
-                jQuery('.cromo').hide();
-                jQuery('#cromo'+$(this).attr('target')).fadeOut('slow');
+                //jQuery('#cromo'+$(this).attr('target')).fadeOut();
+                jQuery('.obscurecer').fadeOut();
+                jQuery('.cromo').hide(500);
             });
         });
     </script>

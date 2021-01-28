@@ -180,7 +180,8 @@ footer article {
     color: rgb(20, 15, 15);
 }
 .cromo img{
-    width: 60% !important;
+    width: 50% !important;
+    height: auto !important;
     margin: auto;
     overflow: hidden;
 }
@@ -400,4 +401,60 @@ footer article {
     vertical-align: top;
     display: inline-block;
     width: 20%;
+}
+.pregunta{
+    width: 60%;
+    margin: auto;
+    padding: 1em;
+    padding-left: 4em;
+    border:rgb(107, 103, 103) solid;
+    border-top: 0;
+    border-bottom: 1px solid;
+    border-left: 1px solid;
+    border-right: 1px solid;
+    border-radius:  0 0 10px 10px;
+}
+.pregunta input, .pregunta label{
+    padding-left: 0.5em;
+}
+
+.titulotest{
+    width: 60%;
+    margin: auto;
+    padding-top: 1em;
+    
+}
+.nroPregunta{
+    width: 60%;
+    margin: auto;
+    border:rgb(107, 103, 103) solid 1px;
+    margin-top: 2em;
+    padding: 0.5em;
+    padding-left: 1em;
+    background: #DEEDFF;
+    border-bottom: 0.5px solid;
+    border-left: 1px solid;
+    border-right: 1px solid;
+    border-radius:  10px 10px 0 0;
+}
+
+.enviarTest{
+    background-color: #DEEDFF !important;
+    color: rgb(20, 15, 15) !important;
+    border: blue solid 1px !important;
+    padding: 1em !important;
+}
+
+.botonEnviarRespuesta{
+    text-align: right;
+    width: 60%;
+    margin: auto;
+    padding: 2em 0;
+}
+.dirAct{
+    width: 20%;
+    position: fixed;
+    top: 170px;
+    left: 84%;
+    z-index: 200;
 }
