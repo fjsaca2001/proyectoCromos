@@ -165,34 +165,18 @@
         @endforeach
     </section>
 </section>
-<<<<<<< HEAD
-    {{--  Funcion Jquery para mostrar el contenido de los cromos  --}}
-    <script>
-        jQuery(function(){
-            jQuery('.activarCromo').click(function(){
-                //jQuery('.cromo').hide();
-                jQuery('.obscurecer').fadeIn();
-                jQuery('#cromo'+$(this).attr('target')).show('linear');
-            });
-            jQuery('.obscurecer').click(function(){
-                //jQuery('#cromo'+$(this).attr('target')).fadeOut();
-                jQuery('.obscurecer').fadeOut();
-                jQuery('.cromo').hide(500);
-            });
-=======
 {{-- Funcion Jquery para mostrar el contenido de los cromos  --}}
 <script>
     jQuery(function() {
         jQuery('.activarCromo').click(function() {
-            jQuery('.cromo').hide();
-            jQuery('.obscurecer').toggle();
-            jQuery('#cromo' + $(this).attr('target')).toggle('slow');
+            //jQuery('.cromo').hide();
+            jQuery('.obscurecer').fadeIn(300);
+            jQuery('#cromo' + $(this).attr('target')).fadeIn();
         });
         jQuery('.obscurecer').click(function() {
             jQuery('.obscurecer').fadeOut(300);
-            jQuery('.cromo').hide();
-            jQuery('#cromo' + $(this).attr('target')).fadeOut('slow');
->>>>>>> 7e70cb4e880cae8a160f27d56350f299cbf3286f
+            jQuery('.cromo').fadeOut(300);
+            //jQuery('#cromo' + $(this).attr('target')).fadeOut();
         });
     });
 </script>

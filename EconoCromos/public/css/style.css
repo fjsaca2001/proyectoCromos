@@ -414,14 +414,15 @@ footer article {
   }
   */
 
-.presentarResult {
+/* .presentarResult {
     margin: 5em 10em 5em 10em;
-}
+} */
 
 .cromosResult {
-    vertical-align: top;
+    margin: auto;
     display: inline-block;
-    width: 20%;
+    width: 40%;
+    text-align: center;
 }
 
 /*
@@ -536,4 +537,26 @@ footer article {
     top: 170px;
     left: 84%;
     z-index: 200;
+}
+
+.presentarResult{
+    width: 90%;
+    margin: auto;
+    padding-top: 10em;
+    padding-bottom: 2em;
+    text-align: center;
+}
+
+.mensajeMoti{
+    width: 40%;
+    text-align: center;
+    margin: auto;
+    font-style: oblique;
+    font-size: 18px;
+    padding: 2em;
+}
+
+.h4Nombre{
+    margin-top: 0.3em;
+    text-align: right;
 }

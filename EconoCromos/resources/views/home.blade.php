@@ -45,7 +45,7 @@ Session::get('Mensaje')
                         <div class="textoculto">
                             <h3 style="margin-top: 12px">! Descubre ¡</h3> 
                             <p>{{$tematicas['descripcion']}}</p>
-                            <a href="">
+                            <a href="{{ url('actividades/#tematica2') }}">
                                 <img style="width:35px" src="{{ asset('img/flecha-der2.svg' )}}">
                             </a>
                         </div>
