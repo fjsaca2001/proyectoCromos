@@ -16,10 +16,13 @@ Session::get('Mensaje')
             <div class="carousel-caption">
 
             </div>
-            <img src="{{ asset('img/slider1.png') }}" class="d-block w-100" alt="...">
+            <img src="{{ asset('img/portada.png') }}" class="d-block w-100" alt="...">
         </div>
         <div class="carousel-item">
-            <img src="{{ asset('img/slider2.png') }}" class="d-block w-100" alt="...">
+            <img src="{{ asset('img/descripcion.png') }}" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="{{ asset('img/registro.png') }}" class="d-block w-100" alt="...">
         </div>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
@@ -45,7 +48,7 @@ Session::get('Mensaje')
                         <div class="textoculto">
                             <h3 style="margin-top: 12px">! Descubre ¡</h3> 
                             <p>{{$tematicas['descripcion']}}</p>
-                            <a href="{{ url('actividades/#tematica2') }}">
+                            <a href="">
                                 <img style="width:35px" src="{{ asset('img/flecha-der2.svg' )}}">
                             </a>
                         </div>
