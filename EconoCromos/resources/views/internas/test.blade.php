@@ -5,41 +5,53 @@
     <h2 class="titulotest">{{$actividad->nombreActividad}}</h2>
     @php 
         $n = 1;
-        $count = 1;  
+        $count = 1;
+        $nInput = 1;
     @endphp
     <form class="testForm" action="{{ route('test.store') }}" name="quiz"  id="myquiz">
         @foreach( $actividad->preguntas as $pregunta)
-        <h3 class="nroPregunta">Pregunta {{$n}}</h3>    
+        <h3 class="nroPregunta">{{$pregunta->pregunta}}</h3>    
         <article class="pregunta">
-                <h3 id="pregunta{{$n}}">{{$pregunta->pregunta}}</h3>
-                    <div class="opcion{{$n}} form-check">
-                        <input class="form-check-input" type="radio" value="incorrecta" name="question[{{$pregunta->idPregunta}}]">
-                        <label class="form-check-label" for="flexRadioDefault1">
+                <h3 id="pregunta{{$n}}"></h3>
+                    <div class="opcion{{$n}} radiobtn">
+                        <input class="" type="radio" value="incorrecta" name="question[{{$pregunta->idPregunta}}]" id="{{$nInput}}">
+                        <label for="{{$nInput}}">
                             {{$pregunta->opcion1}}
                         </label> <br>
+                        @php 
+                            $nInput = $nInput+ 1;
+                        @endphp
                     </div>
-                    <div class="opcion{{$n}} form-check">
-                        <input class="form-check-input" type="radio" value="incorrecta" name="question[{{$pregunta->idPregunta}}]">
-                        <label class="form-check-label" for="flexRadioDefault1">
+                    <div class="opcion{{$n}} radiobtn">
+                        <input class="form-check-input" type="radio" value="incorrecta" name="question[{{$pregunta->idPregunta}}]" id="{{$nInput}}">
+                        <label for="{{$nInput}}">
                             {{$pregunta->opcion2}}
                         </label> <br>
+                        @php 
+                            $nInput = $nInput+ 1;
+                        @endphp
                     </div> 
-                    <div class="opcion{{$n}} form-check">
-                        <input class="form-check-input" type="radio" value="incorrecta" name="question[{{$pregunta->idPregunta}}]"> 
-                        <label class="form-check-label" for="flexRadioDefault1">
+                    <div class="opcion{{$n}} radiobtn">
+                        <input class="form-check-input" type="radio" value="incorrecta" name="question[{{$pregunta->idPregunta}}]" id="{{$nInput}}"> 
+                        <label for="{{$nInput}}">
                             {{$pregunta->opcion3}}
                         </label> <br>
+                        @php 
+                            $nInput = $nInput+ 1;
+                        @endphp
                     </div>
-                    <div class="opcion{{$n}} form-check">
-                        <input class="form-check-input" type="radio" value="correcta" name="question[{{$pregunta->idPregunta}}]"> 
-                        <label class="form-check-label" for="flexRadioDefault1">
+                    <div class="opcion{{$n}} radiobtn">
+                        <input class="form-check-input" type="radio" value="correcta" name="question[{{$pregunta->idPregunta}}]" id="{{$nInput}}"> 
+                        <label for="{{$nInput}}">
                             {{$pregunta->respuestaCorrecta}}
                         </label> <br>
+                        @php 
+                            $nInput = $nInput+ 1;
+                        @endphp
                     </div>
                         <input type="hidden" name="numeroPreg" id="numeroPreg" value="{{$n}}"> 
                         <input type="hidden" name="valorInputActiv" id="valorInputActiv" value="{{$actividad->idActividad}}"> 
                         <input type="hidden" name="valorInputUser" id="valorInputUser" value="{{auth()->user()->idUsuario}}"> 
-
             </article>
             @php 
                 $n = $n+1;  
@@ -52,11 +64,18 @@
 </section>
     <div class="dirAct">
         <h4>Banco de preguntas</h4>
+        <div id="status"></div>
         @foreach( $actividad->preguntas as $pregunta)
             <a class="dirActividad" href="#pregunta{{$count}}">Pregunta {{$count}}</a><br>
             @php
                 $count += 1;
             @endphp
+        @endforeach
+    </div>
+    <div class="dirAct2">
+        <h4>Cromos</h4>
+        @foreach( $actividad->cromos as $cromo)
+            <img style="width: 100px; margin:0.5em" src="{{ asset('storage').'/'.$cromo->imgURL }}">
         @endforeach
     </div>
     <!-- aletorizar respuestas -->
@@ -75,11 +94,11 @@
         function countDown(secs, elem) {
             var element = document.getElementById(elem);
             if((secs/60) < 1){
-                element.innerHTML = "<h3>Te quedan <b>"+Math.floor( (secs) % 60 )+"</b> segundos </h3>";  
+                element.innerHTML = "<h5>Te quedan <b>"+Math.floor( (secs) % 60 )+"</b> segundos </h5>";  
             } else if (secs >= 60 && secs < 120){
-                element.innerHTML = "<h3>Te queda <b>"+Math.floor( (secs/60) % 60 )+ "</b> minuto <b>" +Math.floor( (secs) % 60 )+ "</b> segundos </h3>" 
+                element.innerHTML = "<h5>Te queda <b>"+Math.floor( (secs/60) % 60 )+ "</b> minuto <b>" +Math.floor( (secs) % 60 )+ "</b> segundos </h5>" 
             } else {
-                element.innerHTML = "<h3>Te quedan <b>"+Math.floor( (secs/60) % 60 )+ "</b> minutos <b>" +Math.floor( (secs) % 60 )+ "</b> segundos </h3>";  
+                element.innerHTML = "<h5>Te quedan <b>"+Math.floor( (secs/60) % 60 )+ "</b> minutos <b>" +Math.floor( (secs) % 60 )+ "</b> segundos </h5>";  
             }
 
             if(secs < 1) {

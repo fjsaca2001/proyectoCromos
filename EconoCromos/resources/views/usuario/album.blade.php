@@ -51,47 +51,50 @@
                 <li class="list-group-item">Mis cromos</li>
             </ul>
             @php
-            $n = 1;
+                $n = 1;
             @endphp
             @foreach( $albumContenido[0]->tematicas[0]->cromos as $cromo)
-            @php
-            $encontrado = False;
-            @endphp
-            @if(count($albumContenido[0]->desbloqueados) == 0)
-            <article class="desactivarCromo">
-                <img src="{{ asset('storage').'/'.$cromo->imgURL }}">
-            </article>
-            @else
-            @foreach( $albumContenido[0]->desbloqueados as $desbloqueado)
-            @if($desbloqueado->idCromo === $cromo->idCromo && auth()->user()->idUsuario == $desbloqueado->idUsuario)
-            @php
-            $encontrado = True;
-            @endphp
-            @endif
-            @endforeach
-            @if($encontrado)
-            <article target="{{$n}}" class="activarCromo">
-                <img src="{{ asset('storage').'/'.$cromo->imgURL }}">
-                <div class="cromo" id="cromo{{$n}}" style="display: none;">
+                @php
+                    $encontrado = False;
+                @endphp
+                @if(count($albumContenido[0]->desbloqueados) == 0)
+                <article class="desactivarCromo">
                     <img src="{{ asset('storage').'/'.$cromo->imgURL }}">
-                    <h3>{{$cromo->nombre}}</h3>
-                    <h5>{{$cromo->descripcion}}</h5>
-                    <h6>#{{$cromo->idCromo}}</h6>
-                </div>
-                {{$cromo->nombre}}
-            </article>
-            @php
-            $n = $n+1;
-            @endphp
-            @else
-            <article class="desactivarCromo">
-                <img src="{{ asset('storage').'/'.$cromo->imgURL }}">
-            </article>
-            @endif
-            @endif
-            @endforeach
+                </article>
+                @else
+                @foreach( $albumContenido[0]->desbloqueados as $desbloqueado)
+                    @if($desbloqueado->idCromo === $cromo->idCromo && auth()->user()->idUsuario == $desbloqueado->idUsuario)
+                        @php
+                            $encontrado = True;
+                        @endphp
+                    @endif
+                    @endforeach
+                    @if($encontrado)
+                    <article target="{{$n}}" class="activarCromo">
+                        <img src="{{ asset('storage').'/'.$cromo->imgURL }}">
+                        <div class="cromo" id="cromo{{$n}}" style="display: none;">
+                            <img src="{{ asset('storage').'/'.$cromo->imgURL }}">
+                                
+                            <section class="textualCromo">
+                            <h3>{{$cromo->nombre}}</h3>
+                                <h5>{{$cromo->descripcion}}</h5>
+                                <h6>#{{$cromo->idCromo}}</h6>
+                            </section>
+                        </div>
+                        {{$cromo->nombre}}
+                    </article>
+                    @php
+                    $n = $n+1;
+                    @endphp
+                    @else
+                    <article class="desactivarCromo">
+                        <img src="{{ asset('storage').'/'.$cromo->imgURL }}">
+                    </article>
+                    @endif
+                    @endif
+                    @endforeach
 
-        </div>
+            </div>
 
         @php
         $n2 = 1;

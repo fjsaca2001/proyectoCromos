@@ -79,7 +79,7 @@
             @else
 
             <li class="nav-items">
-                <a class="nav-link" href="{{ route('album') }}">Álbum</a>
+                <a class="nav-link" href="{{ route('album') }}">Álbumes</a>
             </li>
             <li class="nav-items">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" data-target="desplegable" href="#">

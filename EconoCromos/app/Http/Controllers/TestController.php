@@ -65,7 +65,26 @@ class TestController extends Controller
             $porcentaje = ($correctas/$cantidadPreguntas)*100;
             $cantidadCromos = count($resultActividad->cromos);
             $contador = 0;
-            if( $porcentaje <=30){
+            if( $porcentaje >=0  && $porcentaje <= 20){
+                foreach( $resultActividad->cromos as $cromo){
+                    $contador++;
+                    if($contador <= $cantidadCromos*0.1){
+                        if(DB::table('desbloqueado')
+                            ->where('idAlbum', $cromo->tematica->album->idAlbum)
+                            ->where('idCromo', $cromo->idCromo)
+                            ->where('idUsuario', $valorInputUser)->doesntExist() ){
+                            DB::table('desbloqueado')->insert([
+                                'idAlbum' => $cromo->tematica->album->idAlbum,
+                                'idCromo' => $cromo->idCromo,
+                                'idUsuario' => $valorInputUser
+                            ]);
+                        }
+                        $arrayCromosDesbloqueados[] = array($cromo->idCromo, $cromo->imgURL, $cromo->nombre);
+                    } else {
+                        break;
+                    }
+                }
+            }else if( $porcentaje > 20 && $porcentaje <= 30){
                 foreach( $resultActividad->cromos as $cromo){
                     $contador++;
                     if($contador <= $cantidadCromos*0.255){
