@@ -20,7 +20,7 @@
                         </button>
                     </h2>
                     <div id="nombre{{$n2}}" class="accordion-collapse collapse show" aria-labelledby="{{$n2}}" data-bs-parent="#accordionExample">
-                        <div class="listaTematicas accordion-body">
+                        <div class="accordion-body">
                             @foreach( $album->tematicas as $tematicas)
                             <a class="nboton link-primary" target="{{$n}}"> {{$tematicas['nombreTematica']}}</a> <br>
                             @php
