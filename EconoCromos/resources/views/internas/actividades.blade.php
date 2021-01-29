@@ -5,6 +5,7 @@
 <link href="{{ asset('css/actividades.css') }}" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+
 <!-- Contenido de la páginas -->
 <section class="contenidoActividades">
     <section class="tablaAlbumes table-responsive">
@@ -14,27 +15,29 @@
         @endphp
         <nav>
             @foreach( $albumContenido as $album)
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="{{$n2}}">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#nombre{{$n2}}" aria-expanded="true" aria-controls="nombre{{$n2}}">
-                        {{$album->nombre}}
-                    </button>
-                </h2>
-            </div>
             <div class="accordion" id="accordionExample">
-                <div id="nombre{{$n2}}" class="accordion-collapse collapse show" aria-labelledby="{{$n2}}" data-bs-parent="#accordionExample">
-                    <div class="listaTematicas accordion-body">
-                        @foreach( $album->tematicas as $tematicas)
-                        <a class="nboton link-primary" target="{{$n}}"> {{$tematicas['nombreTematica']}}</a> <br>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="{{$n2}}">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#nombre{{$n2}}" aria-expanded="true" aria-controls="nombre{{$n2}}">
+                            {{$album->nombre}}
+                        </button>
+                    </h2>
+                    <div class="accordion" id="accordionExample">
+                        <div id="nombre{{$n2}}" class="accordion-collapse collapse show" aria-labelledby="{{$n2}}" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                @foreach( $album->tematicas as $tematicas)
+                                <a class="nboton link-primary" target="{{$n}}"> {{$tematicas['nombreTematica']}}</a> <br>
+                                @php
+                                $n = $n+1;
+                                @endphp
+                                @endforeach
+                            </div>
+                        </div>
                         @php
-                        $n = $n+1;
+                        $n2 = $n2+1;
                         @endphp
-                        @endforeach
                     </div>
                 </div>
-                @php
-                $n2 = $n2+1;
-                @endphp
             </div>
             @endforeach
             <script>

@@ -20,7 +20,7 @@
                         </button>
                     </h2>
                     <div id="nombre{{$n2}}" class="accordion-collapse collapse show" aria-labelledby="{{$n2}}" data-bs-parent="#accordionExample">
-                        <div class="listaTematicas accordion-body">
+                        <div class="accordion-body">
                             @foreach( $album->tematicas as $tematicas)
                             <a class="nboton link-primary" target="{{$n}}"> {{$tematicas['nombreTematica']}}</a> <br>
                             @php
@@ -165,21 +165,6 @@
         @endforeach
     </section>
 </section>
-<<<<<<< HEAD
-    {{--  Funcion Jquery para mostrar el contenido de los cromos  --}}
-    <script>
-        jQuery(function(){
-            jQuery('.activarCromo').click(function(){
-                //jQuery('.cromo').hide();
-                jQuery('.obscurecer').fadeIn();
-                jQuery('#cromo'+$(this).attr('target')).show('linear');
-            });
-            jQuery('.obscurecer').click(function(){
-                //jQuery('#cromo'+$(this).attr('target')).fadeOut();
-                jQuery('.obscurecer').fadeOut();
-                jQuery('.cromo').hide(500);
-            });
-=======
 {{-- Funcion Jquery para mostrar el contenido de los cromos  --}}
 <script>
     jQuery(function() {
@@ -192,7 +177,6 @@
             jQuery('.obscurecer').fadeOut(300);
             jQuery('.cromo').hide();
             jQuery('#cromo' + $(this).attr('target')).fadeOut('slow');
->>>>>>> 7e70cb4e880cae8a160f27d56350f299cbf3286f
         });
     });
 </script>
