@@ -586,13 +586,16 @@ footer article {
     width: 10%;
     position: fixed;
     top: 100px;
+    height: 220px;
     left: 0%;
     z-index: 1;
     color: rgb(121, 2, 219);
+    /*
     box-shadow: 0px 4px 16px 0px rgba(65, 63, 63, 0.2);
     border:rgba(230, 230, 230, 0.164) solid;
     border-width: 0.5px;
     background-color: snow;
+    */
     border-radius: 10px;
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
@@ -912,3 +915,92 @@ footer article {
     text-shadow: 0.1em 0.1em 0.1em rgba(171, 172, 172, 0.336);
     font-size: 15px;
 }
+.layersAn {
+    position: fixed;
+    left: 0.9em;
+    top: 12em;
+    transform: scaleY(0.5) scaleX(1);
+    /*
+    animation: scale ease-in-out 10s infinite;
+    */
+  }
+  
+  @keyframes scale {
+    50% {
+      transform: rotateX(60deg) rotateZ(0deg) translate3d(0vh, 0vh, 15vh) scale(1);
+    }
+  }
+  .player {
+    position: absolute;
+    width: 10vw;
+    height: 18em;
+    background-color: rgb(247, 247, 247);
+  }
+  
+  .player:nth-child(0) {
+    transform: rotateX(0deg) rotateZ(0deg) translate3d(0vh, 0vh, 0vh);
+    filter: hue-rotate(0deg);
+    animation: slide-6 ease-in-out 10s infinite;
+  }
+  
+  @keyframes slide-6 {
+    50% {
+      transform: rotateX(20deg) rotateZ(0deg) translate3d(0vh, 0vh, 0vh) scale(1);
+    }
+  }
+  .player:nth-child(1) {
+    transform: rotateX(0deg) rotateZ(0deg) translate3d(0vh, 0vh, 0vh);
+    filter: hue-rotate(0deg);
+    animation: slide-5 ease-in-out 10s infinite;
+  }
+  
+  @keyframes slide-5 {
+    /* Limite de hasta donde llega*/
+    50% {
+      transform: rotateX(16deg) rotateZ(0deg) translate3d(0vh, 0vh, 0vh) scale(1);
+    }
+  }
+  .player:nth-child(2) {
+    transform: rotateX(0deg) rotateZ(0deg) translate3d(0vh, 0vh, 0vh);
+    filter: hue-rotate(0deg);
+    animation: slide-4 ease-in-out 10s infinite;
+  }
+  
+  @keyframes slide-4 {
+    50% {
+      transform: rotateX(12deg) rotateZ(0deg) translate3d(0vh, 0vh, 50vh) scale(0.9);
+    }
+  }
+  .player:nth-child(3) {
+    transform: rotateX(0deg) rotateZ(0deg) translate3d(0vh, 0vh, 0vh);
+    filter: hue-rotate(0deg);
+    animation: slide-3 ease-in-out 10s infinite;
+  }
+  
+  @keyframes slide-3 {
+    50% {
+      transform: rotateX(8deg) rotateZ(0deg) translate3d(0vh, 0vh, 40vh) scale(0.95);
+    }
+  }
+  .player:nth-child(4) {
+    transform: rotateX(0deg) rotateZ(0deg) translate3d(0vh, 0vh, 0vh);
+    filter: hue-rotate(0deg);
+    animation: slide-2 ease-in-out 10s infinite;
+  }
+  
+  @keyframes slide-2 {
+    50% {
+      transform: rotateX(4deg) rotateZ(0deg) translate3d(0vh, 0vh, 20vh) scale(1.1);
+    }
+  }
+  .player:nth-child(5) {
+    transform: rotateX(0deg) rotateZ(0deg) translate3d(0vh, 0vh, 0vh);
+    filter: hue-rotate(0deg);
+    animation: slide-2 ease-in-out 10s infinite;
+  }
+  
+  @keyframes slide-2 {
+    50% {
+      transform: rotateX(0deg) rotateZ(0deg) translate3d(0vh, 0vh, 20vh) scale(1.05);
+    }
+  }

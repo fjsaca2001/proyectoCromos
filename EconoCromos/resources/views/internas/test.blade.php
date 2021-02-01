@@ -72,11 +72,19 @@
             @endphp
         @endforeach
     </div>
-    <div class="dirAct2">
+    {{-- <div class="dirAct2">
         <h4>Cromos</h4>
         @foreach( $actividad->cromos as $cromo)
             <img style="width: 100px; margin:0.5em" src="{{ asset('storage').'/'.$cromo->imgURL }}">
         @endforeach
+    </div> --}}
+    <div class="dirAct2">
+        <h4>Cromos</h4>
+        <div class="layersAn">
+            @foreach( $actividad->cromos as $cromo)
+                <img style="width: 130px; margin:0.5em" src="{{ asset('storage').'/'.$cromo->imgURL }}" class="player">
+            @endforeach
+        </div>
     </div>
     <!-- aletorizar respuestas -->
     <script>
