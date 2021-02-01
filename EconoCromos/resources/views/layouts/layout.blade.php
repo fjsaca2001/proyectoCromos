@@ -812,7 +812,10 @@
             <article>
                 <p class="fp">
                     Visitanos en <a href="">utpl.edu.ec</a><br>
-                    Teléfono: (+593) 1054276
+                    Teléfono: (+593) 1054276 <br>
+                    <a href=""><img style='width: 35px; display:inline; margin:0.2em; margin-left:0em; margin-top:0.5em' src='{{ asset("img/facebook.png") }}'></a>
+                    <a href=""><img style='width: 35px; display:inline; margin:0.2em; margin-top:0.5em' src='{{ asset("img/twitter.png") }}'></a>
+                    <a href=""><img style='width: 35px; display:inline; margin:0.2em; margin-top:0.5em' src='{{ asset("img/instagram.png") }}'></a>      
                 </p>
             </article>
         </section>

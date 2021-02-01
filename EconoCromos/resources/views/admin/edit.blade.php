@@ -319,6 +319,7 @@
         <div class="col-md-6">
             <label for="rol" class="form-label">{{ __('Rol') }}</label>
             <select class="form-control  @error('rol') is-invalid @enderror" id="rol" name="rol">
+                <option disabled selected value="{{ $usuarios->rol }}"> Selecionar rol</option>
                 <option value="1"> Administrador</option>
                 <option value="2"> Editor</option>
                 <option value="3"> Usuario</option>

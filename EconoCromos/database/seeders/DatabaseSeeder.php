@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
         $this->call(AlbumSeeder::class);
         $this->call(TematicasSeeder::class);
         $this->call(ActividadSeeder::class);
+        $this->call(UsuarioSeeder::class);
 
     }
 }

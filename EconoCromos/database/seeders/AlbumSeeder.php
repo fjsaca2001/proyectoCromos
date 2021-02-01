@@ -19,8 +19,8 @@ class AlbumSeeder extends Seeder
         //     'descripcion' => 'Este es tu album',   
         // ]);
         Album::create([  
-            'descripcion' => 'Álbum de economía',   
-            'nombre' => 'EconoCromos'
+            'nombre' => 'EconoCromos',
+            'descripcion' => 'El álbum principal de la economía, este es la verdadera muestra del potencial de la aplicación' 
         ]);
         
     }

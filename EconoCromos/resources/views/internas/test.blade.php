@@ -63,8 +63,8 @@
     </form>
 </section>
     <div class="dirAct">
+        <div id="reloj"></div>
         <h4>Banco de preguntas</h4>
-        <div id="status"></div>
         @foreach( $actividad->preguntas as $pregunta)
             <a class="dirActividad" href="#pregunta{{$count}}">Pregunta {{$count}}</a><br>
             @php
@@ -94,11 +94,19 @@
         function countDown(secs, elem) {
             var element = document.getElementById(elem);
             if((secs/60) < 1){
-                element.innerHTML = "<h5>Te quedan <b>"+Math.floor( (secs) % 60 )+"</b> segundos </h5>";  
-            } else if (secs >= 60 && secs < 120){
-                element.innerHTML = "<h5>Te queda <b>"+Math.floor( (secs/60) % 60 )+ "</b> minuto <b>" +Math.floor( (secs) % 60 )+ "</b> segundos </h5>" 
+                if (Math.floor( (secs) % 60 ) < 10) {
+                    element.innerHTML = "<div class='relojContent'><b>00:0"+Math.floor( (secs) % 60 )+"</b>"+"<img style='width: 45px; display:inline; margin-top:-0.2em' src='{{ asset('img/10seg.gif') }}'>"+  "</div>";  
+                } else {
+                    element.innerHTML = "<div class='relojContent'> <b>00:"+Math.floor( (secs) % 60 )+"</b>"+"<img style='width: 40px; display:inline; margin-left:0.2em; margin-top:-0.2em' src='{{ asset('img/1min.png') }}'>"+  "</div>";    
+                }
+            } else if (secs >= 60 && secs < 600){
+                if (Math.floor( (secs) % 60 ) < 10) {                    
+                    element.innerHTML = "<div class='relojContent'> <b>0"+Math.floor( (secs/60) % 60 )+ ":0" +Math.floor( (secs) % 60 )+ "</b>"+"<img style='width: 40px; display:inline; margin-left:0.2em; margin-top:-0.2em' src='{{ asset('img/1mas.png') }}'>"+  "</div>"; 
+                } else {
+                    element.innerHTML = "<div class='relojContent'> <b>0"+Math.floor( (secs/60) % 60 )+ ":" +Math.floor( (secs) % 60 )+ "</b>"+"<img style='width: 40px; display:inline; margin-left:0.2em; margin-top:-0.2em' src='{{ asset('img/1mas.png') }}'>"+  "</div>"; 
+                }
             } else {
-                element.innerHTML = "<h5>Te quedan <b>"+Math.floor( (secs/60) % 60 )+ "</b> minutos <b>" +Math.floor( (secs) % 60 )+ "</b> segundos </h5>";  
+                element.innerHTML = "<div class='relojContent'> <b>"+Math.floor( (secs/60) % 60 )+ ":0" +Math.floor( (secs) % 60 )+ "</b>"+"<img style='width: 40px; display:inline; margin-left:0.2em; margin-top:-0.2em' src='{{ asset('img/1mas.png') }}'>"+  "</div>";  
             }
 
             if(secs < 1) {
@@ -110,5 +118,5 @@
             }
         }
     </script> 
-    <script type="text/javascript">countDown( <?php echo $actividad->duracionTestSeg  ?> ,"status");</script>
+    <script type="text/javascript">countDown( <?php echo $actividad->duracionTestSeg  ?> ,"reloj");</script>
 @endsection

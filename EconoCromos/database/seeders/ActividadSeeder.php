@@ -15,53 +15,53 @@ class ActividadSeeder extends Seeder
     public function run()
     {
         Actividad::create([
-            'nombreActividad' => 'actividad 1 Econometría',
+            'nombreActividad' => 'Econometría actividad 1',
             'idTematica' => '1'
         ]);
         Actividad::create([
-            'nombreActividad' => 'actividad 2 Econometría',
+            'nombreActividad' => 'Econometría actividad 2',
             'idTematica' => '1'
         ]);
 
         Actividad::create([
-            'nombreActividad' => 'actividad 1 Macroeconomía',
+            'nombreActividad' => 'Macroeconomía actividad 1',
             'idTematica' => '2'
         ]);
         Actividad::create([
-            'nombreActividad' => 'actividad 2 Macroeconomía',
+            'nombreActividad' => 'Macroeconomía actividad 2',
             'idTematica' => '2'
         ]);
 
         Actividad::create([
-            'nombreActividad' => 'actividad 1 Microeconomía',
+            'nombreActividad' => 'Microeconomía actividad 1',
             'idTematica' => '3'
         ]);
         Actividad::create([
-            'nombreActividad' => 'actividad 2 Microeconomía',
+            'nombreActividad' => 'Microeconomía actividad 2',
             'idTematica' => '3'
         ]);
         Actividad::create([
-            'nombreActividad' => 'actividad 1 Finanzas',
+            'nombreActividad' => 'Finanzas actividad 1',
             'idTematica' => '4'
         ]);
         Actividad::create([
-            'nombreActividad' => 'actividad 2 Finanzas',
+            'nombreActividad' => 'Finanzas actividad 2',
             'idTematica' => '4'
         ]);
         Actividad::create([
-            'nombreActividad' => 'actividad 1 Ortodoxa',
+            'nombreActividad' => 'Ortodoxa actividad 1',
             'idTematica' => '5'
         ]);
         Actividad::create([
-            'nombreActividad' => 'actividad 2 Ortodoxa',
+            'nombreActividad' => 'Ortodoxa actividad 2',
             'idTematica' => '5'
         ]);
         Actividad::create([
-            'nombreActividad' => 'actividad 1 Heterodoxa',
+            'nombreActividad' => 'Heterodoxa actividad 1',
             'idTematica' => '6'
         ]);
         Actividad::create([
-            'nombreActividad' => 'actividad 2 Heterodoxa',
+            'nombreActividad' => 'Heterodoxa actividad 2',
             'idTematica' => '6'
         ]);
     }

@@ -39,7 +39,7 @@ class CrearAlbumController extends Controller
             'nombre' => 'required|string|max:30|unique:album',
             'descripcion' => 'required|string|max:500',
         ];
-        $Mensaje=['required' => 'El :attribute es requerido'];
+        $Mensaje=['unique' => 'No puedes crear dos álbumes con el mismo nombre'];
 
         $this->validate($request, $validarInfoFormAlbum, $Mensaje);
 
