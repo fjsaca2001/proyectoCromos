@@ -40,7 +40,7 @@
         <!-- Campo para modificar la descripción del cromo -->
         <div class="col-md-10">
             <label for="descripcion" class="form-label">{{ __('Descripción del cromo') }}</label>
-            <textarea type="text" class="form-control @error('descripcion') is-invalid @enderror" id="descripcion" name="descripcion" required autocomplete="descripcion" style="height: 150px">{{$cromos->descripcion}}</textarea>
+            <textarea type="text" class="form-control @error('descripcion') is-invalid @enderror" id="descripcion" name="descripcion" required autocomplete="descripcion" style="height: 150px" maxlength="400">{{$cromos->descripcion}}</textarea>
             @error('descripcion')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
