@@ -29,7 +29,7 @@
         <!-- Campo para modificar el nombre de la temática -->
         <div class="col-md-4">
             <label for="nombreTematica" class="form-label">{{ __('Nombre de la temática') }}</label>
-            <input type="text" class="form-control @error('nombreTematica') is-invalid @enderror" id="nombreTematica" name="nombreTematica" value="{{$tematicas->nombreTematica}}" required autocomplete="nombreTematica">
+            <input type="text" class="form-control @error('nombreTematica') is-invalid @enderror" id="nombreTematica" name="nombreTematica" value="{{$tematicas->nombreTematica}}" required autocomplete="nombreTematica"  maxlength="25">
             @error('nombreTematica')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>

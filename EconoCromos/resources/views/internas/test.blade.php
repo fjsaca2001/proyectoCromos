@@ -64,13 +64,21 @@
 </section>
     <div class="dirAct">
         <div id="reloj"></div>
-        <h4>Banco de preguntas</h4>
-        @foreach( $actividad->preguntas as $pregunta)
-            <a class="dirActividad" href="#pregunta{{$count}}">Pregunta {{$count}}</a><br>
-            @php
-                $count += 1;
-            @endphp
-        @endforeach
+        <div class ="linkspreg">
+            <p style="margin: 0">Preguntas</p>
+            @foreach( $actividad->preguntas as $pregunta)
+                <article>
+                    @if($count == 1)
+                        <a class="dirActividad" href="#pregunta{{$count}}">{{$count}}</a><br>
+                    @else
+                        <a class="dirActividad" href="#pregunta{{$count-1}}">{{$count}}</a><br>
+                    @endif
+                </article>
+                @php
+                    $count += 1;
+                @endphp
+            @endforeach
+        </div>
     </div>
     {{-- <div class="dirAct2">
         <h4>Cromos</h4>
@@ -103,7 +111,7 @@
             var element = document.getElementById(elem);
             if((secs/60) < 1){
                 if (Math.floor( (secs) % 60 ) < 10) {
-                    element.innerHTML = "<div class='relojContent'><b>00:0"+Math.floor( (secs) % 60 )+"</b>"+"<img style='width: 45px; display:inline; margin-top:-0.2em' src='{{ asset('img/10seg.gif') }}'>"+  "</div>";  
+                    element.innerHTML = "<div class='relojContent'><b>00:0"+Math.floor( (secs) % 60 )+"</b>"+"<img style='width: 50px; display:inline; margin-top:-0.2em' src='{{ asset('img/10seg.gif') }}'>"+  "</div>";  
                 } else {
                     element.innerHTML = "<div class='relojContent'> <b>00:"+Math.floor( (secs) % 60 )+"</b>"+"<img style='width: 40px; display:inline; margin-left:0.2em; margin-top:-0.2em' src='{{ asset('img/1min.png') }}'>"+  "</div>";    
                 }

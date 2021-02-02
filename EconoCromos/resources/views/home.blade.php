@@ -46,11 +46,13 @@ Session::get('Mensaje')
                     </a>
                     <div class="overlay"> 
                         <div class="textoculto">
-                            <h3 style="margin-top: 12px">{{$tematicas['nombreTematica']}}</h3> 
-                            <p>{{$tematicas['descripcion']}}</p>
+                            <br>
                             <a href="{{ url('actividades/#tematica2') }}">
                                 <img style="width:35px" src="{{ asset('img/flecha-der2.svg' )}}">
                             </a>
+                            <h3 style="margin-top: 12px">{{$tematicas['nombreTematica']}}</h3> 
+                            <p>{{$tematicas['descripcion']}}</p>
+                            
                         </div>
                     </div>
                 </div>

@@ -88,7 +88,6 @@
   @endforeach
 </div>
 <br>
-<br>
 <!-- Botón para agregar cromo -->
 <div class="container text-center">
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Agregar cromo</button>

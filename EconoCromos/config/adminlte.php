@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'Admin Panel',
+    'title' => 'Administración Econocromos',
     'title_prefix' => '',
     'title_postfix' => '',
 

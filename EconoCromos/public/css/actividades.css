@@ -149,3 +149,6 @@ h6 {
 .cromos div::-webkit-scrollbar {
     display: none;
 }
+.alert {
+    padding: 0;
+}
